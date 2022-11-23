@@ -1,0 +1,7 @@
+query pageProductCollection($locale: String) {
+  pageProductCollection(limit: 10, locale: $locale) {
+    items {
+      ...PageProductFields
+    }
+  }
+}

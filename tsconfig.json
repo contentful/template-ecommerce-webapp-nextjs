@@ -19,7 +19,7 @@
       "@public/*": ["./public/*"],
       "@src/*": ["./src/*"]
     },
-    "typeRoots": ["./@types", "./node_modules/@types"],
+    "typeRoots": ["./@types", "./node_modules/@types", "./types"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,

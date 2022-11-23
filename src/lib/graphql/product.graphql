@@ -1,0 +1,13 @@
+fragment PageProductFields on PageProduct {
+  __typename
+  name
+  slug
+}
+
+query pageProduct($slug: String!, $locale: String) {
+  pageProductCollection(limit: 1, where: { slug: $slug }, locale: $locale) {
+    items {
+      ...PageProductFields
+    }
+  }
+}
