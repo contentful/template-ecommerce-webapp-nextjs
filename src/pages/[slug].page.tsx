@@ -1,7 +1,7 @@
 import { GetStaticPaths, InferGetStaticPropsType } from 'next';
 
 import { client } from '@src/lib/client';
-import { revalidateDuration } from '@src/pages/utils/constants';
+import { revalidateDuration } from '@src/utils/constants';
 import { i18n } from 'next-i18next.config';
 
 const Page = ({ product }: InferGetStaticPropsType<typeof getStaticProps>) => {
