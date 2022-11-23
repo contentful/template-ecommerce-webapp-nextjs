@@ -6,26 +6,31 @@ const Container = styled.footer`
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 167px;
-  margin-bottom: ${tokens.spacing4Xl};
+  margin-bottom: ${tokens.spacing2Xl};
 `;
 
 const FooterContent = styled.div`
-  margin-left: ${tokens.spacing4Xl};
+  margin-left: ${tokens.spacingXl};
+
+  > p: {
+    font-size: ${tokens.fontSizeS};
+  }
 `;
 
 export const Footer = () => {
   return (
     <Container>
-      <Box margin="spacing4Xl">
+      <Box>
         <hr />
         <FooterContent>
-          <Paragraph>about us</Paragraph>
+          <Paragraph marginTop="spacingXl" marginBottom="spacingXl">
+            about us
+          </Paragraph>
           <Paragraph marginBottom="none">
             Lorem ipsum dolor sit amet consectetur. Placerat ut purus nam ac morbi erat ut. Laoreet
             duis augue vestibulum sed egestas tincidunt.
           </Paragraph>
-          <Paragraph>
+          <Paragraph marginBottom="spacingXl">
             Aliquet vitae consequat quam ut. Integer turpis sit porttitor rhoncus id quisque sed
             ullamcorper dolor. Commodo.
           </Paragraph>

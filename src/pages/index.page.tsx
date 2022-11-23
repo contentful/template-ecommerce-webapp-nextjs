@@ -1,5 +1,6 @@
 import { InferGetStaticPropsType } from 'next';
 
+import { revalidateDuration } from '@src/utils/constants';
 import { getServerSideTranslations } from '@src/utils/get-serverside-translations';
 
 const Page = ({}: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -8,7 +9,7 @@ const Page = ({}: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export const getStaticProps = async ({ locale }) => {
   return {
-    revalidate: 60,
+    revalidate: revalidateDuration,
     props: {
       ...(await getServerSideTranslations(locale)),
     },
