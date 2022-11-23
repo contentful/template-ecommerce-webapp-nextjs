@@ -17,7 +17,7 @@
     "baseUrl": "./",
     "paths": {
       "@public/*": ["./public/*"],
-      "@src/*": ["./src/*"],
+      "@src/*": ["./src/*"]
     },
     "typeRoots": ["./@types", "./node_modules/@types"],
     "lib": ["dom", "dom.iterable", "esnext"],

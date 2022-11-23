@@ -1,9 +1,14 @@
+import styled from '@emotion/styled';
 import { InferGetStaticPropsType } from 'next';
 
-import {getServerSideTranslations} from "./utils/get-serverside-translations";
+import { getServerSideTranslations } from '@src/utils/get-serverside-translations';
+
+const SomeText = styled.h1`
+  color: red;
+`;
 
 const Page = ({}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <h1>Hello world!</h1>;
+  return <SomeText>Hello world!</SomeText>;
 };
 
 export const getStaticProps = async ({ locale }) => {
@@ -11,7 +16,7 @@ export const getStaticProps = async ({ locale }) => {
     revalidate: 60,
     props: {
       ...(await getServerSideTranslations(locale)),
-    }
+    },
   };
 };
 
