@@ -28,5 +28,5 @@
     "incremental": true
   },
   "exclude": ["node_modules", "next.config.js"],
-  "include": ["**/*.ts", "**/*.tsx", "@types/**/*.d.ts", "src/declaration.d.ts"]
+  "include": ["**/*.ts", "**/*.tsx", "@types/**/*.d.ts"]
 }
