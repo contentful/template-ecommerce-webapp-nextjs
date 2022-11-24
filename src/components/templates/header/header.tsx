@@ -25,6 +25,7 @@ export const Header = () => {
           css={css`
             margin-top: 6px;
           `}
+          title={t('common.logoImageAltText')}
         />
       </Link>
       <LanguageSelector />

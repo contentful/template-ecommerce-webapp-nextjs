@@ -1,6 +1,8 @@
 {
   "common": {
     "homepage": "Startseite",
-    "logoImageAltText": "Logo"
+    "logoImageAltText": "Logo",
+    "aboutUs": "über uns",
+    "poweredBy": "Unterstützt von"
   }
 }

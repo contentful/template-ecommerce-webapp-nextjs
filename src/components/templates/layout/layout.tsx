@@ -14,7 +14,7 @@ const Content = styled.main`
   width: 100%;
 `;
 
-export const Layout: React.FC<LayoutPropsInterface> = ({ children }) => {
+export const Layout = ({ children }: LayoutPropsInterface) => {
   return (
     <Flex flexDirection="column" alignContent="center">
       <Header />

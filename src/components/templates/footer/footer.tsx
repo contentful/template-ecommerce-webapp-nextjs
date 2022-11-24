@@ -1,6 +1,7 @@
 import { Box, Paragraph, TextLink } from '@contentful/f36-components';
 import tokens from '@contentful/f36-tokens';
 import styled from '@emotion/styled';
+import { useTranslation } from 'next-i18next';
 
 const Container = styled.footer`
   position: fixed;
@@ -18,13 +19,15 @@ const FooterContent = styled.div`
 `;
 
 export const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <Container>
       <Box>
         <hr />
         <FooterContent>
           <Paragraph marginTop="spacingXl" marginBottom="spacingXl">
-            about us
+            {t('common.aboutUs')}
           </Paragraph>
           <Paragraph marginBottom="none">
             Lorem ipsum dolor sit amet consectetur. Placerat ut purus nam ac morbi erat ut. Laoreet
@@ -35,7 +38,7 @@ export const Footer = () => {
             ullamcorper dolor. Commodo.
           </Paragraph>
           <Paragraph>
-            Powered by{' '}
+            {t('common.poweredBy')}{' '}
             <TextLink href="https://contentful.com" target="_blank" rel="noopener noreferrer">
               Contentful
             </TextLink>
