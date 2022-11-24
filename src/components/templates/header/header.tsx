@@ -5,8 +5,8 @@ import styled from '@emotion/styled';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 
+import Logo from '@icons/bonelli.svg';
 import { LanguageSelector } from '@src/components/features/LanguageSelector';
-import Logo from '@src/icons/bonelli.svg';
 
 const Nav = styled.nav`
   display: flex;

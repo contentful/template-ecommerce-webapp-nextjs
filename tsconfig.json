@@ -17,7 +17,8 @@
     "baseUrl": "./",
     "paths": {
       "@public/*": ["./public/*"],
-      "@src/*": ["./src/*"]
+      "@src/*": ["./src/*"],
+      "@icons/*": ["./public/assets/svg/*"]
     },
     "typeRoots": ["./@types", "./node_modules/@types", "./types"],
     "lib": ["dom", "dom.iterable", "esnext"],
