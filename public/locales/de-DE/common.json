@@ -1,3 +1,8 @@
 {
-  "foo": "bar"
+  "product": {
+    "trendingProducts": "",
+    "relatedProducts": "",
+    "addToCart": "",
+    "quantity": ""
+  }
 }

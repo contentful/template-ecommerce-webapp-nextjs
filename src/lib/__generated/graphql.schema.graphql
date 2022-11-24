@@ -91,6 +91,7 @@ input AssetFilter {
 
 type AssetLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pageProductCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProductCollection
 }
 
 enum AssetOrder {
@@ -319,8 +320,13 @@ This model is used to output data for a single product [See type definition](htt
 """
 type PageProduct implements Entry {
   contentfulMetadata: ContentfulMetadata!
+  description(locale: String): String
+  featuredProductImage(locale: String, preview: Boolean): Asset
   linkedFrom(allowedLocales: [String]): PageProductLinkingCollections
   name(locale: String): String
+  price(locale: String): Float
+  productImagesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
+  relatedProductsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProductRelatedProductsCollection
   slug(locale: String): String
   sys: Sys!
 }
@@ -336,6 +342,14 @@ input PageProductFilter {
   AND: [PageProductFilter]
   OR: [PageProductFilter]
   contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  featuredProductImage_exists: Boolean
   name: String
   name_contains: String
   name_exists: Boolean
@@ -343,6 +357,17 @@ input PageProductFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  price: Float
+  price_exists: Boolean
+  price_gt: Float
+  price_gte: Float
+  price_in: [Float]
+  price_lt: Float
+  price_lte: Float
+  price_not: Float
+  price_not_in: [Float]
+  productImagesCollection_exists: Boolean
+  relatedProductsCollection_exists: Boolean
   slug: String
   slug_contains: String
   slug_exists: Boolean
@@ -355,11 +380,14 @@ input PageProductFilter {
 
 type PageProductLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pageProductCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProductCollection
 }
 
 enum PageProductOrder {
   name_ASC
   name_DESC
+  price_ASC
+  price_DESC
   slug_ASC
   slug_DESC
   sys_firstPublishedAt_ASC
@@ -370,6 +398,13 @@ enum PageProductOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+}
+
+type PageProductRelatedProductsCollection {
+  items: [PageProduct]!
+  limit: Int!
+  skip: Int!
+  total: Int!
 }
 
 """
