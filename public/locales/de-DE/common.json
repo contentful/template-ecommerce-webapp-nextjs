@@ -1,4 +1,10 @@
 {
+  "common": {
+    "homepage": "Startseite",
+    "logoImageAltText": "Logo",
+    "aboutUs": "über uns",
+    "poweredBy": "Unterstützt von"
+  },
   "product": {
     "trendingProducts": "",
     "relatedProducts": "",

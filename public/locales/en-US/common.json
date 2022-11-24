@@ -1,4 +1,10 @@
 {
+  "common": {
+    "homepage": "Homepage",
+    "logoImageAltText": "Logo",
+    "aboutUs": "about us",
+    "poweredBy": "Powered by"
+  },
   "product": {
     "trendingProducts": "Trending now",
     "relatedProducts": "You may also like",
