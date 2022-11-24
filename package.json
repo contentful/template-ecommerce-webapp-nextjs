@@ -7,6 +7,9 @@
     "npm": "Please use Yarn"
   },
   "scripts": {
+    "generate-theme-typings": "yarn chakra-cli tokens ./src/theme/theme.ts",
+    "predev": "yarn generate-theme-typings",
+    "prebuild": "yarn generate-theme-typings",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -25,22 +28,25 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@chakra-ui/react": "^2.4.1",
     "@contentful/f36-components": "^4.23.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@next/bundle-analyzer": "^13.0.4",
+    "@svgr/webpack": "^6.5.1",
     "dotenv": "^16.0.3",
+    "framer-motion": "^7.6.11",
     "graphql": "^16.6.0",
     "next": "13.0.4",
     "next-compose-plugins": "^2.2.1",
     "next-i18next": "^12.1.0",
     "next-pwa": "^5.6.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "@svgr/webpack": "^6.5.1"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
+    "@chakra-ui/cli": "^2.1.8",
     "@graphql-codegen/cli": "2.13.12",
     "@graphql-codegen/client-preset": "1.1.4",
     "@graphql-codegen/introspection": "2.2.1",

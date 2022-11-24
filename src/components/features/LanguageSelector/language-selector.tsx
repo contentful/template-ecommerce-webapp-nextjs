@@ -1,4 +1,5 @@
-import { Flex, Select } from '@contentful/f36-components';
+import { Flex } from '@chakra-ui/react';
+import { Select } from '@contentful/f36-components';
 import { LanguageIcon } from '@contentful/f36-icons';
 import { useRouter } from 'next/router';
 
