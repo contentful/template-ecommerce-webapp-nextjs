@@ -18,6 +18,7 @@
     "paths": {
       "@public/*": ["./public/*"],
       "@src/*": ["./src/*"],
+      "@icons/*": ["./public/assets/svg/*"]
     },
     "typeRoots": ["./@types", "./node_modules/@types", "./types"],
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -27,5 +28,5 @@
     "incremental": true
   },
   "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx", "@types/**/*.d.ts"]
+  "include": ["**/*.ts", "**/*.tsx", "@types/**/*.d.ts", "src/declaration.d.ts"]
 }

@@ -1,3 +1,8 @@
 {
-  "foo": "bar"
+  "common": {
+    "homepage": "Homepage",
+    "logoImageAltText": "Logo",
+    "aboutUs": "about us",
+    "poweredBy": "Powered by"
+  }
 }
