@@ -1,4 +1,4 @@
-import { Flex } from '@contentful/f36-components';
+import { Flex } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 

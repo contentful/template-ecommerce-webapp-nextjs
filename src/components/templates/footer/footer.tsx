@@ -1,5 +1,5 @@
-import { Box, Paragraph, TextLink } from '@contentful/f36-components';
-import tokens from '@contentful/f36-tokens';
+import { Box } from '@chakra-ui/react';
+import { Paragraph, TextLink } from '@contentful/f36-components';
 import styled from '@emotion/styled';
 import { useTranslation } from 'next-i18next';
 
@@ -7,14 +7,14 @@ const Container = styled.footer`
   position: fixed;
   bottom: 0;
   width: 100%;
-  margin-bottom: ${tokens.spacing2Xl};
+  margin-bottom: ${({ theme }) => theme.f36.spacingXl};
 `;
 
 const FooterContent = styled.div`
-  margin-left: ${tokens.spacingXl};
+  margin-left: ${({ theme }) => theme.f36.spacingXl};
 
-  > p: {
-    font-size: ${tokens.fontSizeS};
+  > p {
+    font-size: ${({ theme }) => theme.f36.fontSizeS};
   }
 `;
 
