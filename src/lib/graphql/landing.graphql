@@ -1,6 +1,6 @@
 fragment BaseLandingPageFields on PageLanding {
   __typename
-  title
+  name
   color
   heroBanner {
     ...ImageFields
@@ -17,7 +17,7 @@ fragment PageLandingFields on PageLanding {
   ...BaseLandingPageFields
 }
 
-query pageLanding($id: String!, $locale: String, $preview: Boolean) {
+query pageLanding($locale: String) {
   pageLandingCollection(limit: 1, where: locale: $locale) {
     items {
       ...PageLandingFields
