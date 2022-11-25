@@ -13,7 +13,12 @@ export const QuantitySelector = () => {
       </Text>
       <Flex flexDirection="row" mt={2}>
         <Input width={16} textAlign="center" type="number" defaultValue="1" />
-        <Button ml={2} variant="primary" rightIcon={<Box as={ShoppingCartIcon} variant="white" />}>
+        <Button
+          ml={2}
+          variant="primary"
+          rightIcon={
+            <Box as={ShoppingCartIcon} width="18px" height="18px" fill="white" variant="white" />
+          }>
           {t('product.addToCart')}
         </Button>
       </Flex>

@@ -5,6 +5,7 @@ export const input: ComponentStyleConfig = {
   variants: {
     outline: {
       field: {
+        borderColor: tokens.gray200,
         backgroundColor: tokens.colorWhite,
         fontWeight: 400,
       },
