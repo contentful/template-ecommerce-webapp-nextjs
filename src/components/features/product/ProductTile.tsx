@@ -14,7 +14,7 @@ export const ProductTile = ({ featuredProductImage, price, slug }: PageProductFi
         </Box>
       )}
       {price && (
-        <Text mt={3}>
+        <Text mt={3} fontWeight="500">
           <FormatCurrency value={price} />
         </Text>
       )}

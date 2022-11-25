@@ -22,11 +22,7 @@ export const ProductDetails = ({
             {featuredProductImage && <CtfImage {...featuredProductImage} />}
             {productImagesCollection?.items &&
               productImagesCollection.items.map(image => {
-                return image ? (
-                  <div key={image.sys.id}>
-                    <CtfImage {...image} />
-                  </div>
-                ) : null;
+                return image ? <CtfImage key={image.sys.id} {...image} /> : null;
               })}
           </Flex>
         </GridItem>
@@ -44,7 +40,7 @@ export const ProductDetails = ({
               {name}
             </Heading>
             {price && (
-              <Text mt={1}>
+              <Text mt={1} fontWeight="500">
                 <FormatCurrency value={price} />
               </Text>
             )}
