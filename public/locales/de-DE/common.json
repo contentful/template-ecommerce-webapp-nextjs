@@ -6,9 +6,9 @@
     "poweredBy": "Unterstützt von"
   },
   "product": {
-    "trendingProducts": "",
-    "relatedProducts": "",
-    "addToCart": "",
-    "quantity": ""
+    "trendingProducts": "Gerade angesagt",
+    "relatedProducts": "Sie können auch mögen",
+    "addToCart": "In den Warenkorb legen",
+    "quantity": "Menge"
   }
 }

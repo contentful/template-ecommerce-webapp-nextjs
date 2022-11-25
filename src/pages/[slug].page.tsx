@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import { GetStaticPaths, InferGetStaticPropsType } from 'next';
 import { useTranslation } from 'next-i18next';
 
@@ -14,10 +15,17 @@ const Page = ({ product }: InferGetStaticPropsType<typeof getStaticProps>) => {
     <>
       <ProductDetails {...product} />
       {product.relatedProductsCollection?.items && (
-        <ProductTileGrid
-          title={t('product.relatedProducts')}
-          products={product.relatedProductsCollection.items}
-        />
+        <Box
+          mt={{
+            base: 5,
+            md: 9,
+            lg: 16,
+          }}>
+          <ProductTileGrid
+            title={t('product.relatedProducts')}
+            products={product.relatedProductsCollection.items}
+          />
+        </Box>
       )}
     </>
   );
