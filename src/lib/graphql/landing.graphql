@@ -1,0 +1,20 @@
+fragment BaseLandingPageFields on PageLanding {
+  __typename
+  name
+  color
+  heroBanner {
+    ...ImageFields
+  }
+  productsCollection(limit: 6) {
+    items {
+      slug
+      price
+    }
+  }
+}
+
+fragment PageLandingFields on PageLanding {
+  ...BaseLandingPageFields
+}
+
+query pageLanding($locale: String)
