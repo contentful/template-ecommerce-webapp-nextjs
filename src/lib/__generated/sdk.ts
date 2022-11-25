@@ -170,11 +170,20 @@ export type AssetFilter = {
 export type AssetLinkingCollections = {
   __typename?: 'AssetLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
+  pageLandingCollection?: Maybe<PageLandingCollection>;
   pageProductCollection?: Maybe<PageProductCollection>;
 };
 
 
 export type AssetLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type AssetLinkingCollectionsPageLandingCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -364,6 +373,119 @@ export type ImageTransformOptions = {
   width?: InputMaybe<Scalars['Dimension']>;
 };
 
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
+export type PageLanding = Entry & {
+  __typename?: 'PageLanding';
+  color?: Maybe<Scalars['String']>;
+  contentfulMetadata: ContentfulMetadata;
+  heroBanner?: Maybe<Asset>;
+  linkedFrom?: Maybe<PageLandingLinkingCollections>;
+  name?: Maybe<Scalars['String']>;
+  productsCollection?: Maybe<PageLandingProductsCollection>;
+  sys: Sys;
+};
+
+
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
+export type PageLandingColorArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
+export type PageLandingHeroBannerArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
+export type PageLandingLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
+export type PageLandingNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
+export type PageLandingProductsCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export type PageLandingCollection = {
+  __typename?: 'PageLandingCollection';
+  items: Array<Maybe<PageLanding>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type PageLandingFilter = {
+  AND?: InputMaybe<Array<InputMaybe<PageLandingFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<PageLandingFilter>>>;
+  color?: InputMaybe<Scalars['String']>;
+  color_contains?: InputMaybe<Scalars['String']>;
+  color_exists?: InputMaybe<Scalars['Boolean']>;
+  color_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  color_not?: InputMaybe<Scalars['String']>;
+  color_not_contains?: InputMaybe<Scalars['String']>;
+  color_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  heroBanner_exists?: InputMaybe<Scalars['Boolean']>;
+  name?: InputMaybe<Scalars['String']>;
+  name_contains?: InputMaybe<Scalars['String']>;
+  name_exists?: InputMaybe<Scalars['Boolean']>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name_not?: InputMaybe<Scalars['String']>;
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  productsCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type PageLandingLinkingCollections = {
+  __typename?: 'PageLandingLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type PageLandingLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum PageLandingOrder {
+  ColorAsc = 'color_ASC',
+  ColorDesc = 'color_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export type PageLandingProductsCollection = {
+  __typename?: 'PageLandingProductsCollection';
+  items: Array<Maybe<PageProduct>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
 /** This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct) */
 export type PageProduct = Entry & {
   __typename?: 'PageProduct';
@@ -485,11 +607,20 @@ export type PageProductFilter = {
 export type PageProductLinkingCollections = {
   __typename?: 'PageProductLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
+  pageLandingCollection?: Maybe<PageLandingCollection>;
   pageProductCollection?: Maybe<PageProductCollection>;
 };
 
 
 export type PageProductLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type PageProductLinkingCollectionsPageLandingCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -534,6 +665,8 @@ export type Query = {
   asset?: Maybe<Asset>;
   assetCollection?: Maybe<AssetCollection>;
   entryCollection?: Maybe<EntryCollection>;
+  pageLanding?: Maybe<PageLanding>;
+  pageLandingCollection?: Maybe<PageLandingCollection>;
   pageProduct?: Maybe<PageProduct>;
   pageProductCollection?: Maybe<PageProductCollection>;
 };
@@ -563,6 +696,23 @@ export type QueryEntryCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<EntryFilter>;
+};
+
+
+export type QueryPageLandingArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryPageLandingCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PageLandingOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<PageLandingFilter>;
 };
 
 
@@ -629,7 +779,23 @@ export type SysFilter = {
   publishedVersion_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
 };
 
-export type PageProductFieldsFragment = { __typename: 'PageProduct', name?: string | null, slug?: string | null };
+export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } };
+
+export type BasePageProductFieldsFragment = { __typename: 'PageProduct', slug?: string | null, name?: string | null, description?: string | null, price?: number | null, featuredProductImage?: (
+    { __typename?: 'Asset' }
+    & ImageFieldsFragment
+  ) | null, productImagesCollection?: { __typename?: 'AssetCollection', items: Array<(
+      { __typename?: 'Asset' }
+      & ImageFieldsFragment
+    ) | null> } | null };
+
+export type PageProductFieldsFragment = (
+  { __typename?: 'PageProduct', relatedProductsCollection?: { __typename?: 'PageProductRelatedProductsCollection', items: Array<(
+      { __typename?: 'PageProduct' }
+      & BasePageProductFieldsFragment
+    ) | null> } | null }
+  & BasePageProductFieldsFragment
+);
 
 export type PageProductQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -652,11 +818,44 @@ export type PageProductCollectionQuery = { __typename?: 'Query', pageProductColl
       & PageProductFieldsFragment
     ) | null> } | null };
 
+export const ImageFieldsFragmentDoc = gql`
+    fragment ImageFields on Asset {
+  __typename
+  sys {
+    id
+  }
+  title
+  description
+  width
+  height
+  url
+}
+    `;
+export const BasePageProductFieldsFragmentDoc = gql`
+    fragment BasePageProductFields on PageProduct {
+  __typename
+  slug
+  name
+  description
+  price
+  featuredProductImage {
+    ...ImageFields
+  }
+  productImagesCollection(limit: 6) {
+    items {
+      ...ImageFields
+    }
+  }
+}
+    `;
 export const PageProductFieldsFragmentDoc = gql`
     fragment PageProductFields on PageProduct {
-  __typename
-  name
-  slug
+  ...BasePageProductFields
+  relatedProductsCollection(limit: 6) {
+    items {
+      ...BasePageProductFields
+    }
+  }
 }
     `;
 export const PageProductDocument = gql`
@@ -667,16 +866,20 @@ export const PageProductDocument = gql`
     }
   }
 }
-    ${PageProductFieldsFragmentDoc}`;
+    ${PageProductFieldsFragmentDoc}
+${BasePageProductFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}`;
 export const PageProductCollectionDocument = gql`
     query pageProductCollection($locale: String) {
-  pageProductCollection(limit: 10, locale: $locale) {
+  pageProductCollection(limit: 100, locale: $locale) {
     items {
       ...PageProductFields
     }
   }
 }
-    ${PageProductFieldsFragmentDoc}`;
+    ${PageProductFieldsFragmentDoc}
+${BasePageProductFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 

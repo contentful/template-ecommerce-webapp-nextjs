@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import { Box } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
 import { Footer } from '../footer';
@@ -8,16 +8,13 @@ interface LayoutPropsInterface {
   children: ReactNode;
 }
 
-const Content = styled.main`
-  min-height: 100%;
-  width: 100%;
-`;
-
 export const Layout = ({ children }: LayoutPropsInterface) => {
   return (
     <>
       <Header />
-      <Content>{children}</Content>
+      <Box width="100%" as="main" pb={{ base: 8, lg: 12 }}>
+        {children}
+      </Box>
       <Footer />
     </>
   );

@@ -15,7 +15,7 @@ export const LanguageSelector = () => {
 
   return locales && locales.length > 1 ? (
     <Flex justifyContent="center" alignItems="center">
-      <LanguageIcon variant="secondary" />
+      <LanguageIcon width="18px" height="18px" variant="secondary" />
       <Select
         variant="unstyled"
         size="md"

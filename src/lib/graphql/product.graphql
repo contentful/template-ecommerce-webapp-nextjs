@@ -1,7 +1,26 @@
-fragment PageProductFields on PageProduct {
+fragment BasePageProductFields on PageProduct {
   __typename
-  name
   slug
+  name
+  description
+  price
+  featuredProductImage {
+    ...ImageFields
+  }
+  productImagesCollection(limit: 6) {
+    items {
+      ...ImageFields
+    }
+  }
+}
+
+fragment PageProductFields on PageProduct {
+  ...BasePageProductFields
+  relatedProductsCollection(limit: 6) {
+    items {
+      ...BasePageProductFields
+    }
+  }
 }
 
 query pageProduct($slug: String!, $locale: String) {

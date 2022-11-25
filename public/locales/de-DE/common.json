@@ -4,5 +4,11 @@
     "logoImageAltText": "Logo",
     "aboutUs": "über uns",
     "poweredBy": "Unterstützt von"
+  },
+  "product": {
+    "trendingProducts": "Gerade angesagt",
+    "relatedProducts": "Sie können auch mögen",
+    "addToCart": "In den Warenkorb legen",
+    "quantity": "Menge"
   }
 }
