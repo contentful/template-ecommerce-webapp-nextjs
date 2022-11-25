@@ -1,22 +1,13 @@
-import { Box, Text, Link, useTheme } from '@chakra-ui/react';
-import styled from '@emotion/styled';
+import { Container, Box, Text, Link, useTheme } from '@chakra-ui/react';
 import { useTranslation } from 'next-i18next';
-
-const Container = styled.footer`
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  margin-bottom: ${({ theme }) => theme.f36.spacingXl};
-`;
 
 export const Footer = () => {
   const { t } = useTranslation();
   const theme = useTheme();
 
   return (
-    <Container>
-      <hr />
-      <Box ml={8}>
+    <Box width="full" mb={8} borderTop="1px" borderColor={theme.f36.gray200}>
+      <Container ml={8} maxW="full">
         <Text my={8} fontSize="sm">
           {t('common.aboutUs')}
         </Text>
@@ -34,7 +25,7 @@ export const Footer = () => {
             Contentful
           </Link>
         </Text>
-      </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 };
