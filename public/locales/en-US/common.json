@@ -4,5 +4,11 @@
     "logoImageAltText": "Logo",
     "aboutUs": "about us",
     "poweredBy": "Powered by"
+  },
+  "product": {
+    "trendingProducts": "Trending now",
+    "relatedProducts": "You may also like",
+    "addToCart": "Add to cart",
+    "quantity": "Quantity"
   }
 }

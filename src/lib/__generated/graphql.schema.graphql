@@ -324,9 +324,9 @@ type PageLanding implements Entry {
   contentfulMetadata: ContentfulMetadata!
   heroBanner(locale: String, preview: Boolean): Asset
   linkedFrom(allowedLocales: [String]): PageLandingLinkingCollections
+  name(locale: String): String
   productsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageLandingProductsCollection
   sys: Sys!
-  title(locale: String): String
 }
 
 type PageLandingCollection {
@@ -348,15 +348,15 @@ input PageLandingFilter {
   color_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   heroBanner_exists: Boolean
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
   productsCollection_exists: Boolean
   sys: SysFilter
-  title: String
-  title_contains: String
-  title_exists: Boolean
-  title_in: [String]
-  title_not: String
-  title_not_contains: String
-  title_not_in: [String]
 }
 
 type PageLandingLinkingCollections {
@@ -366,6 +366,8 @@ type PageLandingLinkingCollections {
 enum PageLandingOrder {
   color_ASC
   color_DESC
+  name_ASC
+  name_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -374,8 +376,6 @@ enum PageLandingOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
-  title_ASC
-  title_DESC
 }
 
 type PageLandingProductsCollection {

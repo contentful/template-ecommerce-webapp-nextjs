@@ -380,9 +380,9 @@ export type PageLanding = Entry & {
   contentfulMetadata: ContentfulMetadata;
   heroBanner?: Maybe<Asset>;
   linkedFrom?: Maybe<PageLandingLinkingCollections>;
+  name?: Maybe<Scalars['String']>;
   productsCollection?: Maybe<PageLandingProductsCollection>;
   sys: Sys;
-  title?: Maybe<Scalars['String']>;
 };
 
 
@@ -406,17 +406,17 @@ export type PageLandingLinkedFromArgs = {
 
 
 /** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
+export type PageLandingNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
 export type PageLandingProductsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
-};
-
-
-/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
-export type PageLandingTitleArgs = {
-  locale?: InputMaybe<Scalars['String']>;
 };
 
 export type PageLandingCollection = {
@@ -439,15 +439,15 @@ export type PageLandingFilter = {
   color_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   heroBanner_exists?: InputMaybe<Scalars['Boolean']>;
+  name?: InputMaybe<Scalars['String']>;
+  name_contains?: InputMaybe<Scalars['String']>;
+  name_exists?: InputMaybe<Scalars['Boolean']>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name_not?: InputMaybe<Scalars['String']>;
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   productsCollection_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
-  title?: InputMaybe<Scalars['String']>;
-  title_contains?: InputMaybe<Scalars['String']>;
-  title_exists?: InputMaybe<Scalars['Boolean']>;
-  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  title_not?: InputMaybe<Scalars['String']>;
-  title_not_contains?: InputMaybe<Scalars['String']>;
-  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type PageLandingLinkingCollections = {
@@ -466,6 +466,8 @@ export type PageLandingLinkingCollectionsEntryCollectionArgs = {
 export enum PageLandingOrder {
   ColorAsc = 'color_ASC',
   ColorDesc = 'color_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -473,9 +475,7 @@ export enum PageLandingOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
 export type PageLandingProductsCollection = {
@@ -779,7 +779,107 @@ export type SysFilter = {
   publishedVersion_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
 };
 
+export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } };
 
+export type BasePageProductFieldsFragment = { __typename: 'PageProduct', slug?: string | null, name?: string | null, description?: string | null, price?: number | null, featuredProductImage?: (
+    { __typename?: 'Asset' }
+    & ImageFieldsFragment
+  ) | null, productImagesCollection?: { __typename?: 'AssetCollection', items: Array<(
+      { __typename?: 'Asset' }
+      & ImageFieldsFragment
+    ) | null> } | null };
+
+export type PageProductFieldsFragment = (
+  { __typename?: 'PageProduct', relatedProductsCollection?: { __typename?: 'PageProductRelatedProductsCollection', items: Array<(
+      { __typename?: 'PageProduct' }
+      & BasePageProductFieldsFragment
+    ) | null> } | null }
+  & BasePageProductFieldsFragment
+);
+
+export type PageProductQueryVariables = Exact<{
+  slug: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type PageProductQuery = { __typename?: 'Query', pageProductCollection?: { __typename?: 'PageProductCollection', items: Array<(
+      { __typename?: 'PageProduct' }
+      & PageProductFieldsFragment
+    ) | null> } | null };
+
+export type PageProductCollectionQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type PageProductCollectionQuery = { __typename?: 'Query', pageProductCollection?: { __typename?: 'PageProductCollection', items: Array<(
+      { __typename?: 'PageProduct' }
+      & PageProductFieldsFragment
+    ) | null> } | null };
+
+export const ImageFieldsFragmentDoc = gql`
+    fragment ImageFields on Asset {
+  __typename
+  sys {
+    id
+  }
+  title
+  description
+  width
+  height
+  url
+}
+    `;
+export const BasePageProductFieldsFragmentDoc = gql`
+    fragment BasePageProductFields on PageProduct {
+  __typename
+  slug
+  name
+  description
+  price
+  featuredProductImage {
+    ...ImageFields
+  }
+  productImagesCollection(limit: 6) {
+    items {
+      ...ImageFields
+    }
+  }
+}
+    `;
+export const PageProductFieldsFragmentDoc = gql`
+    fragment PageProductFields on PageProduct {
+  ...BasePageProductFields
+  relatedProductsCollection(limit: 6) {
+    items {
+      ...BasePageProductFields
+    }
+  }
+}
+    `;
+export const PageProductDocument = gql`
+    query pageProduct($slug: String!, $locale: String) {
+  pageProductCollection(limit: 1, where: {slug: $slug}, locale: $locale) {
+    items {
+      ...PageProductFields
+    }
+  }
+}
+    ${PageProductFieldsFragmentDoc}
+${BasePageProductFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}`;
+export const PageProductCollectionDocument = gql`
+    query pageProductCollection($locale: String) {
+  pageProductCollection(limit: 100, locale: $locale) {
+    items {
+      ...PageProductFields
+    }
+  }
+}
+    ${PageProductFieldsFragmentDoc}
+${BasePageProductFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
