@@ -1,4 +1,3 @@
-import { Flex } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 
@@ -16,10 +15,10 @@ const Content = styled.main`
 
 export const Layout = ({ children }: LayoutPropsInterface) => {
   return (
-    <Flex flexDirection="column" alignContent="center">
+    <>
       <Header />
       <Content>{children}</Content>
       <Footer />
-    </Flex>
+    </>
   );
 };
