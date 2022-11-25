@@ -1,5 +1,4 @@
-import { Flex } from '@chakra-ui/react';
-import { Select } from '@contentful/f36-components';
+import { Flex, Select } from '@chakra-ui/react';
 import { LanguageIcon } from '@contentful/f36-icons';
 import { useRouter } from 'next/router';
 
@@ -15,10 +14,12 @@ export const LanguageSelector = () => {
   const router = useRouter();
 
   return locales && locales.length > 1 ? (
-    <Flex justifyContent="space-between" alignItems="center">
+    <Flex justifyContent="center" alignItems="center">
       <LanguageIcon variant="secondary" />
       <Select
-        style={{ border: 'none', boxShadow: 'none' }}
+        variant="unstyled"
+        size="md"
+        pl={1.5}
         defaultValue={locale}
         onChange={event => {
           router.push({ pathname: router.pathname, query: router.query }, router.asPath, {
@@ -26,12 +27,9 @@ export const LanguageSelector = () => {
           });
         }}>
         {locales?.map(availableLocale => (
-          <Select.Option
-            key={availableLocale}
-            value={availableLocale}
-            hidden={availableLocale === locale}>
+          <option key={availableLocale} value={availableLocale} hidden={availableLocale === locale}>
             {displayName(availableLocale).of(localeName(availableLocale))}
-          </Select.Option>
+          </option>
         ))}
       </Select>
     </Flex>

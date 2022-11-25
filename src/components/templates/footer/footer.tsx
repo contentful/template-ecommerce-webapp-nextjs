@@ -1,5 +1,4 @@
-import { Box } from '@chakra-ui/react';
-import { Paragraph, TextLink } from '@contentful/f36-components';
+import { Box, Text, Link, useTheme } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'next-i18next';
 
@@ -14,35 +13,34 @@ const FooterContent = styled.div`
   margin-left: ${({ theme }) => theme.f36.spacingXl};
 
   > p {
-    font-size: ${({ theme }) => theme.f36.fontSizeS};
+    font-size: ${({ theme }) => theme.f36.fontSizeM};
   }
 `;
 
 export const Footer = () => {
   const { t } = useTranslation();
+  const theme = useTheme();
 
   return (
     <Container>
       <Box>
         <hr />
         <FooterContent>
-          <Paragraph marginTop="spacingXl" marginBottom="spacingXl">
-            {t('common.aboutUs')}
-          </Paragraph>
-          <Paragraph marginBottom="none">
+          <Text my={8}>{t('common.aboutUs')}</Text>
+          <Text>
             Lorem ipsum dolor sit amet consectetur. Placerat ut purus nam ac morbi erat ut. Laoreet
             duis augue vestibulum sed egestas tincidunt.
-          </Paragraph>
-          <Paragraph marginBottom="spacingXl">
+          </Text>
+          <Text mb={8}>
             Aliquet vitae consequat quam ut. Integer turpis sit porttitor rhoncus id quisque sed
             ullamcorper dolor. Commodo.
-          </Paragraph>
-          <Paragraph>
+          </Text>
+          <Text>
             {t('common.poweredBy')}{' '}
-            <TextLink href="https://contentful.com" target="_blank" rel="noopener noreferrer">
+            <Link href="https://contentful.com" isExternal color={theme.f36.blue500}>
               Contentful
-            </TextLink>
-          </Paragraph>
+            </Link>
+          </Text>
         </FooterContent>
       </Box>
     </Container>
