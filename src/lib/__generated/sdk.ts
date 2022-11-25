@@ -380,9 +380,9 @@ export type PageLanding = Entry & {
   contentfulMetadata: ContentfulMetadata;
   heroBanner?: Maybe<Asset>;
   linkedFrom?: Maybe<PageLandingLinkingCollections>;
-  name?: Maybe<Scalars['String']>;
   productsCollection?: Maybe<PageLandingProductsCollection>;
   sys: Sys;
+  title?: Maybe<Scalars['String']>;
 };
 
 
@@ -406,17 +406,17 @@ export type PageLandingLinkedFromArgs = {
 
 
 /** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
-export type PageLandingNameArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
 export type PageLandingProductsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
+export type PageLandingTitleArgs = {
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 export type PageLandingCollection = {
@@ -439,15 +439,15 @@ export type PageLandingFilter = {
   color_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   heroBanner_exists?: InputMaybe<Scalars['Boolean']>;
-  name?: InputMaybe<Scalars['String']>;
-  name_contains?: InputMaybe<Scalars['String']>;
-  name_exists?: InputMaybe<Scalars['Boolean']>;
-  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  name_not?: InputMaybe<Scalars['String']>;
-  name_not_contains?: InputMaybe<Scalars['String']>;
-  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   productsCollection_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']>;
+  title_contains?: InputMaybe<Scalars['String']>;
+  title_exists?: InputMaybe<Scalars['Boolean']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  title_not?: InputMaybe<Scalars['String']>;
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type PageLandingLinkingCollections = {
@@ -466,8 +466,6 @@ export type PageLandingLinkingCollectionsEntryCollectionArgs = {
 export enum PageLandingOrder {
   ColorAsc = 'color_ASC',
   ColorDesc = 'color_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -475,7 +473,9 @@ export enum PageLandingOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
 }
 
 export type PageLandingProductsCollection = {

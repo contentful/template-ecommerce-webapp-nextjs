@@ -1,5 +1,5 @@
 query pageLandingCollection($locale: String) {
-  pageLandingCollection(limit: 100, locale: $locale) {
+  pageLandingCollection(limit: 100, locale: $locale, $preview: Boolean) {
     items {
       ...PageLandingFields
     }
