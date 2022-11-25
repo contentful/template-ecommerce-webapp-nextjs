@@ -6,7 +6,7 @@ export const Footer = () => {
   const theme = useTheme();
 
   return (
-    <Box width="full" mb={8} borderTop="1px" borderColor={theme.f36.gray200}>
+    <Box as="footer" width="full" mb={8} mt="auto" borderTop="1px" borderColor={theme.f36.gray200}>
       <Container ml={8} maxW="full">
         <Text my={8} fontSize="sm">
           {t('common.aboutUs')}
