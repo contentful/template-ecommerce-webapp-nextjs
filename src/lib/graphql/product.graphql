@@ -1,6 +1,9 @@
 fragment BasePageProductFields on PageProduct {
   __typename
   slug
+  seoFields {
+    ...SeoFields
+  }
   name
   description
   price
