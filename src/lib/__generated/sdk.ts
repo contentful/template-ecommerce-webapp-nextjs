@@ -779,7 +779,180 @@ export type SysFilter = {
   publishedVersion_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
 };
 
+export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } };
 
+export type BaseLandingPageFieldsFragment = { __typename: 'PageLanding', name?: string | null, color?: string | null, heroBanner?: (
+    { __typename?: 'Asset' }
+    & ImageFieldsFragment
+  ) | null, productsCollection?: { __typename?: 'PageLandingProductsCollection', items: Array<{ __typename?: 'PageProduct', slug?: string | null, price?: number | null } | null> } | null };
+
+export type PageLandingFieldsFragment = (
+  { __typename?: 'PageLanding' }
+  & BaseLandingPageFieldsFragment
+);
+
+export type PageLandingQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type PageLandingQuery = { __typename?: 'Query', pageLandingCollection?: { __typename?: 'PageLandingCollection', items: Array<(
+      { __typename?: 'PageLanding' }
+      & PageLandingFieldsFragment
+    ) | null> } | null };
+
+export type PageLandingCollectionQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type PageLandingCollectionQuery = { __typename?: 'Query', pageLandingCollection?: { __typename?: 'PageLandingCollection', items: Array<(
+      { __typename?: 'PageLanding' }
+      & PageLandingFieldsFragment
+    ) | null> } | null };
+
+export type BasePageProductFieldsFragment = { __typename: 'PageProduct', slug?: string | null, name?: string | null, description?: string | null, price?: number | null, featuredProductImage?: (
+    { __typename?: 'Asset' }
+    & ImageFieldsFragment
+  ) | null, productImagesCollection?: { __typename?: 'AssetCollection', items: Array<(
+      { __typename?: 'Asset' }
+      & ImageFieldsFragment
+    ) | null> } | null };
+
+export type PageProductFieldsFragment = (
+  { __typename?: 'PageProduct', relatedProductsCollection?: { __typename?: 'PageProductRelatedProductsCollection', items: Array<(
+      { __typename?: 'PageProduct' }
+      & BasePageProductFieldsFragment
+    ) | null> } | null }
+  & BasePageProductFieldsFragment
+);
+
+export type PageProductQueryVariables = Exact<{
+  slug: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type PageProductQuery = { __typename?: 'Query', pageProductCollection?: { __typename?: 'PageProductCollection', items: Array<(
+      { __typename?: 'PageProduct' }
+      & PageProductFieldsFragment
+    ) | null> } | null };
+
+export type PageProductCollectionQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type PageProductCollectionQuery = { __typename?: 'Query', pageProductCollection?: { __typename?: 'PageProductCollection', items: Array<(
+      { __typename?: 'PageProduct' }
+      & PageProductFieldsFragment
+    ) | null> } | null };
+
+export const ImageFieldsFragmentDoc = gql`
+    fragment ImageFields on Asset {
+  __typename
+  sys {
+    id
+  }
+  title
+  description
+  width
+  height
+  url
+}
+    `;
+export const BaseLandingPageFieldsFragmentDoc = gql`
+    fragment BaseLandingPageFields on PageLanding {
+  __typename
+  name
+  color
+  heroBanner {
+    ...ImageFields
+  }
+  productsCollection(limit: 6) {
+    items {
+      slug
+      price
+    }
+  }
+}
+    `;
+export const PageLandingFieldsFragmentDoc = gql`
+    fragment PageLandingFields on PageLanding {
+  ...BaseLandingPageFields
+}
+    `;
+export const BasePageProductFieldsFragmentDoc = gql`
+    fragment BasePageProductFields on PageProduct {
+  __typename
+  slug
+  name
+  description
+  price
+  featuredProductImage {
+    ...ImageFields
+  }
+  productImagesCollection(limit: 6) {
+    items {
+      ...ImageFields
+    }
+  }
+}
+    `;
+export const PageProductFieldsFragmentDoc = gql`
+    fragment PageProductFields on PageProduct {
+  ...BasePageProductFields
+  relatedProductsCollection(limit: 6) {
+    items {
+      ...BasePageProductFields
+    }
+  }
+}
+    `;
+export const PageLandingDocument = gql`
+    query pageLanding($locale: String) {
+  pageLandingCollection(limit: 1, locale: $locale) {
+    items {
+      ...PageLandingFields
+    }
+  }
+}
+    ${PageLandingFieldsFragmentDoc}
+${BaseLandingPageFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}`;
+export const PageLandingCollectionDocument = gql`
+    query pageLandingCollection($locale: String) {
+  pageLandingCollection(limit: 100, locale: $locale) {
+    items {
+      ...PageLandingFields
+    }
+  }
+}
+    ${PageLandingFieldsFragmentDoc}
+${BaseLandingPageFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}`;
+export const PageProductDocument = gql`
+    query pageProduct($slug: String!, $locale: String) {
+  pageProductCollection(limit: 1, where: {slug: $slug}, locale: $locale) {
+    items {
+      ...PageProductFields
+    }
+  }
+}
+    ${PageProductFieldsFragmentDoc}
+${BasePageProductFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}`;
+export const PageProductCollectionDocument = gql`
+    query pageProductCollection($locale: String) {
+  pageProductCollection(limit: 100, locale: $locale) {
+    items {
+      ...PageProductFields
+    }
+  }
+}
+    ${PageProductFieldsFragmentDoc}
+${BasePageProductFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -788,7 +961,18 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-
+    pageLanding(variables?: PageLandingQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageLandingQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageLandingQuery>(PageLandingDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageLanding', 'query');
+    },
+    pageLandingCollection(variables?: PageLandingCollectionQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageLandingCollectionQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageLandingCollectionQuery>(PageLandingCollectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageLandingCollection', 'query');
+    },
+    pageProduct(variables: PageProductQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageProductQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageProductQuery>(PageProductDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageProduct', 'query');
+    },
+    pageProductCollection(variables?: PageProductCollectionQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageProductCollectionQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageProductCollectionQuery>(PageProductCollectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageProductCollection', 'query');
+    }
   };
 }
 export type Sdk = ReturnType<typeof getSdk>;

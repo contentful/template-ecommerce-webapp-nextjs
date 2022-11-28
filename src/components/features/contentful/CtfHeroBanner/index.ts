@@ -1,1 +1,1 @@
-export * from './CttHeroBanner'
+export * from './CtfHeroBanner';
