@@ -7,7 +7,6 @@ import { Header } from '../header';
 
 interface LayoutPropsInterface {
   children: ReactNode;
-  img: string;
 }
 
 export const Layout = ({ children }: LayoutPropsInterface) => {

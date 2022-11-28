@@ -44,7 +44,8 @@
     "next-i18next": "^12.1.0",
     "next-pwa": "^5.6.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-scale-text": "^1.2.2"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",

@@ -1,7 +1,8 @@
 import { Flex, Heading, Box, Grid, Container } from '@chakra-ui/react';
 import styled from '@emotion/styled';
+import ScaleText from 'react-scale-text';
 
-import { CtfImage } from '@src/components/features/contentful/CtfImage';
+import { CtfImage } from '@src/components/features/contentful/ctf-image/CtfImage';
 import { HEADER_HEIGHT } from '@src/components/templates/header';
 import { PageLandingFieldsFragment } from '@src/lib/__generated/sdk';
 
@@ -14,7 +15,7 @@ const StyledBox = styled(Box)`
   }
 `;
 
-export const CtfHeroBanner = ({ name, color, heroBanner }: PageLandingFieldsFragment) => {
+export const HeroBanner = ({ name, color, heroBanner }: PageLandingFieldsFragment) => {
   return (
     <Grid position="relative" gridRow={2} gridColumn={1} mt={`-${HEADER_HEIGHT}px`}>
       <StyledBox
@@ -31,13 +32,11 @@ export const CtfHeroBanner = ({ name, color, heroBanner }: PageLandingFieldsFrag
         gridArea={{ base: '1 / 1 / 2 / 2' }}
         overflow="hidden">
         <Container as={Flex} justify="center" alignItems="flex-end" height="100%">
-          <Heading
-            as="h1"
-            lineHeight="0.75"
-            color={color || 'white'}
-            fontSize={{ base: '5.625rem', md: '12.5rem', lg: '25.864rem' }}>
-            {name}
-          </Heading>
+          <ScaleText minFontSize={12} maxFontSize={24} widthOnly={true}>
+            <Heading as="h1" lineHeight="0.75" color={color || 'white'}>
+              {name}
+            </Heading>
+          </ScaleText>
         </Container>
       </Flex>
     </Grid>

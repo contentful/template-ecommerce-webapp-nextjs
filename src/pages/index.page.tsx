@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/react';
 import { InferGetStaticPropsType } from 'next';
 import { useTranslation } from 'next-i18next';
 
-import { CtfHeroBanner } from '@src/components/features/contentful/CtfHeroBanner';
+import { HeroBanner } from '@src/components/features/hero-banner';
 import { ProductTileGrid } from '@src/components/features/product';
 import { client } from '@src/lib/client';
 import { revalidateDuration } from '@src/pages/utils/constants';
@@ -13,7 +13,7 @@ const Page = ({ product }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
   return (
     <>
-      <CtfHeroBanner {...product} />
+      <HeroBanner {...product} />
       {product.productsCollection?.items && (
         <Box
           mt={{

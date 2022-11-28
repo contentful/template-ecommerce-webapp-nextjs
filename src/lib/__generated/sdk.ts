@@ -1016,18 +1016,13 @@ export type CfComponentSeoNestedFilter = {
 
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } };
 
-export type BaseLandingPageFieldsFragment = { __typename: 'PageLanding', name?: string | null, color?: string | null, heroBanner?: (
+export type PageLandingFieldsFragment = { __typename: 'PageLanding', name?: string | null, color?: string | null, heroBanner?: (
     { __typename?: 'Asset' }
     & ImageFieldsFragment
-  ) | null, productsCollection?: { __typename?: 'PageLandingProductsCollection', items: Array<{ __typename: 'PageProduct', slug?: string | null, price?: number | null, featuredProductImage?: (
-        { __typename?: 'Asset' }
-        & ImageFieldsFragment
-      ) | null } | null> } | null };
-
-export type PageLandingFieldsFragment = (
-  { __typename?: 'PageLanding' }
-  & BaseLandingPageFieldsFragment
-);
+  ) | null, productsCollection?: { __typename?: 'PageLandingProductsCollection', items: Array<(
+      { __typename?: 'PageProduct' }
+      & PageProductFieldsFragment
+    ) | null> } | null };
 
 export type PageLandingQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']>;
@@ -1099,31 +1094,6 @@ export const ImageFieldsFragmentDoc = gql`
   url
 }
     `;
-export const BaseLandingPageFieldsFragmentDoc = gql`
-    fragment BaseLandingPageFields on PageLanding {
-  __typename
-  name
-  color
-  heroBanner {
-    ...ImageFields
-  }
-  productsCollection(limit: 6) {
-    items {
-      __typename
-      slug
-      price
-      featuredProductImage {
-        ...ImageFields
-      }
-    }
-  }
-}
-    `;
-export const PageLandingFieldsFragmentDoc = gql`
-    fragment PageLandingFields on PageLanding {
-  ...BaseLandingPageFields
-}
-    `;
 export const BasePageProductFieldsFragmentDoc = gql`
     fragment BasePageProductFields on PageProduct {
   __typename
@@ -1151,6 +1121,21 @@ export const PageProductFieldsFragmentDoc = gql`
   }
 }
     `;
+export const PageLandingFieldsFragmentDoc = gql`
+    fragment PageLandingFields on PageLanding {
+  __typename
+  name
+  color
+  heroBanner {
+    ...ImageFields
+  }
+  productsCollection(limit: 6) {
+    items {
+      ...PageProductFields
+    }
+  }
+}
+    `;
 export const PageLandingDocument = gql`
     query pageLanding($locale: String) {
   pageLandingCollection(limit: 1, locale: $locale) {
@@ -1160,8 +1145,9 @@ export const PageLandingDocument = gql`
   }
 }
     ${PageLandingFieldsFragmentDoc}
-${BaseLandingPageFieldsFragmentDoc}
-${ImageFieldsFragmentDoc}`;
+${ImageFieldsFragmentDoc}
+${PageProductFieldsFragmentDoc}
+${BasePageProductFieldsFragmentDoc}`;
 export const PageLandingCollectionDocument = gql`
     query pageLandingCollection($locale: String) {
   pageLandingCollection(limit: 100, locale: $locale) {
@@ -1171,8 +1157,9 @@ export const PageLandingCollectionDocument = gql`
   }
 }
     ${PageLandingFieldsFragmentDoc}
-${BaseLandingPageFieldsFragmentDoc}
-${ImageFieldsFragmentDoc}`;
+${ImageFieldsFragmentDoc}
+${PageProductFieldsFragmentDoc}
+${BasePageProductFieldsFragmentDoc}`;
 export const PageProductDocument = gql`
     query pageProduct($slug: String!, $locale: String) {
   pageProductCollection(limit: 1, where: {slug: $slug}, locale: $locale) {

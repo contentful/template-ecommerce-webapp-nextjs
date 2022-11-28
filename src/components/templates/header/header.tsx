@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 
 import Logo from '@icons/bonelli.svg';
-import { LanguageSelector } from '@src/components/features/LanguageSelector';
+import { LanguageSelector } from '@src/components/features/language-selector';
 
 export const HEADER_HEIGHT = 60;
 
@@ -17,9 +17,9 @@ export const Header = (props: BoxProps) => {
       bg="colorWhite"
       py={4}
       px={6}
-      {...props}
       height={`${HEADER_HEIGHT}px`}
-      zIndex="2">
+      zIndex="2"
+      {...props}>
       <Link href="/" title={t('common.homepage')}>
         <Box as={Logo} mt={1.5} title={t('common.logoImageAltText')} />
       </Link>

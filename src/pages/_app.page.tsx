@@ -6,10 +6,9 @@ import { Layout } from '@src/components/templates/layout';
 import { theme } from '@src/theme';
 
 const App = ({ Component, pageProps }: AppProps) => {
-  // console.log(pageProps.product.__typename);
   return (
     <ChakraProvider theme={theme}>
-      <Layout {...pageProps}>
+      <Layout>
         <Component {...pageProps} />
       </Layout>
     </ChakraProvider>
