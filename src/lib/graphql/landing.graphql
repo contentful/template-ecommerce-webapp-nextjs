@@ -7,8 +7,12 @@ fragment BaseLandingPageFields on PageLanding {
   }
   productsCollection(limit: 6) {
     items {
+      __typename
       slug
       price
+      featuredProductImage {
+        ...ImageFields
+      }
     }
   }
 }

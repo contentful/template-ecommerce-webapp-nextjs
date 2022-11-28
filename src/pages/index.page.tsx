@@ -1,12 +1,34 @@
+import { Box } from '@chakra-ui/react';
 import { InferGetStaticPropsType } from 'next';
+import { useTranslation } from 'next-i18next';
 
 import { CtfHeroBanner } from '@src/components/features/contentful/CtfHeroBanner';
+import { ProductTileGrid } from '@src/components/features/product';
 import { client } from '@src/lib/client';
 import { revalidateDuration } from '@src/pages/utils/constants';
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
 
 const Page = ({ product }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <CtfHeroBanner {...product} />;
+  const { t } = useTranslation();
+
+  return (
+    <>
+      <CtfHeroBanner {...product} />
+      {product.productsCollection?.items && (
+        <Box
+          mt={{
+            base: 5,
+            md: 9,
+            lg: 16,
+          }}>
+          <ProductTileGrid
+            title={t('product.trendingProducts')}
+            products={product.productsCollection.items}
+          />
+        </Box>
+      )}
+    </>
+  );
 };
 
 export const getStaticProps = async ({ locale }) => {
