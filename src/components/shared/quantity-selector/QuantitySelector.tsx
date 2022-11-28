@@ -17,7 +17,7 @@ export const QuantitySelector = () => {
         {t('product.quantity')}
       </Text>
       <Flex flexDirection="row" mt={2}>
-        <Input width={16} textAlign="center" type="number" defaultValue="1" />
+        <Input width={16} min={0} textAlign="center" type="number" defaultValue="1" />
         <Button
           ml={2}
           variant="primary"
