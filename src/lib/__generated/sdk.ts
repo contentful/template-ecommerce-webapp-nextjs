@@ -1014,7 +1014,7 @@ export type CfComponentSeoNestedFilter = {
   sys?: InputMaybe<SysFilter>;
 };
 
-export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } };
+export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
 export type PageLandingFieldsFragment = { __typename: 'PageLanding', name?: string | null, color?: string | null, heroBanner?: (
     { __typename?: 'Asset' }
@@ -1044,7 +1044,10 @@ export type PageLandingCollectionQuery = { __typename?: 'Query', pageLandingColl
       & PageLandingFieldsFragment
     ) | null> } | null };
 
-export type BasePageProductFieldsFragment = { __typename: 'PageProduct', slug?: string | null, name?: string | null, description?: string | null, price?: number | null, featuredProductImage?: (
+export type BasePageProductFieldsFragment = { __typename: 'PageProduct', slug?: string | null, name?: string | null, description?: string | null, price?: number | null, seoFields?: (
+    { __typename?: 'ComponentSeo' }
+    & SeoFieldsFragment
+  ) | null, featuredProductImage?: (
     { __typename?: 'Asset' }
     & ImageFieldsFragment
   ) | null, productImagesCollection?: { __typename?: 'AssetCollection', items: Array<(
@@ -1081,6 +1084,23 @@ export type PageProductCollectionQuery = { __typename?: 'Query', pageProductColl
       & PageProductFieldsFragment
     ) | null> } | null };
 
+export type SeoFieldsFragment = { __typename: 'ComponentSeo', pageTitle?: string | null, pageDescription?: string | null, canonicalUrl?: string | null, nofollow?: boolean | null, noindex?: boolean | null, shareImagesCollection?: { __typename?: 'AssetCollection', items: Array<(
+      { __typename?: 'Asset' }
+      & ImageFieldsFragment
+    ) | null> } | null };
+
+export type SitemapPagesFieldsFragment = { __typename?: 'Query', pageProductCollection?: { __typename?: 'PageProductCollection', items: Array<{ __typename?: 'PageProduct', slug?: string | null, sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageLandingCollection?: { __typename?: 'PageLandingCollection', items: Array<{ __typename?: 'PageLanding', sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null };
+
+export type SitemapPagesQueryVariables = Exact<{
+  locale: Scalars['String'];
+}>;
+
+
+export type SitemapPagesQuery = (
+  { __typename?: 'Query' }
+  & SitemapPagesFieldsFragment
+);
+
 export const ImageFieldsFragmentDoc = gql`
     fragment ImageFields on Asset {
   __typename
@@ -1092,12 +1112,31 @@ export const ImageFieldsFragmentDoc = gql`
   width
   height
   url
+  contentType
+}
+    `;
+export const SeoFieldsFragmentDoc = gql`
+    fragment SeoFields on ComponentSeo {
+  __typename
+  pageTitle
+  pageDescription
+  canonicalUrl
+  nofollow
+  noindex
+  shareImagesCollection(limit: 3, locale: $locale) {
+    items {
+      ...ImageFields
+    }
+  }
 }
     `;
 export const BasePageProductFieldsFragmentDoc = gql`
     fragment BasePageProductFields on PageProduct {
   __typename
   slug
+  seoFields {
+    ...SeoFields
+  }
   name
   description
   price
@@ -1136,6 +1175,25 @@ export const PageLandingFieldsFragmentDoc = gql`
   }
 }
     `;
+export const SitemapPagesFieldsFragmentDoc = gql`
+    fragment sitemapPagesFields on Query {
+  pageProductCollection(limit: 100, locale: $locale) {
+    items {
+      slug
+      sys {
+        publishedAt
+      }
+    }
+  }
+  pageLandingCollection(limit: 1, locale: $locale) {
+    items {
+      sys {
+        publishedAt
+      }
+    }
+  }
+}
+    `;
 export const PageLandingDocument = gql`
     query pageLanding($locale: String) {
   pageLandingCollection(limit: 1, locale: $locale) {
@@ -1147,7 +1205,8 @@ export const PageLandingDocument = gql`
     ${PageLandingFieldsFragmentDoc}
 ${ImageFieldsFragmentDoc}
 ${PageProductFieldsFragmentDoc}
-${BasePageProductFieldsFragmentDoc}`;
+${BasePageProductFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}`;
 export const PageLandingCollectionDocument = gql`
     query pageLandingCollection($locale: String) {
   pageLandingCollection(limit: 100, locale: $locale) {
@@ -1159,7 +1218,8 @@ export const PageLandingCollectionDocument = gql`
     ${PageLandingFieldsFragmentDoc}
 ${ImageFieldsFragmentDoc}
 ${PageProductFieldsFragmentDoc}
-${BasePageProductFieldsFragmentDoc}`;
+${BasePageProductFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}`;
 export const PageProductDocument = gql`
     query pageProduct($slug: String!, $locale: String) {
   pageProductCollection(limit: 1, where: {slug: $slug}, locale: $locale) {
@@ -1170,6 +1230,7 @@ export const PageProductDocument = gql`
 }
     ${PageProductFieldsFragmentDoc}
 ${BasePageProductFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}
 ${ImageFieldsFragmentDoc}`;
 export const PageProductCollectionDocument = gql`
     query pageProductCollection($locale: String) {
@@ -1181,7 +1242,13 @@ export const PageProductCollectionDocument = gql`
 }
     ${PageProductFieldsFragmentDoc}
 ${BasePageProductFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}
 ${ImageFieldsFragmentDoc}`;
+export const SitemapPagesDocument = gql`
+    query sitemapPages($locale: String!) {
+  ...sitemapPagesFields
+}
+    ${SitemapPagesFieldsFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -1201,6 +1268,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     pageProductCollection(variables?: PageProductCollectionQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageProductCollectionQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageProductCollectionQuery>(PageProductCollectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageProductCollection', 'query');
+    },
+    sitemapPages(variables: SitemapPagesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<SitemapPagesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<SitemapPagesQuery>(SitemapPagesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'sitemapPages', 'query');
     }
   };
 }
