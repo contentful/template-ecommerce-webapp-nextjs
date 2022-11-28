@@ -169,9 +169,18 @@ export type AssetFilter = {
 
 export type AssetLinkingCollections = {
   __typename?: 'AssetLinkingCollections';
+  componentSeoCollection?: Maybe<ComponentSeoCollection>;
   entryCollection?: Maybe<EntryCollection>;
   pageLandingCollection?: Maybe<PageLandingCollection>;
   pageProductCollection?: Maybe<PageProductCollection>;
+};
+
+
+export type AssetLinkingCollectionsComponentSeoCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -219,6 +228,158 @@ export enum AssetOrder {
   UrlDesc = 'url_DESC',
   WidthAsc = 'width_ASC',
   WidthDesc = 'width_DESC'
+}
+
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
+export type ComponentSeo = Entry & {
+  __typename?: 'ComponentSeo';
+  canonicalUrl?: Maybe<Scalars['String']>;
+  contentfulMetadata: ContentfulMetadata;
+  linkedFrom?: Maybe<ComponentSeoLinkingCollections>;
+  nofollow?: Maybe<Scalars['Boolean']>;
+  noindex?: Maybe<Scalars['Boolean']>;
+  pageDescription?: Maybe<Scalars['String']>;
+  pageTitle?: Maybe<Scalars['String']>;
+  shareImagesCollection?: Maybe<AssetCollection>;
+  sys: Sys;
+};
+
+
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
+export type ComponentSeoCanonicalUrlArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
+export type ComponentSeoLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
+export type ComponentSeoNofollowArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
+export type ComponentSeoNoindexArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
+export type ComponentSeoPageDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
+export type ComponentSeoPageTitleArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
+export type ComponentSeoShareImagesCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export type ComponentSeoCollection = {
+  __typename?: 'ComponentSeoCollection';
+  items: Array<Maybe<ComponentSeo>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type ComponentSeoFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ComponentSeoFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ComponentSeoFilter>>>;
+  canonicalUrl?: InputMaybe<Scalars['String']>;
+  canonicalUrl_contains?: InputMaybe<Scalars['String']>;
+  canonicalUrl_exists?: InputMaybe<Scalars['Boolean']>;
+  canonicalUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  canonicalUrl_not?: InputMaybe<Scalars['String']>;
+  canonicalUrl_not_contains?: InputMaybe<Scalars['String']>;
+  canonicalUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  nofollow?: InputMaybe<Scalars['Boolean']>;
+  nofollow_exists?: InputMaybe<Scalars['Boolean']>;
+  nofollow_not?: InputMaybe<Scalars['Boolean']>;
+  noindex?: InputMaybe<Scalars['Boolean']>;
+  noindex_exists?: InputMaybe<Scalars['Boolean']>;
+  noindex_not?: InputMaybe<Scalars['Boolean']>;
+  pageDescription?: InputMaybe<Scalars['String']>;
+  pageDescription_contains?: InputMaybe<Scalars['String']>;
+  pageDescription_exists?: InputMaybe<Scalars['Boolean']>;
+  pageDescription_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageDescription_not?: InputMaybe<Scalars['String']>;
+  pageDescription_not_contains?: InputMaybe<Scalars['String']>;
+  pageDescription_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageTitle?: InputMaybe<Scalars['String']>;
+  pageTitle_contains?: InputMaybe<Scalars['String']>;
+  pageTitle_exists?: InputMaybe<Scalars['Boolean']>;
+  pageTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageTitle_not?: InputMaybe<Scalars['String']>;
+  pageTitle_not_contains?: InputMaybe<Scalars['String']>;
+  pageTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  shareImagesCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type ComponentSeoLinkingCollections = {
+  __typename?: 'ComponentSeoLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+  pageLandingCollection?: Maybe<PageLandingCollection>;
+  pageProductCollection?: Maybe<PageProductCollection>;
+};
+
+
+export type ComponentSeoLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type ComponentSeoLinkingCollectionsPageLandingCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type ComponentSeoLinkingCollectionsPageProductCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum ComponentSeoOrder {
+  CanonicalUrlAsc = 'canonicalUrl_ASC',
+  CanonicalUrlDesc = 'canonicalUrl_DESC',
+  NofollowAsc = 'nofollow_ASC',
+  NofollowDesc = 'nofollow_DESC',
+  NoindexAsc = 'noindex_ASC',
+  NoindexDesc = 'noindex_DESC',
+  PageTitleAsc = 'pageTitle_ASC',
+  PageTitleDesc = 'pageTitle_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
 export type ContentfulMetadata = {
@@ -382,6 +543,7 @@ export type PageLanding = Entry & {
   linkedFrom?: Maybe<PageLandingLinkingCollections>;
   name?: Maybe<Scalars['String']>;
   productsCollection?: Maybe<PageLandingProductsCollection>;
+  seoFields?: Maybe<ComponentSeo>;
   sys: Sys;
 };
 
@@ -419,6 +581,13 @@ export type PageLandingProductsCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
+export type PageLandingSeoFieldsArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
 export type PageLandingCollection = {
   __typename?: 'PageLandingCollection';
   items: Array<Maybe<PageLanding>>;
@@ -447,6 +616,8 @@ export type PageLandingFilter = {
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   productsCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
+  seoFields_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -497,6 +668,7 @@ export type PageProduct = Entry & {
   price?: Maybe<Scalars['Float']>;
   productImagesCollection?: Maybe<AssetCollection>;
   relatedProductsCollection?: Maybe<PageProductRelatedProductsCollection>;
+  seoFields?: Maybe<ComponentSeo>;
   slug?: Maybe<Scalars['String']>;
   sys: Sys;
 };
@@ -552,6 +724,13 @@ export type PageProductRelatedProductsCollectionArgs = {
 
 
 /** This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct) */
+export type PageProductSeoFieldsArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct) */
 export type PageProductSlugArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
@@ -594,6 +773,8 @@ export type PageProductFilter = {
   price_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
   productImagesCollection_exists?: InputMaybe<Scalars['Boolean']>;
   relatedProductsCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
+  seoFields_exists?: InputMaybe<Scalars['Boolean']>;
   slug?: InputMaybe<Scalars['String']>;
   slug_contains?: InputMaybe<Scalars['String']>;
   slug_exists?: InputMaybe<Scalars['Boolean']>;
@@ -664,6 +845,8 @@ export type Query = {
   __typename?: 'Query';
   asset?: Maybe<Asset>;
   assetCollection?: Maybe<AssetCollection>;
+  componentSeo?: Maybe<ComponentSeo>;
+  componentSeoCollection?: Maybe<ComponentSeoCollection>;
   entryCollection?: Maybe<EntryCollection>;
   pageLanding?: Maybe<PageLanding>;
   pageLandingCollection?: Maybe<PageLandingCollection>;
@@ -686,6 +869,23 @@ export type QueryAssetCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<AssetFilter>;
+};
+
+
+export type QueryComponentSeoArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryComponentSeoCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentSeoOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentSeoFilter>;
 };
 
 
@@ -779,9 +979,47 @@ export type SysFilter = {
   publishedVersion_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
 };
 
-export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } };
+export type CfComponentSeoNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfComponentSeoNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfComponentSeoNestedFilter>>>;
+  canonicalUrl?: InputMaybe<Scalars['String']>;
+  canonicalUrl_contains?: InputMaybe<Scalars['String']>;
+  canonicalUrl_exists?: InputMaybe<Scalars['Boolean']>;
+  canonicalUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  canonicalUrl_not?: InputMaybe<Scalars['String']>;
+  canonicalUrl_not_contains?: InputMaybe<Scalars['String']>;
+  canonicalUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  nofollow?: InputMaybe<Scalars['Boolean']>;
+  nofollow_exists?: InputMaybe<Scalars['Boolean']>;
+  nofollow_not?: InputMaybe<Scalars['Boolean']>;
+  noindex?: InputMaybe<Scalars['Boolean']>;
+  noindex_exists?: InputMaybe<Scalars['Boolean']>;
+  noindex_not?: InputMaybe<Scalars['Boolean']>;
+  pageDescription?: InputMaybe<Scalars['String']>;
+  pageDescription_contains?: InputMaybe<Scalars['String']>;
+  pageDescription_exists?: InputMaybe<Scalars['Boolean']>;
+  pageDescription_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageDescription_not?: InputMaybe<Scalars['String']>;
+  pageDescription_not_contains?: InputMaybe<Scalars['String']>;
+  pageDescription_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageTitle?: InputMaybe<Scalars['String']>;
+  pageTitle_contains?: InputMaybe<Scalars['String']>;
+  pageTitle_exists?: InputMaybe<Scalars['Boolean']>;
+  pageTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageTitle_not?: InputMaybe<Scalars['String']>;
+  pageTitle_not_contains?: InputMaybe<Scalars['String']>;
+  pageTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  shareImagesCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  sys?: InputMaybe<SysFilter>;
+};
 
-export type BasePageProductFieldsFragment = { __typename: 'PageProduct', slug?: string | null, name?: string | null, description?: string | null, price?: number | null, featuredProductImage?: (
+export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
+
+export type BasePageProductFieldsFragment = { __typename: 'PageProduct', slug?: string | null, name?: string | null, description?: string | null, price?: number | null, seoFields?: (
+    { __typename?: 'ComponentSeo' }
+    & SeoFieldsFragment
+  ) | null, featuredProductImage?: (
     { __typename?: 'Asset' }
     & ImageFieldsFragment
   ) | null, productImagesCollection?: { __typename?: 'AssetCollection', items: Array<(
@@ -818,6 +1056,23 @@ export type PageProductCollectionQuery = { __typename?: 'Query', pageProductColl
       & PageProductFieldsFragment
     ) | null> } | null };
 
+export type SeoFieldsFragment = { __typename: 'ComponentSeo', pageTitle?: string | null, pageDescription?: string | null, canonicalUrl?: string | null, nofollow?: boolean | null, noindex?: boolean | null, shareImagesCollection?: { __typename?: 'AssetCollection', items: Array<(
+      { __typename?: 'Asset' }
+      & ImageFieldsFragment
+    ) | null> } | null };
+
+export type SitemapPagesFieldsFragment = { __typename?: 'Query', pageProductCollection?: { __typename?: 'PageProductCollection', items: Array<{ __typename?: 'PageProduct', slug?: string | null, sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageLandingCollection?: { __typename?: 'PageLandingCollection', items: Array<{ __typename?: 'PageLanding', sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null };
+
+export type SitemapPagesQueryVariables = Exact<{
+  locale: Scalars['String'];
+}>;
+
+
+export type SitemapPagesQuery = (
+  { __typename?: 'Query' }
+  & SitemapPagesFieldsFragment
+);
+
 export const ImageFieldsFragmentDoc = gql`
     fragment ImageFields on Asset {
   __typename
@@ -829,12 +1084,31 @@ export const ImageFieldsFragmentDoc = gql`
   width
   height
   url
+  contentType
+}
+    `;
+export const SeoFieldsFragmentDoc = gql`
+    fragment SeoFields on ComponentSeo {
+  __typename
+  pageTitle
+  pageDescription
+  canonicalUrl
+  nofollow
+  noindex
+  shareImagesCollection(limit: 3, locale: $locale) {
+    items {
+      ...ImageFields
+    }
+  }
 }
     `;
 export const BasePageProductFieldsFragmentDoc = gql`
     fragment BasePageProductFields on PageProduct {
   __typename
   slug
+  seoFields {
+    ...SeoFields
+  }
   name
   description
   price
@@ -858,6 +1132,25 @@ export const PageProductFieldsFragmentDoc = gql`
   }
 }
     `;
+export const SitemapPagesFieldsFragmentDoc = gql`
+    fragment sitemapPagesFields on Query {
+  pageProductCollection(limit: 100, locale: $locale) {
+    items {
+      slug
+      sys {
+        publishedAt
+      }
+    }
+  }
+  pageLandingCollection(limit: 1, locale: $locale) {
+    items {
+      sys {
+        publishedAt
+      }
+    }
+  }
+}
+    `;
 export const PageProductDocument = gql`
     query pageProduct($slug: String!, $locale: String) {
   pageProductCollection(limit: 1, where: {slug: $slug}, locale: $locale) {
@@ -868,6 +1161,7 @@ export const PageProductDocument = gql`
 }
     ${PageProductFieldsFragmentDoc}
 ${BasePageProductFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}
 ${ImageFieldsFragmentDoc}`;
 export const PageProductCollectionDocument = gql`
     query pageProductCollection($locale: String) {
@@ -879,7 +1173,13 @@ export const PageProductCollectionDocument = gql`
 }
     ${PageProductFieldsFragmentDoc}
 ${BasePageProductFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}
 ${ImageFieldsFragmentDoc}`;
+export const SitemapPagesDocument = gql`
+    query sitemapPages($locale: String!) {
+  ...sitemapPagesFields
+}
+    ${SitemapPagesFieldsFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -893,6 +1193,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     pageProductCollection(variables?: PageProductCollectionQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageProductCollectionQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageProductCollectionQuery>(PageProductCollectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageProductCollection', 'query');
+    },
+    sitemapPages(variables: SitemapPagesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<SitemapPagesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<SitemapPagesQuery>(SitemapPagesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'sitemapPages', 'query');
     }
   };
 }
