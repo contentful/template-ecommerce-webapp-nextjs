@@ -403,11 +403,11 @@ input ImageTransformOptions {
 This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding)
 """
 type PageLanding implements Entry {
-  color(locale: String): String
   contentfulMetadata: ContentfulMetadata!
-  heroBanner(locale: String, preview: Boolean): Asset
+  heroBannerHeadline(locale: String): String
+  heroBannerHeadlineColor(locale: String): String
+  heroBannerImage(locale: String, preview: Boolean): Asset
   linkedFrom(allowedLocales: [String]): PageLandingLinkingCollections
-  name(locale: String): String
   productsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageLandingProductsCollection
   seoFields(locale: String, preview: Boolean): ComponentSeo
   sys: Sys!
@@ -423,22 +423,22 @@ type PageLandingCollection {
 input PageLandingFilter {
   AND: [PageLandingFilter]
   OR: [PageLandingFilter]
-  color: String
-  color_contains: String
-  color_exists: Boolean
-  color_in: [String]
-  color_not: String
-  color_not_contains: String
-  color_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
-  heroBanner_exists: Boolean
-  name: String
-  name_contains: String
-  name_exists: Boolean
-  name_in: [String]
-  name_not: String
-  name_not_contains: String
-  name_not_in: [String]
+  heroBannerHeadline: String
+  heroBannerHeadlineColor: String
+  heroBannerHeadlineColor_contains: String
+  heroBannerHeadlineColor_exists: Boolean
+  heroBannerHeadlineColor_in: [String]
+  heroBannerHeadlineColor_not: String
+  heroBannerHeadlineColor_not_contains: String
+  heroBannerHeadlineColor_not_in: [String]
+  heroBannerHeadline_contains: String
+  heroBannerHeadline_exists: Boolean
+  heroBannerHeadline_in: [String]
+  heroBannerHeadline_not: String
+  heroBannerHeadline_not_contains: String
+  heroBannerHeadline_not_in: [String]
+  heroBannerImage_exists: Boolean
   productsCollection_exists: Boolean
   seoFields: cfComponentSeoNestedFilter
   seoFields_exists: Boolean
@@ -450,10 +450,10 @@ type PageLandingLinkingCollections {
 }
 
 enum PageLandingOrder {
-  color_ASC
-  color_DESC
-  name_ASC
-  name_DESC
+  heroBannerHeadlineColor_ASC
+  heroBannerHeadlineColor_DESC
+  heroBannerHeadline_ASC
+  heroBannerHeadline_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC

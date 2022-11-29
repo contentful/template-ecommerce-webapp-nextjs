@@ -1,7 +1,7 @@
 import { Box, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 
-import { CtfImage } from '@src/components/features/contentful';
+import { CtfImage } from '@src/components/features/contentful/ctf-image';
 import { FormatCurrency } from '@src/components/shared/format-currency';
 import { PageProductFieldsFragment } from '@src/lib/__generated/sdk';
 

@@ -537,11 +537,11 @@ export type ImageTransformOptions = {
 /** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
 export type PageLanding = Entry & {
   __typename?: 'PageLanding';
-  color?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
-  heroBanner?: Maybe<Asset>;
+  heroBannerHeadline?: Maybe<Scalars['String']>;
+  heroBannerHeadlineColor?: Maybe<Scalars['String']>;
+  heroBannerImage?: Maybe<Asset>;
   linkedFrom?: Maybe<PageLandingLinkingCollections>;
-  name?: Maybe<Scalars['String']>;
   productsCollection?: Maybe<PageLandingProductsCollection>;
   seoFields?: Maybe<ComponentSeo>;
   sys: Sys;
@@ -549,13 +549,19 @@ export type PageLanding = Entry & {
 
 
 /** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
-export type PageLandingColorArgs = {
+export type PageLandingHeroBannerHeadlineArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
 /** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
-export type PageLandingHeroBannerArgs = {
+export type PageLandingHeroBannerHeadlineColorArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
+export type PageLandingHeroBannerImageArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
@@ -564,12 +570,6 @@ export type PageLandingHeroBannerArgs = {
 /** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
 export type PageLandingLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
-export type PageLandingNameArgs = {
-  locale?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -599,22 +599,22 @@ export type PageLandingCollection = {
 export type PageLandingFilter = {
   AND?: InputMaybe<Array<InputMaybe<PageLandingFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<PageLandingFilter>>>;
-  color?: InputMaybe<Scalars['String']>;
-  color_contains?: InputMaybe<Scalars['String']>;
-  color_exists?: InputMaybe<Scalars['Boolean']>;
-  color_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  color_not?: InputMaybe<Scalars['String']>;
-  color_not_contains?: InputMaybe<Scalars['String']>;
-  color_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  heroBanner_exists?: InputMaybe<Scalars['Boolean']>;
-  name?: InputMaybe<Scalars['String']>;
-  name_contains?: InputMaybe<Scalars['String']>;
-  name_exists?: InputMaybe<Scalars['Boolean']>;
-  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  name_not?: InputMaybe<Scalars['String']>;
-  name_not_contains?: InputMaybe<Scalars['String']>;
-  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  heroBannerHeadline?: InputMaybe<Scalars['String']>;
+  heroBannerHeadlineColor?: InputMaybe<Scalars['String']>;
+  heroBannerHeadlineColor_contains?: InputMaybe<Scalars['String']>;
+  heroBannerHeadlineColor_exists?: InputMaybe<Scalars['Boolean']>;
+  heroBannerHeadlineColor_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  heroBannerHeadlineColor_not?: InputMaybe<Scalars['String']>;
+  heroBannerHeadlineColor_not_contains?: InputMaybe<Scalars['String']>;
+  heroBannerHeadlineColor_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  heroBannerHeadline_contains?: InputMaybe<Scalars['String']>;
+  heroBannerHeadline_exists?: InputMaybe<Scalars['Boolean']>;
+  heroBannerHeadline_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  heroBannerHeadline_not?: InputMaybe<Scalars['String']>;
+  heroBannerHeadline_not_contains?: InputMaybe<Scalars['String']>;
+  heroBannerHeadline_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  heroBannerImage_exists?: InputMaybe<Scalars['Boolean']>;
   productsCollection_exists?: InputMaybe<Scalars['Boolean']>;
   seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
   seoFields_exists?: InputMaybe<Scalars['Boolean']>;
@@ -635,10 +635,10 @@ export type PageLandingLinkingCollectionsEntryCollectionArgs = {
 };
 
 export enum PageLandingOrder {
-  ColorAsc = 'color_ASC',
-  ColorDesc = 'color_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
+  HeroBannerHeadlineColorAsc = 'heroBannerHeadlineColor_ASC',
+  HeroBannerHeadlineColorDesc = 'heroBannerHeadlineColor_DESC',
+  HeroBannerHeadlineAsc = 'heroBannerHeadline_ASC',
+  HeroBannerHeadlineDesc = 'heroBannerHeadline_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1016,6 +1016,34 @@ export type CfComponentSeoNestedFilter = {
 
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
+export type PageLandingFieldsFragment = { __typename: 'PageLanding', heroBannerHeadline?: string | null, heroBannerHeadlineColor?: string | null, heroBannerImage?: (
+    { __typename?: 'Asset' }
+    & ImageFieldsFragment
+  ) | null, productsCollection?: { __typename?: 'PageLandingProductsCollection', items: Array<(
+      { __typename?: 'PageProduct' }
+      & PageProductFieldsFragment
+    ) | null> } | null };
+
+export type PageLandingQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type PageLandingQuery = { __typename?: 'Query', pageLandingCollection?: { __typename?: 'PageLandingCollection', items: Array<(
+      { __typename?: 'PageLanding' }
+      & PageLandingFieldsFragment
+    ) | null> } | null };
+
+export type PageLandingCollectionQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type PageLandingCollectionQuery = { __typename?: 'Query', pageLandingCollection?: { __typename?: 'PageLandingCollection', items: Array<(
+      { __typename?: 'PageLanding' }
+      & PageLandingFieldsFragment
+    ) | null> } | null };
+
 export type BasePageProductFieldsFragment = { __typename: 'PageProduct', slug?: string | null, name?: string | null, description?: string | null, price?: number | null, seoFields?: (
     { __typename?: 'ComponentSeo' }
     & SeoFieldsFragment
@@ -1132,6 +1160,21 @@ export const PageProductFieldsFragmentDoc = gql`
   }
 }
     `;
+export const PageLandingFieldsFragmentDoc = gql`
+    fragment PageLandingFields on PageLanding {
+  __typename
+  heroBannerHeadline
+  heroBannerHeadlineColor
+  heroBannerImage {
+    ...ImageFields
+  }
+  productsCollection(limit: 6) {
+    items {
+      ...PageProductFields
+    }
+  }
+}
+    `;
 export const SitemapPagesFieldsFragmentDoc = gql`
     fragment sitemapPagesFields on Query {
   pageProductCollection(limit: 100, locale: $locale) {
@@ -1151,6 +1194,32 @@ export const SitemapPagesFieldsFragmentDoc = gql`
   }
 }
     `;
+export const PageLandingDocument = gql`
+    query pageLanding($locale: String) {
+  pageLandingCollection(limit: 1, locale: $locale) {
+    items {
+      ...PageLandingFields
+    }
+  }
+}
+    ${PageLandingFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}
+${PageProductFieldsFragmentDoc}
+${BasePageProductFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}`;
+export const PageLandingCollectionDocument = gql`
+    query pageLandingCollection($locale: String) {
+  pageLandingCollection(limit: 100, locale: $locale) {
+    items {
+      ...PageLandingFields
+    }
+  }
+}
+    ${PageLandingFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}
+${PageProductFieldsFragmentDoc}
+${BasePageProductFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}`;
 export const PageProductDocument = gql`
     query pageProduct($slug: String!, $locale: String) {
   pageProductCollection(limit: 1, where: {slug: $slug}, locale: $locale) {
@@ -1188,6 +1257,12 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    pageLanding(variables?: PageLandingQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageLandingQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageLandingQuery>(PageLandingDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageLanding', 'query');
+    },
+    pageLandingCollection(variables?: PageLandingCollectionQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageLandingCollectionQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageLandingCollectionQuery>(PageLandingCollectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageLandingCollection', 'query');
+    },
     pageProduct(variables: PageProductQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageProductQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageProductQuery>(PageProductDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageProduct', 'query');
     },
