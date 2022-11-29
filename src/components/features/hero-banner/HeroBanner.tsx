@@ -1,6 +1,5 @@
 import { Flex, Heading, Box, Grid, Container } from '@chakra-ui/react';
 import styled from '@emotion/styled';
-import ScaleText from 'react-scale-text';
 
 import { CtfImage } from '@src/components/features/contentful/ctf-image/CtfImage';
 import { HEADER_HEIGHT } from '@src/components/templates/header';
@@ -32,11 +31,13 @@ export const HeroBanner = ({ name, color, heroBanner }: PageLandingFieldsFragmen
         gridArea={{ base: '1 / 1 / 2 / 2' }}
         overflow="hidden">
         <Container as={Flex} justify="center" alignItems="flex-end" height="100%">
-          <ScaleText minFontSize={12} maxFontSize={24} widthOnly={true}>
-            <Heading as="h1" lineHeight="0.75" color={color || 'white'}>
-              {name}
-            </Heading>
-          </ScaleText>
+          <Heading
+            as="h1"
+            lineHeight="0.69"
+            color={color || 'white'}
+            fontSize={{ base: '5.625rem', md: '12.5rem', lg: '17rem', xl: '24rem' }}>
+            {name}
+          </Heading>
         </Container>
       </Flex>
     </Grid>

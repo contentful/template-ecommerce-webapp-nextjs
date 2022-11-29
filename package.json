@@ -49,7 +49,6 @@
     "next-sitemap": "^3.1.32",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-scale-text": "^1.2.2",
     "urijs": "^1.19.11"
   },
   "devDependencies": {
