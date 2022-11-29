@@ -13,11 +13,13 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
   const router = useRouter();
   const theme = useTheme();
 
+  const isHomePage = router.pathname === '/';
+
   return (
     <>
       <Header
-        borderBottom={router.pathname === '/' ? '' : '1px'}
-        borderColor={router.pathname === '/' ? null : theme.f36.gray200}
+        borderBottom={isHomePage ? '' : '1px'}
+        borderColor={isHomePage ? null : theme.f36.gray200}
       />
       <Box width="100%" as="main" pb={{ base: 8, lg: 12 }}>
         {children}

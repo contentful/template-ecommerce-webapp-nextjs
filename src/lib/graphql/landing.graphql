@@ -1,8 +1,8 @@
 fragment PageLandingFields on PageLanding {
   __typename
-  name
-  color
-  heroBanner {
+  heroBannerHeadline
+  heroBannerHeadlineColor
+  heroBannerImage {
     ...ImageFields
   }
   productsCollection(limit: 6) {

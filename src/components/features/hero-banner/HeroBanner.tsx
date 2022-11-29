@@ -14,7 +14,11 @@ const StyledBox = styled(Box)`
   }
 `;
 
-export const HeroBanner = ({ name, color, heroBanner }: PageLandingFieldsFragment) => {
+export const HeroBanner = ({
+  heroBannerHeadline,
+  heroBannerHeadlineColor,
+  heroBannerImage,
+}: PageLandingFieldsFragment) => {
   return (
     <Grid position="relative" gridRow={2} gridColumn={1} mt={`-${HEADER_HEIGHT}px`}>
       <StyledBox
@@ -22,7 +26,7 @@ export const HeroBanner = ({ name, color, heroBanner }: PageLandingFieldsFragmen
         zIndex={0}
         gridArea={{ base: '1 / 1 / 2 / 2' }}
         height={{ base: '50vh', lg: 'auto' }}>
-        {heroBanner?.url && <CtfImage {...heroBanner} />}
+        {heroBannerImage?.url && <CtfImage {...heroBannerImage} />}
       </StyledBox>
 
       <Flex
@@ -34,9 +38,9 @@ export const HeroBanner = ({ name, color, heroBanner }: PageLandingFieldsFragmen
           <Heading
             as="h1"
             lineHeight="0.69"
-            color={color || 'white'}
+            color={heroBannerHeadlineColor || 'white'}
             fontSize={{ base: '5.625rem', md: '12.5rem', lg: '17rem', xl: '24rem' }}>
-            {name}
+            {heroBannerHeadline}
           </Heading>
         </Container>
       </Flex>
