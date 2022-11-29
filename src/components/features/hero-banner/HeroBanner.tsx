@@ -83,9 +83,9 @@ export const HeroBanner = ({
             <Heading
               ref={headingRef}
               as="h1"
-              letterSpacing="-0.08em"
+              letterSpacing="-0.11em"
               color={heroBannerHeadlineColor || 'white'}
-              transform="translateY(0.31em)">
+              transform="translateY(0.33em)">
               {heroBannerHeadline}
             </Heading>
           </motion.div>
