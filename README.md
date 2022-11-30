@@ -143,7 +143,7 @@ In order to (re-)generate the GraphQL schema, types and hooks, please use either
 The first steps of the codegen generate files that contain the GraphQL schema and matching TypeScript types.  
 They're generated to the `src/lib/__generated` folder and ought to be committed once altered/added to the repository.
 
-Additionally, the codegen watches .graphql files in our `src` folder, if it runs successfully it generates a `__generated` folder collocated in the folder where the `.graphql` file was found.  
+Additionally, the codegen watches `.graphql` files in our `src` folder, if it runs successfully it generates a `__generated` folder collocated in the folder where the `.graphql` file was found.  
 
 One exception to this rule is the `src/lib/fragments` folder which contains shared GraphQL Fragments that are used in several other queries/fragments.  
 
