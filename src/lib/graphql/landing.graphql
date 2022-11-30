@@ -1,5 +1,8 @@
 fragment PageLandingFields on PageLanding {
   __typename
+  seoFields {
+    ...SeoFields
+  }
   heroBannerHeadline
   heroBannerHeadlineColor
   heroBannerImage {

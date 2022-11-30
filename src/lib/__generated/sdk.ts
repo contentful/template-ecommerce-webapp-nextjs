@@ -1039,7 +1039,10 @@ export type CfComponentSeoNestedFilter = {
 
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
-export type PageLandingFieldsFragment = { __typename: 'PageLanding', heroBannerHeadline?: string | null, heroBannerHeadlineColor?: string | null, heroBannerImage?: (
+export type PageLandingFieldsFragment = { __typename: 'PageLanding', heroBannerHeadline?: string | null, heroBannerHeadlineColor?: string | null, seoFields?: (
+    { __typename?: 'ComponentSeo' }
+    & SeoFieldsFragment
+  ) | null, heroBannerImage?: (
     { __typename?: 'Asset' }
     & ImageFieldsFragment
   ) | null, productsCollection?: { __typename?: 'PageLandingProductsCollection', items: Array<(
@@ -1186,6 +1189,9 @@ export const PageProductFieldsFragmentDoc = gql`
 export const PageLandingFieldsFragmentDoc = gql`
     fragment PageLandingFields on PageLanding {
   __typename
+  seoFields {
+    ...SeoFields
+  }
   heroBannerHeadline
   heroBannerHeadlineColor
   heroBannerImage {
@@ -1226,10 +1232,10 @@ export const PageLandingDocument = gql`
   }
 }
     ${PageLandingFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}
 ${ImageFieldsFragmentDoc}
 ${PageProductFieldsFragmentDoc}
-${BasePageProductFieldsFragmentDoc}
-${SeoFieldsFragmentDoc}`;
+${BasePageProductFieldsFragmentDoc}`;
 export const PageLandingCollectionDocument = gql`
     query pageLandingCollection($locale: String) {
   pageLandingCollection(limit: 100, locale: $locale) {
@@ -1239,10 +1245,10 @@ export const PageLandingCollectionDocument = gql`
   }
 }
     ${PageLandingFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}
 ${ImageFieldsFragmentDoc}
 ${PageProductFieldsFragmentDoc}
-${BasePageProductFieldsFragmentDoc}
-${SeoFieldsFragmentDoc}`;
+${BasePageProductFieldsFragmentDoc}`;
 export const PageProductDocument = gql`
     query pageProduct($slug: String!, $locale: String) {
   pageProductCollection(limit: 1, where: {slug: $slug}, locale: $locale) {
