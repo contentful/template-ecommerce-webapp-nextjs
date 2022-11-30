@@ -116,7 +116,7 @@ This project makes use of Contentful's [GraphQL API](https://www.contentful.com/
 
 API calls made to the Contentful GraphQL endpoint are made through `graphql-request`.  
 
-The types are generated from the `.graphql` files located in the `/lib/graphql/]` directory:
+The types are generated from the `.graphql` files located in the `/lib/graphql/` directory:
 
 1. `lib/graphql/[fileName].graphql` is detected by the [codegen](./README.md#graphql--code-generation)
 2. `lib/__generated/sdk.ts` is generated
