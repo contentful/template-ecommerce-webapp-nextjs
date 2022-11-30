@@ -8,4 +8,5 @@ fragment ImageFields on Asset {
   width
   height
   url
+  contentType
 }

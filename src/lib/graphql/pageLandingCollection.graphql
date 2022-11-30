@@ -1,0 +1,7 @@
+query pageLandingCollection($locale: String) {
+  pageLandingCollection(limit: 100, locale: $locale) {
+    items {
+      ...PageLandingFields
+    }
+  }
+}

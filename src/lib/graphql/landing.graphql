@@ -1,0 +1,24 @@
+fragment PageLandingFields on PageLanding {
+  __typename
+  seoFields {
+    ...SeoFields
+  }
+  heroBannerHeadline
+  heroBannerHeadlineColor
+  heroBannerImage {
+    ...ImageFields
+  }
+  productsCollection(limit: 6) {
+    items {
+      ...PageProductFields
+    }
+  }
+}
+
+query pageLanding($locale: String) {
+  pageLandingCollection(limit: 1, locale: $locale) {
+    items {
+      ...PageLandingFields
+    }
+  }
+}
