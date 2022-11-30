@@ -20,6 +20,9 @@ export const HeroBanner = ({
   heroBannerHeadline,
   heroBannerHeadlineColor,
   heroBannerImage,
+  // Tutorial: contentful-and-the-starter-template.md
+  // Uncomment the line below to make the Greeting field available to render
+  // greeting,
 }: PageLandingFieldsFragment) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
@@ -93,6 +96,9 @@ export const HeroBanner = ({
               letterSpacing="-0.11em"
               color={heroBannerHeadlineColor || 'white'}
               transform="translateY(0.33em)">
+              {/* Tutorial: contentful-and-the-starter-template.md
+              {/* Uncomment the line below to render the Greeting field value */}
+              {/* {greeting} {' '} */}
               {heroBannerHeadline}
             </Heading>
           </motion.div>
