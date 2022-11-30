@@ -2,7 +2,7 @@
 
 An E-commerce Starter Template powered by Next.js & Contentful, pre-designed with optimized & adjustable pages, components, and data management.
 
-![The homepage of the E-commerce Starter Template](marketing-starter-template.jpg "The homepage of the E-commerce Starter Template")
+![The homepage of the E-commerce Starter Template](e-commerce-starter-template.jpg "The homepage of the E-commerce Starter Template")
 
 $~$
 
