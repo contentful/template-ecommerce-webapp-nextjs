@@ -235,6 +235,7 @@ export type ComponentSeo = Entry & {
   __typename?: 'ComponentSeo';
   canonicalUrl?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
+  internalName?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ComponentSeoLinkingCollections>;
   nofollow?: Maybe<Scalars['Boolean']>;
   noindex?: Maybe<Scalars['Boolean']>;
@@ -247,6 +248,12 @@ export type ComponentSeo = Entry & {
 
 /** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
 export type ComponentSeoCanonicalUrlArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
+export type ComponentSeoInternalNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -308,6 +315,13 @@ export type ComponentSeoFilter = {
   canonicalUrl_not_contains?: InputMaybe<Scalars['String']>;
   canonicalUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   nofollow?: InputMaybe<Scalars['Boolean']>;
   nofollow_exists?: InputMaybe<Scalars['Boolean']>;
   nofollow_not?: InputMaybe<Scalars['Boolean']>;
@@ -366,6 +380,8 @@ export type ComponentSeoLinkingCollectionsPageProductCollectionArgs = {
 export enum ComponentSeoOrder {
   CanonicalUrlAsc = 'canonicalUrl_ASC',
   CanonicalUrlDesc = 'canonicalUrl_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
   NofollowAsc = 'nofollow_ASC',
   NofollowDesc = 'nofollow_DESC',
   NoindexAsc = 'noindex_ASC',
@@ -990,6 +1006,13 @@ export type CfComponentSeoNestedFilter = {
   canonicalUrl_not_contains?: InputMaybe<Scalars['String']>;
   canonicalUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   nofollow?: InputMaybe<Scalars['Boolean']>;
   nofollow_exists?: InputMaybe<Scalars['Boolean']>;
   nofollow_not?: InputMaybe<Scalars['Boolean']>;
@@ -1016,7 +1039,10 @@ export type CfComponentSeoNestedFilter = {
 
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
-export type PageLandingFieldsFragment = { __typename: 'PageLanding', heroBannerHeadline?: string | null, heroBannerHeadlineColor?: string | null, heroBannerImage?: (
+export type PageLandingFieldsFragment = { __typename: 'PageLanding', heroBannerHeadline?: string | null, heroBannerHeadlineColor?: string | null, seoFields?: (
+    { __typename?: 'ComponentSeo' }
+    & SeoFieldsFragment
+  ) | null, heroBannerImage?: (
     { __typename?: 'Asset' }
     & ImageFieldsFragment
   ) | null, productsCollection?: { __typename?: 'PageLandingProductsCollection', items: Array<(
@@ -1163,6 +1189,9 @@ export const PageProductFieldsFragmentDoc = gql`
 export const PageLandingFieldsFragmentDoc = gql`
     fragment PageLandingFields on PageLanding {
   __typename
+  seoFields {
+    ...SeoFields
+  }
   heroBannerHeadline
   heroBannerHeadlineColor
   heroBannerImage {
@@ -1203,10 +1232,10 @@ export const PageLandingDocument = gql`
   }
 }
     ${PageLandingFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}
 ${ImageFieldsFragmentDoc}
 ${PageProductFieldsFragmentDoc}
-${BasePageProductFieldsFragmentDoc}
-${SeoFieldsFragmentDoc}`;
+${BasePageProductFieldsFragmentDoc}`;
 export const PageLandingCollectionDocument = gql`
     query pageLandingCollection($locale: String) {
   pageLandingCollection(limit: 100, locale: $locale) {
@@ -1216,10 +1245,10 @@ export const PageLandingCollectionDocument = gql`
   }
 }
     ${PageLandingFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}
 ${ImageFieldsFragmentDoc}
 ${PageProductFieldsFragmentDoc}
-${BasePageProductFieldsFragmentDoc}
-${SeoFieldsFragmentDoc}`;
+${BasePageProductFieldsFragmentDoc}`;
 export const PageProductDocument = gql`
     query pageProduct($slug: String!, $locale: String) {
   pageProductCollection(limit: 1, where: {slug: $slug}, locale: $locale) {
