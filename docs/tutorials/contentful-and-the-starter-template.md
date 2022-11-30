@@ -130,7 +130,7 @@ Now, let's connect the new `Greeting` field to our Starter Template source code:
   - In our case, it will update the typings of our `📄 page - Landing` content type, to make the `Greeting` field available.
 - Open the `landing.graphql` file, this file represents the query made to Contentful to get the `📄 page - Landing` content type fields values
   - Follow the comment in the file, line #6, save the changes.
-- Open the `Hero-banner.tsx` file.
+- Open the `HeroBanner.tsx` file.
   - Follow the comments in the file, lines #23 and #99, save the changes.
 - Navigate to the running Starter Template application, [http://localhost:3000/](http://localhost:3000/)
   - If the application is not running yet, in your terminal of choice, run `yarn dev`.
