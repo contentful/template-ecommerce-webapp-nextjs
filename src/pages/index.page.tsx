@@ -4,17 +4,19 @@ import { useTranslation } from 'next-i18next';
 
 import { HeroBanner } from '@src/components/features/hero-banner';
 import { ProductTileGrid } from '@src/components/features/product';
+import { SeoFields } from '@src/components/features/seo';
 import { client } from '@src/lib/client';
 import { revalidateDuration } from '@src/pages/utils/constants';
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
 
-const Page = ({ product }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Page = ({ page }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
 
   return (
     <>
-      <HeroBanner {...product} />
-      {product.productsCollection?.items && (
+      {page.seoFields && <SeoFields {...page.seoFields} />}
+      <HeroBanner {...page} />
+      {page.productsCollection?.items && (
         <Box
           mt={{
             base: 5,
@@ -23,7 +25,7 @@ const Page = ({ product }: InferGetStaticPropsType<typeof getStaticProps>) => {
           }}>
           <ProductTileGrid
             title={t('product.trendingProducts')}
-            products={product.productsCollection.items}
+            products={page.productsCollection.items}
           />
         </Box>
       )}
@@ -34,9 +36,9 @@ const Page = ({ product }: InferGetStaticPropsType<typeof getStaticProps>) => {
 export const getStaticProps = async ({ locale }) => {
   try {
     const data = await client.pageLanding({ locale });
-    const product = data.pageLandingCollection?.items[0];
+    const page = data.pageLandingCollection?.items[0];
 
-    if (!product) {
+    if (!page) {
       return {
         notFound: true,
         revalidate: revalidateDuration,
@@ -47,7 +49,7 @@ export const getStaticProps = async ({ locale }) => {
       revalidate: revalidateDuration,
       props: {
         ...(await getServerSideTranslations(locale)),
-        product,
+        page,
       },
     };
   } catch {

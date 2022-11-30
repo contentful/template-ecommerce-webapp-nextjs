@@ -125,6 +125,7 @@ These fields are used to add SEO related properties to the various pages that we
 type ComponentSeo implements Entry {
   canonicalUrl(locale: String): String
   contentfulMetadata: ContentfulMetadata!
+  internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): ComponentSeoLinkingCollections
   nofollow(locale: String): Boolean
   noindex(locale: String): Boolean
@@ -152,6 +153,13 @@ input ComponentSeoFilter {
   canonicalUrl_not_contains: String
   canonicalUrl_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
   nofollow: Boolean
   nofollow_exists: Boolean
   nofollow_not: Boolean
@@ -185,6 +193,8 @@ type ComponentSeoLinkingCollections {
 enum ComponentSeoOrder {
   canonicalUrl_ASC
   canonicalUrl_DESC
+  internalName_ASC
+  internalName_DESC
   nofollow_ASC
   nofollow_DESC
   noindex_ASC
@@ -641,6 +651,13 @@ input cfComponentSeoNestedFilter {
   canonicalUrl_not_contains: String
   canonicalUrl_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
   nofollow: Boolean
   nofollow_exists: Boolean
   nofollow_not: Boolean
