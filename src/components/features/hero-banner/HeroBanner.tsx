@@ -29,21 +29,28 @@ export const HeroBanner = ({
     const handleFontSize = () => {
       window.requestAnimationFrame(() => {
         if (containerRef.current && headingRef.current) {
-          headingRef.current.style.display = 'inline-flex';
+          headingRef.current.style.display = 'inline-block'; // In order to calculate the ratio for our font scaling, it needs to be inline, so it doesn't grab the full width of its parent.
 
+          // Retrieve the width of both the container and the heading element
           const { width: containerWidth } = containerRef.current.getBoundingClientRect();
           const { width: headingWidth } = headingRef.current.getBoundingClientRect();
 
-          const headingFontSize = window
-            .getComputedStyle(headingRef.current, null)
-            .getPropertyValue('font-size');
+          // Retrieve some computed styles, that will be used to accurately remove any additional padding, margin and other layout altering properties from the container width
+          const headingComputedStyle = window.getComputedStyle(headingRef.current, null);
+          const headingFontSize = headingComputedStyle.getPropertyValue('font-size');
+          const headingLetterSpacing = headingComputedStyle.getPropertyValue('letter-spacing');
 
-          const containerPadding = window
-            .getComputedStyle(containerRef.current, null)
-            .getPropertyValue('padding-left');
+          const containerComputedStyle = window.getComputedStyle(containerRef.current, null);
 
+          // Calculate the amount of pixels that need to be deducted from the raw container width
+          const containerWidthFluff =
+            parseInt(containerComputedStyle.paddingLeft, 10) +
+            parseInt(containerComputedStyle.paddingRight, 10) +
+            Math.abs(parseInt(headingLetterSpacing, 10));
+
+          // Calculate the font-size based on its base times the scaling ratio
           headingRef.current.style.fontSize = `calc(${headingFontSize} * ${
-            (containerWidth - parseInt(containerPadding, 10) * 2) / headingWidth
+            (containerWidth - containerWidthFluff) / headingWidth
           })`;
 
           setHeadingVisible(true);

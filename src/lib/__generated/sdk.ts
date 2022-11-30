@@ -235,6 +235,7 @@ export type ComponentSeo = Entry & {
   __typename?: 'ComponentSeo';
   canonicalUrl?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
+  internalName?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ComponentSeoLinkingCollections>;
   nofollow?: Maybe<Scalars['Boolean']>;
   noindex?: Maybe<Scalars['Boolean']>;
@@ -247,6 +248,12 @@ export type ComponentSeo = Entry & {
 
 /** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
 export type ComponentSeoCanonicalUrlArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
+export type ComponentSeoInternalNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -308,6 +315,13 @@ export type ComponentSeoFilter = {
   canonicalUrl_not_contains?: InputMaybe<Scalars['String']>;
   canonicalUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   nofollow?: InputMaybe<Scalars['Boolean']>;
   nofollow_exists?: InputMaybe<Scalars['Boolean']>;
   nofollow_not?: InputMaybe<Scalars['Boolean']>;
@@ -366,6 +380,8 @@ export type ComponentSeoLinkingCollectionsPageProductCollectionArgs = {
 export enum ComponentSeoOrder {
   CanonicalUrlAsc = 'canonicalUrl_ASC',
   CanonicalUrlDesc = 'canonicalUrl_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
   NofollowAsc = 'nofollow_ASC',
   NofollowDesc = 'nofollow_DESC',
   NoindexAsc = 'noindex_ASC',
@@ -990,6 +1006,13 @@ export type CfComponentSeoNestedFilter = {
   canonicalUrl_not_contains?: InputMaybe<Scalars['String']>;
   canonicalUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   nofollow?: InputMaybe<Scalars['Boolean']>;
   nofollow_exists?: InputMaybe<Scalars['Boolean']>;
   nofollow_not?: InputMaybe<Scalars['Boolean']>;
