@@ -417,6 +417,7 @@ type PageLanding implements Entry {
   heroBannerHeadline(locale: String): String
   heroBannerHeadlineColor(locale: String): String
   heroBannerImage(locale: String, preview: Boolean): Asset
+  internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): PageLandingLinkingCollections
   productsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageLandingProductsCollection
   seoFields(locale: String, preview: Boolean): ComponentSeo
@@ -449,6 +450,13 @@ input PageLandingFilter {
   heroBannerHeadline_not_contains: String
   heroBannerHeadline_not_in: [String]
   heroBannerImage_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
   productsCollection_exists: Boolean
   seoFields: cfComponentSeoNestedFilter
   seoFields_exists: Boolean
@@ -464,6 +472,8 @@ enum PageLandingOrder {
   heroBannerHeadlineColor_DESC
   heroBannerHeadline_ASC
   heroBannerHeadline_DESC
+  internalName_ASC
+  internalName_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
