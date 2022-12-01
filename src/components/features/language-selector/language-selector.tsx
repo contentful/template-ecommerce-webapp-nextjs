@@ -24,9 +24,12 @@ export const LanguageSelector = () => {
 
   return locales && locales.length > 1 ? (
     <>
-      <Flex justifyContent="center" alignItems="center" display={{ base: 'none', lg: 'flex' }}>
+      <Flex
+        justifyContent="center"
+        alignItems="center"
+        display={{ base: 'none', md: 'flex', lg: 'flex' }}>
         <LanguageIcon width="18px" height="18px" variant="secondary" />
-        <Menu>
+        <Menu gutter={0}>
           {({ isOpen }) => (
             <>
               <MenuButton
@@ -48,12 +51,7 @@ export const LanguageSelector = () => {
                 }>
                 {localeName(locale)}
               </MenuButton>
-              <MenuList
-                minW="100px"
-                mt="-12px"
-                display="flex"
-                justifyContent="center"
-                alignItems="center">
+              <MenuList minW={24} p={0}>
                 <MenuOptionGroup
                   defaultValue={locale}
                   onChange={value => {
@@ -63,9 +61,10 @@ export const LanguageSelector = () => {
                   }}>
                   {locales?.map(availableLocale => (
                     <MenuItemOption
-                      p={0}
-                      _focus={{ bg: 'transparent' }}
-                      _hover={{ bg: 'transparent' }}
+                      minW={24}
+                      textAlign="center"
+                      _focus={{ boxShadow: 'outline' }}
+                      _hover={{ bg: 'transparent', boxShadow: 'none' }}
                       icon={null}
                       key={availableLocale}
                       value={availableLocale}
@@ -79,7 +78,7 @@ export const LanguageSelector = () => {
           )}
         </Menu>
       </Flex>
-      <Box display={{ base: 'block', lg: 'none' }}>
+      <Box display={{ base: 'block', md: 'none', lg: 'none' }}>
         <LanguageIcon width="18px" height="18px" variant="secondary" />
       </Box>
     </>
