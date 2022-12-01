@@ -17,13 +17,13 @@ const StyledBox = styled(Box)`
 `;
 
 export const HeroBanner = ({
+  // Tutorial: contentful-and-the-starter-template.md
+  // Uncomment the line below to make the Greeting field available to render
+  // greeting,
   heroBannerHeadline,
   heroBannerHeadlineColor,
   heroBannerImage,
-}: // Tutorial: contentful-and-the-starter-template.md
-// Uncomment the line below to make the Greeting field available to render
-// greeting,
-PageLandingFieldsFragment) => {
+}: PageLandingFieldsFragment) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   const [headingVisible, setHeadingVisible] = useState(false);
@@ -65,7 +65,7 @@ PageLandingFieldsFragment) => {
 
     window.addEventListener('resize', handleFontSize);
     return () => window.removeEventListener('resize', handleFontSize);
-  }, [headingVisible]);
+  }, []);
 
   return (
     <Grid position="relative" gridRow={2} gridColumn={1} mt={`-${HEADER_HEIGHT}px`}>
