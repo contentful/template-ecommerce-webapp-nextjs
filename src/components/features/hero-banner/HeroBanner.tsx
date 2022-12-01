@@ -17,6 +17,9 @@ const StyledBox = styled(Box)`
 `;
 
 export const HeroBanner = ({
+  // Tutorial: contentful-and-the-starter-template.md
+  // Uncomment the line below to make the Greeting field available to render
+  // greeting,
   heroBannerHeadline,
   heroBannerHeadlineColor,
   heroBannerImage,
@@ -62,7 +65,7 @@ export const HeroBanner = ({
 
     window.addEventListener('resize', handleFontSize);
     return () => window.removeEventListener('resize', handleFontSize);
-  }, []);
+  }, [headingVisible]);
 
   return (
     <Grid position="relative" gridRow={2} gridColumn={1} mt={`-${HEADER_HEIGHT}px`}>
@@ -93,6 +96,9 @@ export const HeroBanner = ({
               letterSpacing="-0.11em"
               color={heroBannerHeadlineColor || 'white'}
               transform="translateY(0.33em)">
+              {/* Tutorial: contentful-and-the-starter-template.md
+              {/* Uncomment the line below to render the Greeting field value */}
+              {/* {greeting} {' '} */}
               {heroBannerHeadline}
             </Heading>
           </motion.div>

@@ -557,6 +557,7 @@ export type PageLanding = Entry & {
   heroBannerHeadline?: Maybe<Scalars['String']>;
   heroBannerHeadlineColor?: Maybe<Scalars['String']>;
   heroBannerImage?: Maybe<Asset>;
+  internalName?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<PageLandingLinkingCollections>;
   productsCollection?: Maybe<PageLandingProductsCollection>;
   seoFields?: Maybe<ComponentSeo>;
@@ -580,6 +581,12 @@ export type PageLandingHeroBannerHeadlineColorArgs = {
 export type PageLandingHeroBannerImageArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
+export type PageLandingInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -631,6 +638,13 @@ export type PageLandingFilter = {
   heroBannerHeadline_not_contains?: InputMaybe<Scalars['String']>;
   heroBannerHeadline_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   heroBannerImage_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   productsCollection_exists?: InputMaybe<Scalars['Boolean']>;
   seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
   seoFields_exists?: InputMaybe<Scalars['Boolean']>;
@@ -655,6 +669,8 @@ export enum PageLandingOrder {
   HeroBannerHeadlineColorDesc = 'heroBannerHeadlineColor_DESC',
   HeroBannerHeadlineAsc = 'heroBannerHeadline_ASC',
   HeroBannerHeadlineDesc = 'heroBannerHeadline_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
