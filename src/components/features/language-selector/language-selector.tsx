@@ -48,7 +48,12 @@ export const LanguageSelector = () => {
                 }>
                 {localeName(locale)}
               </MenuButton>
-              <MenuList minW="100px" mt="-12px">
+              <MenuList
+                minW="100px"
+                mt="-12px"
+                display="flex"
+                justifyContent="center"
+                alignItems="center">
                 <MenuOptionGroup
                   defaultValue={locale}
                   onChange={value => {
@@ -61,6 +66,7 @@ export const LanguageSelector = () => {
                       p={0}
                       _focus={{ bg: 'transparent' }}
                       _hover={{ bg: 'transparent' }}
+                      icon={null}
                       key={availableLocale}
                       value={availableLocale}
                       hidden={availableLocale === locale}>
