@@ -59,19 +59,20 @@ export const LanguageSelector = () => {
                       locale: String(value),
                     });
                   }}>
-                  {locales?.map(availableLocale => (
-                    <MenuItemOption
-                      minW={24}
-                      textAlign="center"
-                      _focus={{ boxShadow: 'outline' }}
-                      _hover={{ bg: 'transparent', boxShadow: 'none' }}
-                      icon={null}
-                      key={availableLocale}
-                      value={availableLocale}
-                      hidden={availableLocale === locale}>
-                      {displayName(availableLocale).of(localeName(availableLocale))}
-                    </MenuItemOption>
-                  ))}
+                  {locales?.map(availableLocale =>
+                    availableLocale === locale ? null : (
+                      <MenuItemOption
+                        minW={24}
+                        textAlign="center"
+                        _focus={{ boxShadow: 'outline' }}
+                        _hover={{ bg: 'transparent', boxShadow: 'none' }}
+                        icon={null}
+                        key={availableLocale}
+                        value={availableLocale}>
+                        {displayName(availableLocale).of(localeName(availableLocale))}
+                      </MenuItemOption>
+                    ),
+                  )}
                 </MenuOptionGroup>
               </MenuList>
             </>
