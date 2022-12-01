@@ -6,7 +6,7 @@ If your sole curiosity brought you to this repository, you will not be able to f
 
 $~$
 
-## Begin your journey with Contentful and the E-commerce Starter Template
+## Begin your journey with Contentful and the Ecommerce Starter Template
 
 After reading this document, you will be able to:
 
