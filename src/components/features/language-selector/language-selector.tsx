@@ -1,5 +1,13 @@
-import { Flex, Select } from '@chakra-ui/react';
-import { LanguageIcon } from '@contentful/f36-icons';
+import {
+  Flex,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItemOption,
+  Button,
+  MenuOptionGroup,
+} from '@chakra-ui/react';
+import { LanguageIcon, ChevronDownTrimmedIcon, ChevronUpTrimmedIcon } from '@contentful/f36-icons';
 import { useRouter } from 'next/router';
 
 const localeName = locale => locale.split('-')[0];
@@ -16,22 +24,50 @@ export const LanguageSelector = () => {
   return locales && locales.length > 1 ? (
     <Flex justifyContent="center" alignItems="center">
       <LanguageIcon width="18px" height="18px" variant="secondary" />
-      <Select
-        variant="unstyled"
-        size="md"
-        pl={1.5}
-        defaultValue={locale}
-        onChange={event => {
-          router.push({ pathname: router.pathname, query: router.query }, router.asPath, {
-            locale: String(event.target.value),
-          });
-        }}>
-        {locales?.map(availableLocale => (
-          <option key={availableLocale} value={availableLocale} hidden={availableLocale === locale}>
-            {displayName(availableLocale).of(localeName(availableLocale))}
-          </option>
-        ))}
-      </Select>
+      <Menu>
+        {({ isOpen }) => (
+          <>
+            <MenuButton
+              pr={1}
+              pl={1}
+              background="transparent"
+              _hover={{ bg: 'transparent' }}
+              _expanded={{ bg: 'transparent' }}
+              _focus={{ bg: 'transparent' }}
+              isActive={isOpen}
+              as={Button}
+              rightIcon={
+                isOpen ? (
+                  <ChevronUpTrimmedIcon variant="secondary" />
+                ) : (
+                  <ChevronDownTrimmedIcon variant="secondary" />
+                )
+              }>
+              {displayName(locale).of(localeName(locale))}
+            </MenuButton>
+            <MenuList minW="100px" mt="-12px">
+              <MenuOptionGroup
+                defaultValue={locale}
+                onChange={value => {
+                  router.push({ pathname: router.pathname, query: router.query }, router.asPath, {
+                    locale: String(value),
+                  });
+                }}>
+                {locales?.map(availableLocale => (
+                  <MenuItemOption
+                    p={0}
+                    _hover={{ bg: 'transparent' }}
+                    key={availableLocale}
+                    value={availableLocale}
+                    hidden={availableLocale === locale}>
+                    {displayName(availableLocale).of(localeName(availableLocale))}
+                  </MenuItemOption>
+                ))}
+              </MenuOptionGroup>
+            </MenuList>
+          </>
+        )}
+      </Menu>
     </Flex>
   ) : null;
 };
