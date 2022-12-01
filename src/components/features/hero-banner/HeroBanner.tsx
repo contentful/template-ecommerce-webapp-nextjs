@@ -65,7 +65,7 @@ export const HeroBanner = ({
 
     window.addEventListener('resize', handleFontSize);
     return () => window.removeEventListener('resize', handleFontSize);
-  }, []);
+  }, [headingVisible]);
 
   return (
     <Grid position="relative" gridRow={2} gridColumn={1} mt={`-${HEADER_HEIGHT}px`}>
