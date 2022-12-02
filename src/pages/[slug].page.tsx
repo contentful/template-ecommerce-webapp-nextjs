@@ -1,15 +1,13 @@
 import { Box } from '@chakra-ui/react';
-import { GetStaticPaths, InferGetStaticPropsType } from 'next';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useTranslation } from 'next-i18next';
 
 import { ProductDetails, ProductTileGrid } from '@src/components/features/product';
 import { SeoFields } from '@src/components/features/seo';
 import { client } from '@src/lib/client';
-import { revalidateDuration } from '@src/pages/utils/constants';
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
-import { i18n } from 'next-i18next.config';
 
-const Page = ({ product }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Page = ({ product }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation();
 
   return (
@@ -33,27 +31,24 @@ const Page = ({ product }: InferGetStaticPropsType<typeof getStaticProps>) => {
   );
 };
 
-export const getStaticProps = async ({ params, locale }) => {
-  if (!params.slug || !locale) {
+export const getServerSideProps: GetServerSideProps = async ({ params, locale }) => {
+  if (!params?.slug || !locale) {
     return {
       notFound: true,
-      revalidate: revalidateDuration,
     };
   }
 
   try {
-    const data = await client.pageProduct({ slug: params.slug, locale });
+    const data = await client.pageProduct({ slug: params.slug.toString(), locale });
     const product = data.pageProductCollection?.items[0];
 
     if (!product) {
       return {
         notFound: true,
-        revalidate: revalidateDuration,
       };
     }
 
     return {
-      revalidate: revalidateDuration,
       props: {
         ...(await getServerSideTranslations(locale)),
         product,
@@ -62,35 +57,8 @@ export const getStaticProps = async ({ params, locale }) => {
   } catch {
     return {
       notFound: true,
-      revalidate: revalidateDuration,
     };
   }
-};
-
-export const getStaticPaths: GetStaticPaths = async ({ locales = i18n.locales }) => {
-  const dataPerLocale = await Promise.all(
-    locales.map(locale => client.pageProductCollection({ locale })),
-  );
-
-  const paths = dataPerLocale
-    .flatMap((data, index) =>
-      data.pageProductCollection?.items.map(product =>
-        product?.slug
-          ? {
-              params: {
-                slug: product.slug,
-              },
-              locale: locales[index],
-            }
-          : undefined,
-      ),
-    )
-    .filter(Boolean);
-
-  return {
-    paths,
-    fallback: 'blocking',
-  };
 };
 
 export default Page;

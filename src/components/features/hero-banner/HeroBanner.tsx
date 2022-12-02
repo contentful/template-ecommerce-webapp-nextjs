@@ -1,6 +1,7 @@
 import { Flex, Heading, Box, Grid, Container } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 
 import { CtfImage } from '@src/components/features/contentful/ctf-image/CtfImage';
@@ -24,8 +25,11 @@ export const HeroBanner = ({
   heroBannerHeadlineColor,
   heroBannerImage,
 }: PageLandingFieldsFragment) => {
+  const router = useRouter();
+
   const containerRef = useRef<HTMLDivElement | null>(null);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
+
   const [headingVisible, setHeadingVisible] = useState(false);
 
   useEffect(() => {
@@ -61,11 +65,16 @@ export const HeroBanner = ({
       });
     };
 
-    handleFontSize();
+    handleFontSize(); // Runs the method once on init, and a second time after changing visibility so the heading size is corrected after initial calculation as a safeguard
 
+    router.events.on('routeChangeComplete', handleFontSize);
     window.addEventListener('resize', handleFontSize);
-    return () => window.removeEventListener('resize', handleFontSize);
-  }, [headingVisible]);
+
+    return () => {
+      window.removeEventListener('resize', handleFontSize);
+      router.events.off('routeChangeComplete', handleFontSize);
+    };
+  }, [headingVisible, router.events]);
 
   return (
     <Grid position="relative" gridRow={2} gridColumn={1} mt={`-${HEADER_HEIGHT}px`}>

@@ -10,5 +10,9 @@
     "relatedProducts": "Sie können auch mögen",
     "addToCart": "In den Warenkorb legen",
     "quantity": "Menge"
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "description": "Diese Seite scheint nicht zu existieren. <0>Klicken Sie hier</0>, um zur Startseite zurückzukehren."
   }
 }

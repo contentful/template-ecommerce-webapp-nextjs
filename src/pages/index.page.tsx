@@ -1,15 +1,14 @@
 import { Box } from '@chakra-ui/react';
-import { InferGetStaticPropsType } from 'next';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useTranslation } from 'next-i18next';
 
 import { HeroBanner } from '@src/components/features/hero-banner';
 import { ProductTileGrid } from '@src/components/features/product';
 import { SeoFields } from '@src/components/features/seo';
 import { client } from '@src/lib/client';
-import { revalidateDuration } from '@src/pages/utils/constants';
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
 
-const Page = ({ page }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Page = ({ page }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation();
 
   return (
@@ -33,7 +32,7 @@ const Page = ({ page }: InferGetStaticPropsType<typeof getStaticProps>) => {
   );
 };
 
-export const getStaticProps = async ({ locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   try {
     const data = await client.pageLanding({ locale });
     const page = data.pageLandingCollection?.items[0];
@@ -41,12 +40,10 @@ export const getStaticProps = async ({ locale }) => {
     if (!page) {
       return {
         notFound: true,
-        revalidate: revalidateDuration,
       };
     }
 
     return {
-      revalidate: revalidateDuration,
       props: {
         ...(await getServerSideTranslations(locale)),
         page,
@@ -55,7 +52,6 @@ export const getStaticProps = async ({ locale }) => {
   } catch {
     return {
       notFound: true,
-      revalidate: revalidateDuration,
     };
   }
 };
