@@ -10,5 +10,9 @@
     "relatedProducts": "You may also like",
     "addToCart": "Add to cart",
     "quantity": "Quantity"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "This page doesn't seem to exist. <0>Click here</0> to go back the homepage."
   }
 }
