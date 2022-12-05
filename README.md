@@ -17,7 +17,7 @@ $~$
 - Composable content through powerful & flexible content modeling.
 - Localization ready.
 - SEO ready.
-- Statically generated with Next.js[^1].
+- Server-side rendering with Next.js[^1].
 - Generation of GraphQL[^2] typed code (schema, and types), in sync with the content types through graphql-codegen[^3].
 - Enhanced Developer Experience with TypeScript[^4].
 
