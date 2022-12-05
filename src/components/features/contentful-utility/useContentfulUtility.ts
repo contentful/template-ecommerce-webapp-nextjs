@@ -31,6 +31,7 @@ const useContentfulUtilityStore = create<ContentfulUtilityStore>()(
     }),
     {
       name: 'contentful-utility-store',
+      getStorage: () => sessionStorage,
     },
   ),
 );
