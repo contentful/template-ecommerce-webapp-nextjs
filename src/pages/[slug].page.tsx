@@ -2,13 +2,21 @@ import { Box } from '@chakra-ui/react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useTranslation } from 'next-i18next';
 
+import { useProductPage } from '@src/components/features/contentful-utility';
 import { ProductDetails, ProductTileGrid } from '@src/components/features/product';
 import { SeoFields } from '@src/components/features/seo';
 import { client } from '@src/lib/client';
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
 
-const Page = ({ product }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Page = ({ product: ssrProduct }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation();
+
+  /**
+   * TODO: this is a private-main feature, and should be removed from the main branch during the split
+   */
+  const { data: product } = useProductPage({ slug: ssrProduct.slug, initialData: ssrProduct });
+
+  if (!product) return null;
 
   return (
     <>
