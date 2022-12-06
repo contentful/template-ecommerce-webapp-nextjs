@@ -3,7 +3,9 @@
     "homepage": "Startseite",
     "logoImageAltText": "Logo",
     "aboutUs": "über uns",
-    "poweredBy": "Unterstützt von"
+    "poweredBy": "Unterstützt von",
+    "regionalSettings": "Regionale Einstellungen",
+    "language": "Sprache"
   },
   "product": {
     "trendingProducts": "Gerade angesagt",
