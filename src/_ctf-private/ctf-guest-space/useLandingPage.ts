@@ -1,16 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 
-import { useContentfulUtility } from '@src/components/features/contentful-utility';
+import { useContentfulEditorial } from '@src/_ctf-private';
 import { PageLandingFieldsFragment, PageLandingQuery } from '@src/lib/__generated/sdk';
 
 export const useLandingPage = ({ initialData }) => {
   const { locale } = useRouter();
-  const { client, preview } = useContentfulUtility();
+  const { client, preview } = useContentfulEditorial();
 
   return useQuery<PageLandingQuery | undefined, unknown, PageLandingFieldsFragment>({
-    queryKey: ['landingPage'],
-    queryFn: () => client?.pageLanding({ locale, preview: preview === true || undefined }),
+    queryKey: ['landingPage', locale, preview],
+    queryFn: () => client?.pageLanding({ locale, preview }),
     select: data => {
       return data?.pageLandingCollection?.items[0] || initialData;
     },

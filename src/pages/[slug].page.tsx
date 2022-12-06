@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useTranslation } from 'next-i18next';
 
-import { useProductPage } from '@src/components/features/contentful-utility';
+import { useProductPage } from '@src/_ctf-private';
 import { ProductDetails, ProductTileGrid } from '@src/components/features/product';
 import { SeoFields } from '@src/components/features/seo';
 import { client } from '@src/lib/client';
