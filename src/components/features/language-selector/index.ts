@@ -1,1 +1,1 @@
-export * from './language-selector'
+export * from './languageSelector';
