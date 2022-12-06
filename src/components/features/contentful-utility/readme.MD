@@ -3,12 +3,12 @@
 This piece of documentation describes the utilities offered for Contentful, including the `guest space` functionality,
 the `xray` and `preview` mode works in this repository, and documents what files are related to the feature.
 
-This feature belongs in the `private-main` branch, and as such during development any files that are created are marked
+This feature belongs in the `main-private` branch, and as such during development any files that are created are marked
 with a TODO to indicate that the file is marked for being moved to the private branch
 
 ```tsx
 /**
- * TODO: this is a private-main feature, and should be removed from the main branch during the split
+ * TODO: this is a main-private feature, and should be removed from the main branch during the split
  */
 ```
 
@@ -19,7 +19,7 @@ replacement/removal later will be easy.
 
 ## Storing and persisting the data
 
-We use `Zustand` to store and persist all data in localStorage. Values are set, updated and deleted in the `Zustand`
+We use `Zustand` to store and persist all data in sessionStorage. Values are set, updated and deleted in the `Zustand`
 store which in turn persists it all.
 
 ## Enable the guest space
