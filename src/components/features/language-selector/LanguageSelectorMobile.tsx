@@ -33,7 +33,7 @@ export const LanguageSelectorMobile = ({ displayName, localeName }) => {
 
           <DrawerBody>
             <Text fontSize="md" fontWeight={600}>
-              {t('common.Language')}
+              {t('common.language')}
             </Text>
             <Select
               size="md"
