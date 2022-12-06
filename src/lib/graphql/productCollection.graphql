@@ -1,5 +1,5 @@
-query pageProductCollection($locale: String) {
-  pageProductCollection(limit: 100, locale: $locale) {
+query pageProductCollection($locale: String, $preview: Boolean) {
+  pageProductCollection(limit: 100, locale: $locale, preview: $preview) {
     items {
       ...PageProductFields
     }

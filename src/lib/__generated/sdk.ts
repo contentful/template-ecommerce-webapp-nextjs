@@ -1068,6 +1068,7 @@ export type PageLandingFieldsFragment = { __typename: 'PageLanding', heroBannerH
 
 export type PageLandingQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 
@@ -1078,6 +1079,7 @@ export type PageLandingQuery = { __typename?: 'Query', pageLandingCollection?: {
 
 export type PageLandingCollectionQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 
@@ -1108,6 +1110,7 @@ export type PageProductFieldsFragment = (
 export type PageProductQueryVariables = Exact<{
   slug: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 
@@ -1118,6 +1121,7 @@ export type PageProductQuery = { __typename?: 'Query', pageProductCollection?: {
 
 export type PageProductCollectionQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 
@@ -1240,8 +1244,8 @@ export const SitemapPagesFieldsFragmentDoc = gql`
 }
     `;
 export const PageLandingDocument = gql`
-    query pageLanding($locale: String) {
-  pageLandingCollection(limit: 1, locale: $locale) {
+    query pageLanding($locale: String, $preview: Boolean) {
+  pageLandingCollection(limit: 1, locale: $locale, preview: $preview) {
     items {
       ...PageLandingFields
     }
@@ -1253,8 +1257,8 @@ ${ImageFieldsFragmentDoc}
 ${PageProductFieldsFragmentDoc}
 ${BasePageProductFieldsFragmentDoc}`;
 export const PageLandingCollectionDocument = gql`
-    query pageLandingCollection($locale: String) {
-  pageLandingCollection(limit: 100, locale: $locale) {
+    query pageLandingCollection($locale: String, $preview: Boolean) {
+  pageLandingCollection(limit: 100, locale: $locale, preview: $preview) {
     items {
       ...PageLandingFields
     }
@@ -1266,8 +1270,13 @@ ${ImageFieldsFragmentDoc}
 ${PageProductFieldsFragmentDoc}
 ${BasePageProductFieldsFragmentDoc}`;
 export const PageProductDocument = gql`
-    query pageProduct($slug: String!, $locale: String) {
-  pageProductCollection(limit: 1, where: {slug: $slug}, locale: $locale) {
+    query pageProduct($slug: String!, $locale: String, $preview: Boolean) {
+  pageProductCollection(
+    limit: 1
+    where: {slug: $slug}
+    locale: $locale
+    preview: $preview
+  ) {
     items {
       ...PageProductFields
     }
@@ -1278,8 +1287,8 @@ ${BasePageProductFieldsFragmentDoc}
 ${SeoFieldsFragmentDoc}
 ${ImageFieldsFragmentDoc}`;
 export const PageProductCollectionDocument = gql`
-    query pageProductCollection($locale: String) {
-  pageProductCollection(limit: 100, locale: $locale) {
+    query pageProductCollection($locale: String, $preview: Boolean) {
+  pageProductCollection(limit: 100, locale: $locale, preview: $preview) {
     items {
       ...PageProductFields
     }
