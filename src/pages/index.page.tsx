@@ -58,7 +58,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
         page,
       },
     };
-  } catch (e) {
+  } catch {
     return {
       notFound: true,
     };

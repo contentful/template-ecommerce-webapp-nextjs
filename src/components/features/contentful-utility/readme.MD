@@ -29,7 +29,7 @@ _All variables mentioned in this section are exported from the `./constants.ts` 
 To enable the guest space, we require all `guestSpaceRequiredParameters` to be passed to the URL. In
 addition, `guestSpaceOptionalParameters` can optionally be passed.
 
-Passing _at least_ the required parameters will cause them to be set in the persisted storage. Any updated to the
+Passing _at least_ the required parameters will cause them to be set in the persisted storage. Any updates to the
 parameters, require you to pass a full set of parameters. After initially setting them, passing a single value will not
 update it. For example:
 
