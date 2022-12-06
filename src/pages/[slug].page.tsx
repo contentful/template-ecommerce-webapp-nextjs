@@ -12,7 +12,7 @@ const Page = ({ product: ssrProduct }: InferGetServerSidePropsType<typeof getSer
   const { t } = useTranslation();
 
   /**
-   * TODO: this is a private-main feature, and should be removed from the main branch during the split
+   * TODO: this is a main-private feature, and should be removed from the main branch during the split
    */
   const { data: product } = useProductPage({ slug: ssrProduct.slug, initialData: ssrProduct });
 
