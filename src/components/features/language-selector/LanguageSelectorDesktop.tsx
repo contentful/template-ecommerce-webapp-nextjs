@@ -8,13 +8,14 @@ import {
   MenuOptionGroup,
 } from '@chakra-ui/react';
 import { LanguageIcon, ChevronDownTrimmedIcon, ChevronUpTrimmedIcon } from '@contentful/f36-icons';
+import { useRouter } from 'next/router';
 
-export const LanguageSelectorDesktop = ({ locale, locales, localeName, displayName, router }) => {
+export const LanguageSelectorDesktop = ({ localeName, displayName }) => {
+  const { locale, locales } = useRouter();
+  const router = useRouter();
+
   return (
-    <Flex
-      justifyContent="center"
-      alignItems="center"
-      display={{ base: 'none', md: 'flex', lg: 'flex' }}>
+    <Flex justifyContent="center" alignItems="center">
       <LanguageIcon width="18px" height="18px" variant="secondary" />
       <Menu gutter={0}>
         {({ isOpen }) => (

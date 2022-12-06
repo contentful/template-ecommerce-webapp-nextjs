@@ -1,7 +1,8 @@
+import { Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
-import { LanguageSelectorDesktop } from './langaugeSelectorDesktop';
-import { LanguageSelectorMobile } from './langaugeSelectorMobile';
+import { LanguageSelectorDesktop } from './LanguageSelectorDesktop';
+import { LanguageSelectorMobile } from './LanguageSelectorMobile';
 
 const localeName = locale => locale.split('-')[0];
 
@@ -11,25 +12,17 @@ const displayName = locale =>
   });
 
 export const LanguageSelector = () => {
-  const { locale, locales } = useRouter();
-  const router = useRouter();
+  const { locales } = useRouter();
 
   return locales && locales.length > 1 ? (
     <>
-      <LanguageSelectorDesktop
-        locale={locale}
-        locales={locales}
-        displayName={displayName}
-        localeName={localeName}
-        router={router}
-      />
-      <LanguageSelectorMobile
-        locale={locale}
-        locales={locales}
-        displayName={displayName}
-        localeName={localeName}
-        router={router}
-      />
+      <Box display={{ base: 'none', md: 'block', lg: 'block' }}>
+        <LanguageSelectorDesktop displayName={displayName} localeName={localeName} />
+      </Box>
+
+      <Box display={{ base: 'block', md: 'none', lg: 'none' }}>
+        <LanguageSelectorMobile displayName={displayName} localeName={localeName} />
+      </Box>
     </>
   ) : null;
 };
