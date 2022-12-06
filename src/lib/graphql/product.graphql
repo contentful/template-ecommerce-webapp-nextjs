@@ -26,8 +26,8 @@ fragment PageProductFields on PageProduct {
   }
 }
 
-query pageProduct($slug: String!, $locale: String) {
-  pageProductCollection(limit: 1, where: { slug: $slug }, locale: $locale) {
+query pageProduct($slug: String!, $locale: String, $preview: Boolean) {
+  pageProductCollection(limit: 1, where: { slug: $slug }, locale: $locale, preview: $preview) {
     items {
       ...PageProductFields
     }
