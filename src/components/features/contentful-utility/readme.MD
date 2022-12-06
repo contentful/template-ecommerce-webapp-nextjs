@@ -19,7 +19,7 @@ replacement/removal later will be easy.
 
 ## Storing and persisting the data
 
-We use `Zustand` to store and persist all data in localStorage. Values are set, updated and deleted in the `Zustand`
+We use `Zustand` to store and persist all data in sessionStorage. Values are set, updated and deleted in the `Zustand`
 store which in turn persists it all.
 
 ## Enable the guest space
