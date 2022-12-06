@@ -3,7 +3,9 @@
     "homepage": "Homepage",
     "logoImageAltText": "Logo",
     "aboutUs": "about us",
-    "poweredBy": "Powered by"
+    "poweredBy": "Powered by",
+    "regionalSettings": "Regional Settings",
+    "language": "Language"
   },
   "product": {
     "trendingProducts": "Trending now",
