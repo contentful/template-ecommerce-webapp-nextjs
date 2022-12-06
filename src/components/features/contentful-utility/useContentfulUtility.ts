@@ -111,7 +111,7 @@ export const useContentfulUtility = () => {
   }
 
   const graphQlClient = new GraphQLClient(
-    `https://graphql.${domain}/content/v1/spaces/${space_id}/` || '',
+    `https://graphql.${domain}/content/v1/spaces/${space_id}/`,
     {
       headers: {
         'Content-Type': 'application/json',
