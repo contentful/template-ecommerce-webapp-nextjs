@@ -3,6 +3,10 @@ import localFont from '@next/font/local';
 import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
 
+import {
+  CustomQueryClientProvider,
+  useContentfulUtility,
+} from '@src/components/features/contentful-utility';
 import { Layout } from '@src/components/templates/layout';
 import { theme } from '@src/theme';
 
@@ -63,18 +67,20 @@ const spaceGrotesk = localFont({
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <ChakraProvider
-      theme={{
-        ...theme,
-        fonts: {
-          heading: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.heading}`,
-          body: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.body}`,
-        },
-      }}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ChakraProvider>
+    <CustomQueryClientProvider>
+      <ChakraProvider
+        theme={{
+          ...theme,
+          fonts: {
+            heading: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.heading}`,
+            body: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.body}`,
+          },
+        }}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ChakraProvider>
+    </CustomQueryClientProvider>
   );
 };
 

@@ -3,7 +3,6 @@ import { CodegenConfig } from '@graphql-codegen/cli';
 export const config: CodegenConfig = {
   overwrite: true,
   ignoreNoDocuments: true,
-
   schema: [
     {
       [process.env.CONTENTFUL_GRAPHQL_ENDPOINT || '']: {
@@ -24,22 +23,12 @@ export const config: CodegenConfig = {
       documents: ['src/lib/graphql/**/*.graphql'],
       plugins: ['typescript', 'typescript-operations', 'typescript-graphql-request'],
       config: {
-        exposeQueryKeys: true,
-        exposeFetcher: true,
         rawRequest: false,
         inlineFragmentTypes: 'combine',
         skipTypename: false,
         exportFragmentSpreadSubTypes: true,
         dedupeFragments: true,
         preResolveTypes: true,
-        fetcher: {
-          endpoint: process.env.CONTENTFUL_GRAPHQL_ENDPOINT,
-          fetchParams: {
-            headers: {
-              Authorization: `Bearer ${process.env.CONTENTFUL_DELIVERY_API_TOKEN}`,
-            },
-          },
-        },
       },
     },
   },
