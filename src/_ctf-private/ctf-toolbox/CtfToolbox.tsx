@@ -194,7 +194,7 @@ export const CtfToolbox = () => {
             isChecked={xray}
             onChange={handleXrayMode}
           />
-          {process.env.NODE_ENV === 'development' && (
+          {process.env.NODE_ENV !== 'production' && (
             <>
               <Box mb={6}>
                 <Heading as="h3" variant="h3">
