@@ -14,14 +14,14 @@ export const Header = (props: BoxProps) => {
     <Flex
       as="nav"
       justifyContent="space-between"
-      bg="colorWhite"
-      py={4}
-      px={6}
+      align="center"
+      pl={12}
+      pr={12}
       height={`${HEADER_HEIGHT}px`}
       zIndex="2"
       {...props}>
       <Link href="/" title={t('common.homepage')}>
-        <Box as={Logo} mt={1.5} title={t('common.logoImageAltText')} />
+        <Box as={Logo} title={t('common.logoImageAltText')} />
       </Link>
       <LanguageSelector />
     </Flex>

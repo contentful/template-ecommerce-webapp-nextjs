@@ -52,7 +52,8 @@ export const LanguageSelectorDesktop = ({ localeName, displayName }) => {
                     <MenuItemOption
                       minW={24}
                       textAlign="center"
-                      _focus={{ boxShadow: 'outline' }}
+                      _focus={{ boxShadow: 'none' }}
+                      _focusVisible={{ boxShadow: 'outline' }}
                       _hover={{ bg: 'transparent', boxShadow: 'none' }}
                       icon={null}
                       key={availableLocale}
