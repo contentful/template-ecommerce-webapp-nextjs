@@ -11,7 +11,7 @@
     "predev": "yarn generate-theme-typings",
     "prebuild": "yarn generate-theme-typings",
     "dev": "next dev",
-    "build": "ENVIRONMENT_NAME=production next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
