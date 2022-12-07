@@ -42,7 +42,11 @@ export const useContentfulEditorial = () => {
   useEffect(() => {
     // If the reset parameter is passed, we reset the guest space store values and return early
     if (query[resetParam]) {
-      [...guestSpaceRequiredParameters, ...guestSpaceOptionalParameters].forEach(key => {
+      [
+        ...guestSpaceRequiredParameters,
+        ...guestSpaceOptionalParameters,
+        ...editorialParameters,
+      ].forEach(key => {
         useContentfulEditorialStore.setState({ [key]: undefined });
       });
 
