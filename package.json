@@ -12,7 +12,7 @@
     "prebuild": "yarn generate-theme-typings",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "ENVIRONMENT_NAME=production next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "graphql-codegen:generate": "graphql-codegen -r dotenv/config --config codegen.ts",
