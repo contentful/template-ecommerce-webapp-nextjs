@@ -15,14 +15,8 @@ export const Footer = () => {
       borderColor={theme.f36.gray200}>
       <Container>
         <Text mb={8}>{t('common.aboutUs')}</Text>
-        <Text>
-          Lorem ipsum dolor sit amet consectetur. Placerat ut purus nam ac morbi erat ut. Laoreet
-          duis augue vestibulum sed egestas tincidunt.
-        </Text>
-        <Text mb={8}>
-          Aliquet vitae consequat quam ut. Integer turpis sit porttitor rhoncus id quisque sed
-          ullamcorper dolor. Commodo.
-        </Text>
+        <Text>{t('common.description1')}</Text>
+        <Text mb={8}>{t('common.description2')}</Text>
         <Text variant="small">
           {t('common.poweredBy')}{' '}
           <Link href="https://contentful.com" isExternal color={theme.f36.blue500}>
