@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 import { Footer } from '../footer';
 import { Header } from '../header';
 
-import { CtfToolbox } from '@src/_ctf-private';
+import { CtfToolboxDynamic } from '@src/_ctf-private';
 
 interface LayoutPropsInterface {
   children: ReactNode;
@@ -26,7 +26,7 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
       <Flex flexGrow="1" flexDirection="column" width="100%" as="main" pb={{ base: 8, lg: 12 }}>
         {children}
       </Flex>
-      <CtfToolbox />
+      <CtfToolboxDynamic />
       <Footer />
     </>
   );

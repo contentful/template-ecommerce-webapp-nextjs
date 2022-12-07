@@ -67,6 +67,7 @@ const ParamInput = ({
 export const CtfToolbox = () => {
   const { f36 } = useTheme();
   const router = useRouter();
+  const { xray, preview } = useContentfulEditorialStore();
 
   const handlePreviewMode = (e: ChangeEvent<HTMLInputElement>) => {
     router.replace({
@@ -131,11 +132,12 @@ export const CtfToolbox = () => {
   };
 
   return (
-    <Menu gutter={30}>
+    <Menu gutter={30} isLazy={false}>
       <MenuButton
         as={Button}
         variant="unstyled"
         position="fixed"
+        zIndex={999}
         bottom={f36.spacing2Xl}
         right={f36.spacing2Xl}
         borderRadius="50%"
@@ -178,23 +180,20 @@ export const CtfToolbox = () => {
             General settings
           </Heading>
           <Box as="hr" my={4} />
-
           <ParamToggle
             id="preview-mode"
             label="Preview mode"
             helpText="View draft entries, assets and unpublished content changes."
-            defaultChecked={router.query[ContentfulParams.preview] === 'true'}
+            isChecked={preview}
             onChange={handlePreviewMode}
           />
-
           <ParamToggle
             id="xray-mode"
             label="X-ray mode"
             helpText="Highlight components making up a page and provide a deep link to the entry editor."
-            defaultChecked={router.query[ContentfulParams.xray] === 'true'}
+            isChecked={xray}
             onChange={handleXrayMode}
           />
-
           {process.env.NODE_ENV === 'development' && (
             <>
               <Box mb={6}>

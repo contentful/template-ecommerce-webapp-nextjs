@@ -56,12 +56,9 @@ export const useContentfulEditorial = () => {
       ...editorialParameters,
     ]);
 
-    // Filter the query object to only include parameters that we care about
-    const filteredQuery = Object.fromEntries(
-      Object.entries(query).filter(([key]) => allParams.has(key as ContentfulParams)),
-    );
+    allParams.forEach(key => {
+      const value = query[key];
 
-    Object.entries(filteredQuery).forEach(([key, value]) => {
       switch (key) {
         case ContentfulParams.preview:
         case ContentfulParams.xray:
@@ -80,7 +77,7 @@ export const useContentfulEditorial = () => {
           /**
            * Check if all required guest space parameters are available, we only update the store if they are
            */
-          if (guestSpaceRequiredParameters.some(key => !filteredQuery[key])) return;
+          if (guestSpaceRequiredParameters.some(key => !query[key])) return;
 
           /**
            * If were dealing with an optional parameter, that wasn't passed, we delete the persisted value

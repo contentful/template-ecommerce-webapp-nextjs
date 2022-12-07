@@ -498,6 +498,7 @@ type PageProduct implements Entry {
   contentfulMetadata: ContentfulMetadata!
   description(locale: String): String
   featuredProductImage(locale: String, preview: Boolean): Asset
+  internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): PageProductLinkingCollections
   name(locale: String): String
   price(locale: String): Float
@@ -527,6 +528,13 @@ input PageProductFilter {
   description_not_contains: String
   description_not_in: [String]
   featuredProductImage_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
   name: String
   name_contains: String
   name_exists: Boolean
@@ -564,6 +572,8 @@ type PageProductLinkingCollections {
 }
 
 enum PageProductOrder {
+  internalName_ASC
+  internalName_DESC
   name_ASC
   name_DESC
   price_ASC
