@@ -132,7 +132,7 @@ export const CtfToolbox = () => {
   };
 
   return (
-    <Menu gutter={30} isLazy={false}>
+    <Menu gutter={30}>
       <MenuButton
         as={Button}
         variant="unstyled"
@@ -208,6 +208,7 @@ export const CtfToolbox = () => {
 
                     return (
                       <ParamInput
+                        isRequired
                         label={param}
                         name={param}
                         defaultValue={queryParam}
