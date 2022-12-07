@@ -10,10 +10,10 @@ import {
   guestSpaceOptionalParameters,
   guestSpaceRequiredParameters,
   resetParam,
-} from '@src/components/features/contentful-utility/constants';
+} from '@src/_ctf-private/constants';
 import { getSdk } from '@src/lib/__generated/sdk';
 
-interface ContentfulUtilityStore {
+interface ContentfulEditorialStore {
   xray: boolean;
   preview: boolean;
   domain?: 'contentful.com' | 'flinkly.com' | 'quirely.com';
@@ -22,7 +22,7 @@ interface ContentfulUtilityStore {
   space_id?: string;
 }
 
-const useContentfulUtilityStore = create<ContentfulUtilityStore>()(
+export const useContentfulEditorialStore = create<ContentfulEditorialStore>()(
   persist(
     (_set, _get) => ({
       preview: false,
@@ -36,14 +36,18 @@ const useContentfulUtilityStore = create<ContentfulUtilityStore>()(
   ),
 );
 
-export const useContentfulUtility = () => {
+export const useContentfulEditorial = () => {
   const { query } = useRouter();
 
   useEffect(() => {
     // If the reset parameter is passed, we reset the guest space store values and return early
     if (query[resetParam]) {
-      [...guestSpaceRequiredParameters, ...guestSpaceOptionalParameters].forEach(key => {
-        useContentfulUtilityStore.setState({ [key]: undefined });
+      [
+        ...guestSpaceRequiredParameters,
+        ...guestSpaceOptionalParameters,
+        ...editorialParameters,
+      ].forEach(key => {
+        useContentfulEditorialStore.setState({ [key]: undefined });
       });
 
       return;
@@ -56,17 +60,14 @@ export const useContentfulUtility = () => {
       ...editorialParameters,
     ]);
 
-    // Filter the query object to only include parameters that we care about
-    const filteredQuery = Object.fromEntries(
-      Object.entries(query).filter(([key]) => allParams.has(key as ContentfulParams)),
-    );
+    allParams.forEach(key => {
+      const value = query[key];
 
-    Object.entries(filteredQuery).forEach(([key, value]) => {
       switch (key) {
         case ContentfulParams.preview:
         case ContentfulParams.xray:
-          if (value === 'true') useContentfulUtilityStore.setState({ [key]: true });
-          if (value === 'false') useContentfulUtilityStore.setState({ [key]: false });
+          if (value === 'true') useContentfulEditorialStore.setState({ [key]: true });
+          if (value === 'false') useContentfulEditorialStore.setState({ [key]: false });
 
           return;
         default:
@@ -80,23 +81,23 @@ export const useContentfulUtility = () => {
           /**
            * Check if all required guest space parameters are available, we only update the store if they are
            */
-          if (guestSpaceRequiredParameters.some(key => !filteredQuery[key])) return;
+          if (guestSpaceRequiredParameters.some(key => !query[key])) return;
 
           /**
            * If were dealing with an optional parameter, that wasn't passed, we delete the persisted value
            */
           if (guestSpaceOptionalParameters.includes(key as ContentfulParams) && !query[key]) {
-            useContentfulUtilityStore.setState({ [key]: undefined });
+            useContentfulEditorialStore.setState({ [key]: undefined });
 
             return;
           }
 
-          useContentfulUtilityStore.setState({ [key]: value });
+          useContentfulEditorialStore.setState({ [key]: value });
       }
     });
   }, [query]);
 
-  const store = useContentfulUtilityStore();
+  const store = useContentfulEditorialStore();
   const { space_id, preview_token, delivery_token, domain, preview, xray } = store;
 
   /**

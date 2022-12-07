@@ -5,7 +5,7 @@ interface CustomQueryClientProviderProps {
   children: ReactNode;
 }
 
-export const CustomQueryClientProvider = ({ children }: CustomQueryClientProviderProps) => {
+export const CtfCustomQueryClientProvider = ({ children }: CustomQueryClientProviderProps) => {
   const [queryClient] = useState(
     () =>
       new QueryClient({

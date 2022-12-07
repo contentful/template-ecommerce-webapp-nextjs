@@ -695,6 +695,7 @@ export type PageProduct = Entry & {
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<Scalars['String']>;
   featuredProductImage?: Maybe<Asset>;
+  internalName?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<PageProductLinkingCollections>;
   name?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Float']>;
@@ -716,6 +717,12 @@ export type PageProductDescriptionArgs = {
 export type PageProductFeaturedProductImageArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct) */
+export type PageProductInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -787,6 +794,13 @@ export type PageProductFilter = {
   description_not_contains?: InputMaybe<Scalars['String']>;
   description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   featuredProductImage_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   name?: InputMaybe<Scalars['String']>;
   name_contains?: InputMaybe<Scalars['String']>;
   name_exists?: InputMaybe<Scalars['Boolean']>;
@@ -849,6 +863,8 @@ export type PageProductLinkingCollectionsPageProductCollectionArgs = {
 };
 
 export enum PageProductOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
   PriceAsc = 'price_ASC',
@@ -1055,7 +1071,7 @@ export type CfComponentSeoNestedFilter = {
 
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
-export type PageLandingFieldsFragment = { __typename: 'PageLanding', heroBannerHeadline?: string | null, heroBannerHeadlineColor?: string | null, seoFields?: (
+export type PageLandingFieldsFragment = { __typename: 'PageLanding', internalName?: string | null, heroBannerHeadline?: string | null, heroBannerHeadlineColor?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
     { __typename?: 'ComponentSeo' }
     & SeoFieldsFragment
   ) | null, heroBannerImage?: (
@@ -1088,7 +1104,7 @@ export type PageLandingCollectionQuery = { __typename?: 'Query', pageLandingColl
       & PageLandingFieldsFragment
     ) | null> } | null };
 
-export type BasePageProductFieldsFragment = { __typename: 'PageProduct', slug?: string | null, name?: string | null, description?: string | null, price?: number | null, seoFields?: (
+export type BasePageProductFieldsFragment = { __typename: 'PageProduct', internalName?: string | null, slug?: string | null, name?: string | null, description?: string | null, price?: number | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
     { __typename?: 'ComponentSeo' }
     & SeoFieldsFragment
   ) | null, featuredProductImage?: (
@@ -1179,6 +1195,11 @@ export const SeoFieldsFragmentDoc = gql`
 export const BasePageProductFieldsFragmentDoc = gql`
     fragment BasePageProductFields on PageProduct {
   __typename
+  sys {
+    id
+    spaceId
+  }
+  internalName
   slug
   seoFields {
     ...SeoFields
@@ -1209,6 +1230,11 @@ export const PageProductFieldsFragmentDoc = gql`
 export const PageLandingFieldsFragmentDoc = gql`
     fragment PageLandingFields on PageLanding {
   __typename
+  sys {
+    id
+    spaceId
+  }
+  internalName
   seoFields {
     ...SeoFields
   }
