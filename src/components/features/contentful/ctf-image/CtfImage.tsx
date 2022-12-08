@@ -6,7 +6,7 @@ interface ImageProps extends ImageFieldsFragment {
   imageProps?: Omit<NextImageProps, 'src' | 'alt'>;
 }
 
-export const CtfImage = ({ url, width, height, title, imageProps }: ImageProps) => {
+export const CtfImage = ({ url, width, height, title, sizes, imageProps }: ImageProps) => {
   if (!url || !width || !height) return null;
 
   const blurURL = new URL(url);
@@ -18,9 +18,11 @@ export const CtfImage = ({ url, width, height, title, imageProps }: ImageProps) 
       width={width}
       height={height}
       alt={title || ''}
-      sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
+      sizes={
+        sizes ||
+        `(max-width: 1200px) 100vw,
+      50vw`
+      }
       placeholder="blur"
       blurDataURL={blurURL.toString()}
       {...imageProps}

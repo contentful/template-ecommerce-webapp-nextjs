@@ -24,6 +24,7 @@ export const LanguageSelectorDesktop = ({ localeName, displayName }) => {
               pr={1}
               pl={1}
               textTransform="uppercase"
+              fontWeight={400}
               background="transparent"
               _hover={{ bg: 'transparent' }}
               _expanded={{ bg: 'transparent' }}
