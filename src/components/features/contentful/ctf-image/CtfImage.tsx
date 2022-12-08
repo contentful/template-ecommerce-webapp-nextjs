@@ -4,6 +4,7 @@ import { ImageFieldsFragment } from '@src/lib/__generated/sdk';
 
 interface ImageProps extends ImageFieldsFragment {
   imageProps?: Omit<NextImageProps, 'src' | 'alt'>;
+  sizes?: string;
 }
 
 export const CtfImage = ({ url, width, height, title, sizes, imageProps }: ImageProps) => {
