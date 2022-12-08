@@ -1071,7 +1071,7 @@ export type CfComponentSeoNestedFilter = {
 
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
-export type PageLandingFieldsFragment = { __typename: 'PageLanding', heroBannerHeadline?: string | null, heroBannerHeadlineColor?: string | null, seoFields?: (
+export type PageLandingFieldsFragment = { __typename: 'PageLanding', internalName?: string | null, heroBannerHeadline?: string | null, heroBannerHeadlineColor?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
     { __typename?: 'ComponentSeo' }
     & SeoFieldsFragment
   ) | null, heroBannerImage?: (
@@ -1104,7 +1104,7 @@ export type PageLandingCollectionQuery = { __typename?: 'Query', pageLandingColl
       & PageLandingFieldsFragment
     ) | null> } | null };
 
-export type BasePageProductFieldsFragment = { __typename: 'PageProduct', slug?: string | null, name?: string | null, description?: string | null, price?: number | null, seoFields?: (
+export type BasePageProductFieldsFragment = { __typename: 'PageProduct', internalName?: string | null, slug?: string | null, name?: string | null, description?: string | null, price?: number | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
     { __typename?: 'ComponentSeo' }
     & SeoFieldsFragment
   ) | null, featuredProductImage?: (
@@ -1195,6 +1195,11 @@ export const SeoFieldsFragmentDoc = gql`
 export const BasePageProductFieldsFragmentDoc = gql`
     fragment BasePageProductFields on PageProduct {
   __typename
+  sys {
+    id
+    spaceId
+  }
+  internalName
   slug
   seoFields {
     ...SeoFields
@@ -1225,6 +1230,11 @@ export const PageProductFieldsFragmentDoc = gql`
 export const PageLandingFieldsFragmentDoc = gql`
     fragment PageLandingFields on PageLanding {
   __typename
+  sys {
+    id
+    spaceId
+  }
+  internalName
   seoFields {
     ...SeoFields
   }

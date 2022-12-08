@@ -10,9 +10,9 @@ export enum ContentfulParams {
 
 export const guestSpaceOptionalParameters = [ContentfulParams.domain];
 export const guestSpaceRequiredParameters = [
+  ContentfulParams.spaceId,
   ContentfulParams.deliveryToken,
   ContentfulParams.previewToken,
-  ContentfulParams.spaceId,
 ];
 export const editorialParameters = [ContentfulParams.preview, ContentfulParams.xray];
 export const resetParam = 'reset';

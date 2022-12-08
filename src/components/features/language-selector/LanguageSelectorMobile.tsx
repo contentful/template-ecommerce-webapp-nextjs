@@ -8,6 +8,7 @@ import {
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
+  Button,
 } from '@chakra-ui/react';
 import { LanguageIcon } from '@contentful/f36-icons';
 import { useTranslation } from 'next-i18next';
@@ -24,7 +25,9 @@ export const LanguageSelectorMobile = ({ displayName, localeName }) => {
 
   return (
     <>
-      <LanguageIcon width="18px" height="18px" variant="secondary" onClick={onOpen} />
+      <Button variant="unstyled" onClick={onOpen}>
+        <LanguageIcon width="18px" height="18px" variant="secondary" />
+      </Button>
       <Drawer isOpen={isOpen} onClose={onClose} placement="right" initialFocusRef={firstField}>
         <DrawerOverlay />
         <DrawerContent>

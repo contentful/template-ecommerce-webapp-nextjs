@@ -2,7 +2,8 @@ import { Box } from '@chakra-ui/react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useTranslation } from 'next-i18next';
 
-import { useProductPage } from '@src/components/features/contentful-utility';
+import { useProductPage } from '@src/_ctf-private';
+import { CtfXrayFrameDynamic } from '@src/_ctf-private/ctf-xray';
 import { ProductDetails, ProductTileGrid } from '@src/components/features/product';
 import { SeoFields } from '@src/components/features/seo';
 import { client } from '@src/lib/client';
@@ -19,7 +20,7 @@ const Page = ({ product: ssrProduct }: InferGetServerSidePropsType<typeof getSer
   if (!product) return null;
 
   return (
-    <>
+    <CtfXrayFrameDynamic entry={product}>
       {product.seoFields && <SeoFields {...product.seoFields} />}
       <ProductDetails {...product} />
       {product.relatedProductsCollection?.items && (
@@ -35,7 +36,7 @@ const Page = ({ product: ssrProduct }: InferGetServerSidePropsType<typeof getSer
           />
         </Box>
       )}
-    </>
+    </CtfXrayFrameDynamic>
   );
 };
 
