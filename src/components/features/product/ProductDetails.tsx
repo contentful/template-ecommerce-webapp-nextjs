@@ -22,7 +22,15 @@ export const ProductDetails = ({
             {featuredProductImage && <CtfImage {...featuredProductImage} />}
             {productImagesCollection?.items &&
               productImagesCollection.items.map(image => {
-                return image ? <CtfImage key={image.sys.id} {...image} /> : null;
+                return image ? (
+                  <CtfImage
+                    key={image.sys.id}
+                    imageProps={{
+                      sizes: '(max-width: 1200px) 70vw, 100vw',
+                    }}
+                    {...image}
+                  />
+                ) : null;
               })}
           </Flex>
         </GridItem>

@@ -24,6 +24,7 @@ export const LanguageSelectorDesktop = ({ localeName, displayName }) => {
               pr={1}
               pl={1}
               textTransform="uppercase"
+              fontWeight={400}
               background="transparent"
               _hover={{ bg: 'transparent' }}
               _expanded={{ bg: 'transparent' }}
@@ -52,7 +53,8 @@ export const LanguageSelectorDesktop = ({ localeName, displayName }) => {
                     <MenuItemOption
                       minW={24}
                       textAlign="center"
-                      _focus={{ boxShadow: 'outline' }}
+                      _focus={{ boxShadow: 'none' }}
+                      _focusVisible={{ boxShadow: 'outline' }}
                       _hover={{ bg: 'transparent', boxShadow: 'none' }}
                       icon={null}
                       key={availableLocale}
