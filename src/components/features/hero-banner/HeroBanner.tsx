@@ -83,7 +83,14 @@ export const HeroBanner = ({
         zIndex={0}
         gridArea={{ base: '1 / 1 / 2 / 2' }}
         maxHeight={{ base: '50vh', lg: '80vh' }}>
-        {heroBannerImage?.url && <CtfImage sizes="100vw" {...heroBannerImage} />}
+        {heroBannerImage?.url && (
+          <CtfImage
+            imageProps={{
+              sizes: '100vw',
+            }}
+            {...heroBannerImage}
+          />
+        )}
       </StyledBox>
 
       <Flex
