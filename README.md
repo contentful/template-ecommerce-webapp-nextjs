@@ -1,4 +1,4 @@
-## ⚠️ This branch (and PR) were created from main-private and should be merged back into main-private it as well ⚠️
+## ⚠️ This branch (and PR) were created from `main-private` and should be merged back into `main-private` as well ⚠️
 For more information on how to handle branches, PR's and merging, please refer to our documentation: https://contentful.atlassian.net/wiki/spaces/PROD/pages/4090724936/Templates+-+Git+flow
 # Contentful Ecommerce Starter Template
 

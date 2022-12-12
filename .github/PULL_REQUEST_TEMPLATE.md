@@ -1,4 +1,4 @@
-## ⚠️ This branch (and PR) were created from `main-private` and should be merged back into `main-private` it as well ⚠️
+## ⚠️ This branch (and PR) were created from `main-private` and should be merged back into `main-private` as well ⚠️
 
 **_What will change?_**
 
