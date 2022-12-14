@@ -9,7 +9,7 @@ export const useProductPage = ({ slug, initialData }) => {
   const { client, preview } = useContentfulEditorial();
 
   return useQuery<PageProductQuery | undefined, unknown, PageProductFieldsFragment>({
-    queryKey: ['productPage', locale, preview],
+    queryKey: ['productPage', locale, preview, slug],
     queryFn: () => client?.pageProduct({ slug, locale, preview }),
     select: data => {
       return data?.pageProductCollection?.items[0] || initialData;
