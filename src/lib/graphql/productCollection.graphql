@@ -1,0 +1,7 @@
+query pageProductCollection($locale: String, $preview: Boolean) {
+  pageProductCollection(limit: 100, locale: $locale, preview: $preview) {
+    items {
+      ...PageProductFields
+    }
+  }
+}

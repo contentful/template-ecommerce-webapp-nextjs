@@ -1,0 +1,40 @@
+fragment BasePageProductFields on PageProduct {
+  __typename
+  sys {
+    id
+    spaceId
+  }
+  internalName
+  slug
+  seoFields {
+    ...SeoFields
+  }
+  name
+  description
+  price
+  featuredProductImage {
+    ...ImageFields
+  }
+  productImagesCollection(limit: 6) {
+    items {
+      ...ImageFields
+    }
+  }
+}
+
+fragment PageProductFields on PageProduct {
+  ...BasePageProductFields
+  relatedProductsCollection(limit: 6) {
+    items {
+      ...BasePageProductFields
+    }
+  }
+}
+
+query pageProduct($slug: String!, $locale: String, $preview: Boolean) {
+  pageProductCollection(limit: 1, where: { slug: $slug }, locale: $locale, preview: $preview) {
+    items {
+      ...PageProductFields
+    }
+  }
+}

@@ -1,0 +1,23 @@
+fragment sitemapPagesFields on Query {
+  pageProductCollection(limit: 100, locale: $locale) {
+    items {
+      slug
+      sys {
+        publishedAt
+      }
+    }
+  }
+  pageLandingCollection(limit: 1, locale: $locale) {
+    items {
+      sys {
+        publishedAt
+      }
+    }
+  }
+}
+
+
+query sitemapPages($locale: String!) {
+  ...sitemapPagesFields
+}
+
