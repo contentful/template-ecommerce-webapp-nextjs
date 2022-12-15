@@ -39,6 +39,7 @@ $~$
 
 In order to authenticate the requests to the Contentful APIs, the following values are necessary:
 
+- Your domains base URL
 - Your space ID: [https://www.contentful.com/help/find-space-id/](https://www.contentful.com/help/find-space-id/)
 - Contentful Delivery API token: [https://www.contentful.com/developers/docs/references/content-delivery-api/](https://www.contentful.com/developers/docs/references/content-delivery-api/)
 - Contentful Preview API token: [https://www.contentful.com/developers/docs/references/content-preview-api/](https://www.contentful.com/developers/docs/references/content-preview-api/)
@@ -165,13 +166,16 @@ $~$
 
 The Starter Template can be deployed to your hosting provider of choice.
 
-We suggest the Vercel integration to speed up the process by clicking the deploy button below. The GitHub repository and the necessary environment variables keys are pre-configured in the hosting provider space.
+We offer integrations with Vercel and Netlify to speed up the process by clicking one of the deploy buttons below. The GitHub repository and
+the necessary environment variables keys are pre-configured in the hosting provider space.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-ecommerce-webapp-nextjs&env=NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID,NEXT_PUBLIC_CONFIG_CONTENTFUL_DELIVERY_API_TOKEN,NEXT_PUBLIC_CONFIG_CONTENTFUL_PREVIEW_API_TOKEN&envDescription=API%20Keys%20needed%20for%20the%20application&envLink=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-ecommerce-webapp-nextjs%23environment-variables)
+| Vercel                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Netlify                                                                                                                                                                                                                                                                                                                                           |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-ecommerce-webapp-nextjs&env=NEXT_PUBLIC_BASE_URL,CONTENTFUL_GRAPHQL_ENDPOINT,CONTENTFUL_SPACE_ID,CONTENTFUL_DELIVERY_API_TOKEN,CONTENTFUL_PREVIEW_API_TOKEN&envDescription=API%20Keys%20needed%20for%20the%20application&envLink=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-ecommerce-webapp-nextjs%23environment-variables) | [![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-ecommerce-webapp-nextjs#NEXT_PUBLIC_BASE_URL=&CONTENTFUL_GRAPHQL_ENDPOINT=&CONTENTFUL_SPACE_ID=&CONTENTFUL_DELIVERY_API_TOKEN=&CONTENTFUL_PREVIEW_API_TOKEN=) |
+| [Environment variables docs](https://vercel.com/docs/concepts/projects/environment-variables)                                                                                                                                                                                                                                                                                                                                                                                             | [Environment variables docs](https://docs.netlify.com/environment-variables/overview/)                                                                                                                                                                                                                                                            |
 
-[Vercel's environment variables docs](https://vercel.com/docs/concepts/projects/environment-variables)
-
-Make sure to add the necessary [environment variables values](./README.md#environment-variables) to the hosting provider environment variables.
+Make sure to add the necessary [environment variables values](./README.md#environment-variables) to the hosting provider
+environment variables.
 
 ---
 
