@@ -74,7 +74,7 @@ export const HeroBanner = ({
       window.removeEventListener('resize', handleFontSize);
       router.events.off('routeChangeComplete', handleFontSize);
     };
-  }, [headingVisible, router.events]);
+  }, [headingVisible, router.events, router.query]);
 
   return (
     <Grid position="relative" gridRow={2} gridColumn={1} mt={`-${HEADER_HEIGHT}px`}>
@@ -111,7 +111,8 @@ export const HeroBanner = ({
               as="h1"
               letterSpacing="-0.11em"
               color={heroBannerHeadlineColor || 'white'}
-              transform="translateY(0.33em)">
+              transform="translateY(0.33em)"
+              whiteSpace="nowrap">
               {/* Tutorial: contentful-and-the-starter-template.md
               {/* Uncomment the line below to render the Greeting field value */}
               {/* {greeting} {' '} */}
