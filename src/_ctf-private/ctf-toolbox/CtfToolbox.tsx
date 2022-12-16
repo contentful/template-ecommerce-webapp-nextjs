@@ -67,7 +67,9 @@ const ParamInput = ({
 export const CtfToolbox = () => {
   const { f36 } = useTheme();
   const router = useRouter();
-  const { xray, preview } = useContentfulEditorialStore();
+  const { xray, preview, space_id, preview_token, delivery_token } = useContentfulEditorialStore();
+
+  const activeGuestSpace = !!space_id && !!preview_token && !!delivery_token;
 
   const handlePreviewMode = (e: ChangeEvent<HTMLInputElement>) => {
     router.replace({
@@ -130,6 +132,8 @@ export const CtfToolbox = () => {
     });
     router.reload();
   };
+
+  if (!activeGuestSpace && process.env.ENVIRONMENT_NAME === 'production') return null;
 
   return (
     <Menu gutter={30}>
