@@ -10,6 +10,7 @@
     "generate-theme-typings": "yarn chakra-cli tokens ./src/theme/theme.ts",
     "predev": "yarn generate-theme-typings",
     "prebuild": "yarn generate-theme-typings",
+    "prepare": "husky install",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
