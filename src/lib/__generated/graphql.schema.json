@@ -1643,7 +1643,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentSeo",
-        "description": "These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo)",
+        "description": "To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo)",
         "fields": [
           {
             "name": "canonicalUrl",
@@ -3595,7 +3595,7 @@
       {
         "kind": "OBJECT",
         "name": "PageLanding",
-        "description": "This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding)",
+        "description": "To have an entry point for the app [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding)",
         "fields": [
           {
             "name": "contentfulMetadata",
@@ -4599,7 +4599,7 @@
       {
         "kind": "OBJECT",
         "name": "PageProduct",
-        "description": "This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct)",
+        "description": "To output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct)",
         "fields": [
           {
             "name": "contentfulMetadata",
