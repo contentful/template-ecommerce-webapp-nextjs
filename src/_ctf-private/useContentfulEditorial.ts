@@ -14,8 +14,8 @@ import {
 import { getSdk } from '@src/lib/__generated/sdk';
 
 interface ContentfulEditorialStore {
-  xray: boolean;
-  preview: boolean;
+  xray: boolean | number;
+  preview: boolean | number;
   domain?: 'contentful.com' | 'flinkly.com' | 'quirely.com';
   delivery_token?: string;
   preview_token?: string;
@@ -66,8 +66,10 @@ export const useContentfulEditorial = () => {
       switch (key) {
         case ContentfulParams.preview:
         case ContentfulParams.xray:
-          if (value === 'true') useContentfulEditorialStore.setState({ [key]: true });
-          if (value === 'false') useContentfulEditorialStore.setState({ [key]: false });
+          if (value === 'true' || value === '1')
+            useContentfulEditorialStore.setState({ [key]: true });
+          if (value === 'false' || value === '0')
+            useContentfulEditorialStore.setState({ [key]: false });
 
           return;
         default:
