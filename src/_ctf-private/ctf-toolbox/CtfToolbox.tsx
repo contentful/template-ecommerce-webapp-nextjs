@@ -96,12 +96,16 @@ export const CtfToolbox = () => {
     await router.replace({
       pathname: router.pathname,
       query: {
+        ...router.query,
         [ContentfulParams.reset]: true,
       },
     });
     // Remove the reset parameter, since we no longer need it
     await router.replace({
       pathname: router.pathname,
+      query: {
+        slug: router.query.slug,
+      },
     });
     // Reload the page to fetch serverside data
     router.reload();

@@ -14,8 +14,8 @@ import {
 import { getSdk } from '@src/lib/__generated/sdk';
 
 interface ContentfulEditorialStore {
-  xray: boolean | number;
-  preview: boolean | number;
+  xray: boolean;
+  preview: boolean;
   domain?: 'contentful.com' | 'flinkly.com' | 'quirely.com';
   delivery_token?: string;
   preview_token?: string;
