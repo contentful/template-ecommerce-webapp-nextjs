@@ -19,6 +19,10 @@ The Starter Templates experience is currently only available to new users.
 To benefit from this experience, please follow this link to create a new
 account: [https://www.contentful.com/sign-up/?action=create_starter_template](https://www.contentful.com/sign-up/?action=create_starter_template).
 
+To immediately start auto installation of this template after creating a new account,
+please follow this link:
+[https://www.contentful.com/sign-up/?action=create_starter_template&template_name=ecommerce](https://www.contentful.com/sign-up/?action=create_starter_template&template_name=ecommerce).
+
 $~$
 
 ## Features
