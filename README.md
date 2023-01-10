@@ -2,13 +2,26 @@
 
 An Ecommerce Starter Template powered by Next.js & Contentful, pre-designed with optimized & adjustable pages, components, and data management.
 
-![The homepage of the Ecommerce Starter Template](ecommerce-starter-template.jpg "The homepage of the Ecommerce Starter Template")
+![The homepage of the Ecommerce Starter Template](ecommerce-starter-template.jpg 'The homepage of the Ecommerce Starter Template')
 
 $~$
 
 ## What is Contentful?
 
 [Contentful](https://www.contentful.com/) provides content infrastructure for digital teams to power websites, apps, and devices. Unlike a CMS, Contentful was built to integrate with the modern software stack. It offers a central hub for structured content, powerful management, and delivery APIs, and a customizable web app that enables developers and content creators to ship their products faster.
+
+$~$
+
+## DISCLAIMER ⚠️
+
+The Starter Templates experience is currently only available to new users.
+
+To benefit from this experience, please follow this link to create a new
+account: [https://www.contentful.com/sign-up/?action=create_starter_template](https://www.contentful.com/sign-up/?action=create_starter_template).
+
+To immediately start auto installation of this template after creating a new account,
+please follow this link:
+[https://www.contentful.com/sign-up/?action=create_starter_template&template_name=ecommerce](https://www.contentful.com/sign-up/?action=create_starter_template&template_name=ecommerce).
 
 $~$
 
@@ -87,11 +100,11 @@ The config for both the `pre-commit` and `pre-push` hooks can be found in the `.
 
 #### Pre-commit
 
-Before allowing a commit, we require a successful result from the TypeScript compiler (`tsc`) and our `lint-staged` script will be run.  
+Before allowing a commit, we require a successful result from the TypeScript compiler (`tsc`) and our `lint-staged` script will be run.
 
 This ensures all ESLint and Prettier rules are enforced on the files that are staged to be committed.
 
-The `tsc` command is run separately from the `lint-staged` step because we require the Typescript compiler to sample _all_ files.  
+The `tsc` command is run separately from the `lint-staged` step because we require the Typescript compiler to sample _all_ files.
 
 This is important to ensure that no deviating types were introduced by the [codegen](./README.md#graphql--code-generation) for example.
 
@@ -113,9 +126,9 @@ $~$
 
 ### Contentful API & GraphQL
 
-This project makes use of Contentful's [GraphQL API](https://www.contentful.com/developers/docs/references/graphql/).  
+This project makes use of Contentful's [GraphQL API](https://www.contentful.com/developers/docs/references/graphql/).
 
-API calls made to the Contentful GraphQL endpoint are made through `graphql-request`.  
+API calls made to the Contentful GraphQL endpoint are made through `graphql-request`.
 
 The types are generated from the `.graphql` files located in the `/lib/graphql/` directory:
 
@@ -141,12 +154,12 @@ In order to (re-)generate the GraphQL schema, types and hooks, please use either
 - `yarn graphql-codegen:generate` generates a schema, types and code to fetch data from the Contentful APIs
 - `yarn graphql-codegen:watch` similar to the `generate` command, but it runs as a watch task which will rerun the steps when changes are made in the `.graphql` files
 
-The first steps of the codegen generate files that contain the GraphQL schema and matching TypeScript types.  
+The first steps of the codegen generate files that contain the GraphQL schema and matching TypeScript types.
 They're generated to the `src/lib/__generated` folder and ought to be committed once altered/added to the repository.
 
-Additionally, the codegen watches `.graphql` files in our `src` folder, if it runs successfully it generates a `__generated` folder collocated in the folder where the `.graphql` file was found.  
+Additionally, the codegen watches `.graphql` files in our `src` folder, if it runs successfully it generates a `__generated` folder collocated in the folder where the `.graphql` file was found.
 
-One exception to this rule is the `src/lib/fragments` folder which contains shared GraphQL Fragments that are used in several other queries/fragments.  
+One exception to this rule is the `src/lib/fragments` folder which contains shared GraphQL Fragments that are used in several other queries/fragments.
 
 The TS types for these files are generated in the same location, in a `__generated` folder and like the other files ought to be committed.
 
@@ -169,10 +182,10 @@ The Starter Template can be deployed to your hosting provider of choice.
 We offer integrations with Vercel and Netlify to speed up the process by clicking one of the deploy buttons below. The GitHub repository and
 the necessary environment variables keys are pre-configured in the hosting provider space.
 
-| Vercel                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Netlify                                                                                                                                                                                                                                                                                                                                           |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Vercel                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Netlify                                                                                                                                                                                                                                                                                                                                     |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-ecommerce-webapp-nextjs&env=NEXT_PUBLIC_BASE_URL,CONTENTFUL_GRAPHQL_ENDPOINT,CONTENTFUL_SPACE_ID,CONTENTFUL_DELIVERY_API_TOKEN,CONTENTFUL_PREVIEW_API_TOKEN&envDescription=API%20Keys%20needed%20for%20the%20application&envLink=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-ecommerce-webapp-nextjs%23environment-variables) | [![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-ecommerce-webapp-nextjs#NEXT_PUBLIC_BASE_URL=&CONTENTFUL_GRAPHQL_ENDPOINT=&CONTENTFUL_SPACE_ID=&CONTENTFUL_DELIVERY_API_TOKEN=&CONTENTFUL_PREVIEW_API_TOKEN=) |
-| [Environment variables docs](https://vercel.com/docs/concepts/projects/environment-variables)                                                                                                                                                                                                                                                                                                                                                                                             | [Environment variables docs](https://docs.netlify.com/environment-variables/overview/)                                                                                                                                                                                                                                                            |
+| [Environment variables docs](https://vercel.com/docs/concepts/projects/environment-variables)                                                                                                                                                                                                                                                                                                                                                                                      | [Environment variables docs](https://docs.netlify.com/environment-variables/overview/)                                                                                                                                                                                                                                                      |
 
 Make sure to add the necessary [environment variables values](./README.md#environment-variables) to the hosting provider
 environment variables.
@@ -181,7 +194,7 @@ environment variables.
 
 ### Content preview
 
-Once you have the Starter Template deployed on your hosting provider, you can update the Content preview URL in your space settings.  
+Once you have the Starter Template deployed on your hosting provider, you can update the Content preview URL in your space settings.
 
 You can follow our guide to learn how to do so: [https://www.contentful.com/help/setup-content-preview](https://www.contentful.com/help/setup-content-preview).
 
