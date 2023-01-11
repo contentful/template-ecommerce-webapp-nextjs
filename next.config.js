@@ -91,6 +91,7 @@ const sentryWebpackPluginOptions = {
   //   urlPrefix, include, ignore
 
   silent: true, // Suppresses all logs
+  ignore: [],
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
