@@ -64,6 +64,7 @@
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "@types/segment-analytics": "^0.0.34",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.32.0",
     "eslint": "8.26.0",
@@ -80,6 +81,7 @@
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "typescript": "4.9.3",
-    "typescript-graphql-request": "^4.4.6"
+    "typescript-graphql-request": "^4.4.6",
+    "typewriter": "^8.0.10"
   }
 }
