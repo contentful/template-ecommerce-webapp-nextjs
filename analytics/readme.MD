@@ -51,7 +51,7 @@ The aforementioned variables are used in a few places:
 - `src/_ctf-private/ctf-analytics` contains the logic that inject the tracking snippet and initialises the Typewriter
   config. It also sets up error handling
 - `analytics` contains all files generates by Typewriter, this readme and some utility file
-- `segment.example.yml` the template file that is going to generate our `segment.yml` file
+- `typewriter.example.yml` the template file that is going to generate our `typewriter.yml` file
 
 ### NPM scripts
 
