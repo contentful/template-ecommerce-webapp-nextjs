@@ -8,16 +8,18 @@
   },
   "scripts": {
     "generate-theme-typings": "yarn chakra-cli tokens ./src/theme/theme.ts",
-    "predev": "yarn generate-theme-typings",
+    "prepare": "husky install && yarn typewriter:init",
+    "predev": "yarn generate-theme-typings && yarn typewriter:update",
     "prebuild": "yarn generate-theme-typings",
-    "prepare": "husky install",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "graphql-codegen:generate": "graphql-codegen -r dotenv/config --config codegen.ts",
-    "graphql-codegen:watch": "graphql-codegen --watch -r dotenv/config --config codegen.ts"
+    "graphql-codegen:watch": "graphql-codegen --watch -r dotenv/config --config codegen.ts",
+    "typewriter:init": "node ./analytics/generateTypewriterConfig.js",
+    "typewriter:update": "yarn typewriter --update"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
@@ -78,10 +80,11 @@
     "husky": "^8.0.2",
     "i18next": "^21.9.2",
     "i18next-http-backend": "^1.4.4",
+    "js-yaml": "^4.1.0",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "typescript": "4.9.3",
     "typescript-graphql-request": "^4.4.6",
-    "typewriter": "^8.0.10"
+    "typewriter": "8.0.10"
   }
 }
