@@ -85,6 +85,6 @@
     "prettier": "^2.7.1",
     "typescript": "4.9.3",
     "typescript-graphql-request": "^4.4.6",
-    "typewriter": "8.0.10"
+    "typewriter": "^8.0.10"
   }
 }
