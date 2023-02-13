@@ -7,7 +7,8 @@
     "description2": "The quality of the craftsmanship and the local artisans we employ are what make Luxette our mission in life.",
     "poweredBy": "Powered by",
     "regionalSettings": "Regional Settings",
-    "language": "Language"
+    "language": "Language",
+    "manageConsent": "Manage cookie consent (Consent changes require a manual page refresh)"
   },
   "product": {
     "trendingProducts": "Trending now",
