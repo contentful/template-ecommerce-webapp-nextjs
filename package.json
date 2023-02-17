@@ -8,16 +8,18 @@
   },
   "scripts": {
     "generate-theme-typings": "yarn chakra-cli tokens ./src/theme/theme.ts",
-    "predev": "yarn generate-theme-typings",
+    "prepare": "husky install && yarn typewriter:init",
+    "predev": "yarn generate-theme-typings && yarn typewriter:update",
     "prebuild": "yarn generate-theme-typings",
-    "prepare": "husky install",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "graphql-codegen:generate": "graphql-codegen -r dotenv/config --config codegen.ts",
-    "graphql-codegen:watch": "graphql-codegen --watch -r dotenv/config --config codegen.ts"
+    "graphql-codegen:watch": "graphql-codegen --watch -r dotenv/config --config codegen.ts",
+    "typewriter:init": "node ./analytics/generateTypewriterConfig.js",
+    "typewriter:update": "yarn typewriter --update"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
@@ -30,6 +32,7 @@
   "license": "MIT",
   "dependencies": {
     "@chakra-ui/react": "^2.4.1",
+    "@contentful/experience-consent-manager": "^2.3.1",
     "@contentful/f36-icons": "^4.23.2",
     "@contentful/f36-tokens": "^4.0.1",
     "@emotion/react": "^11.10.5",
@@ -64,6 +67,7 @@
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "@types/segment-analytics": "^0.0.34",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.32.0",
     "eslint": "8.26.0",
@@ -77,9 +81,11 @@
     "husky": "^8.0.2",
     "i18next": "^21.9.2",
     "i18next-http-backend": "^1.4.4",
+    "js-yaml": "^4.1.0",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "typescript": "4.9.3",
-    "typescript-graphql-request": "^4.4.6"
+    "typescript-graphql-request": "^4.4.6",
+    "typewriter": "^8.0.10"
   }
 }

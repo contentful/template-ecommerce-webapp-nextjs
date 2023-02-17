@@ -1,4 +1,5 @@
 import { Container, Box, Text, Link, useTheme } from '@chakra-ui/react';
+import { CtfConsentManager } from '@src/_ctf-private';
 import { useTranslation } from 'next-i18next';
 
 export const Footer = () => {
@@ -23,6 +24,7 @@ export const Footer = () => {
             Contentful
           </Link>
         </Text>
+        <CtfConsentManager />
       </Container>
     </Box>
   );
