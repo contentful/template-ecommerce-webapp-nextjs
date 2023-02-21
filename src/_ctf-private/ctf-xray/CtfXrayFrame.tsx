@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 
 import { useContentfulEditorialStore } from '@src/_ctf-private';
 import { Sys } from '@src/lib/__generated/sdk';
+import typewriter from 'analytics';
 
 export interface CtfXrayFrameProps {
   children: ReactNode;
@@ -16,6 +17,18 @@ export interface CtfXrayFrameProps {
 export const CtfXrayFrame = ({ entry }: CtfXrayFrameProps) => {
   const { xray, domain } = useContentfulEditorialStore();
   const contentfulUrl = `https://app.${domain}/spaces/${entry.sys.spaceId}/entries/${entry.sys.id}`;
+
+  const handleOnClick = e => {
+    e.stopPropagation();
+
+    typewriter.contentModelInteracted({
+      entryTypeName: entry.__typename || '',
+      entryInternalName: entry.internalName || '',
+      entryLink: contentfulUrl,
+    });
+
+    window.open(contentfulUrl, '_blank', 'noopener noreferrer');
+  };
 
   return xray ? (
     <Box
@@ -35,6 +48,7 @@ export const CtfXrayFrame = ({ entry }: CtfXrayFrameProps) => {
         href={contentfulUrl}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={handleOnClick}
         display="inline-block"
         position="absolute"
         top="0"
