@@ -22,13 +22,15 @@ export const CtfSegmentAnalytics = () => {
   });
 
   const handleRouteChange = useCallback(() => {
-    analytics.page({
-      templateId: 'ecommerce',
-      xRayActive: xray,
-      previewActive: preview,
-      guestSpaceActive,
-    });
-  }, [guestSpaceActive, preview, xray]);
+    if (initialized && analytics) {
+      analytics.page({
+        templateId: 'ecommerce',
+        xRayActive: xray,
+        previewActive: preview,
+        guestSpaceActive,
+      });
+    }
+  }, [guestSpaceActive, initialized, preview, xray]);
 
   useEffect(() => {
     if (guestSpaceActive && initialized) {
