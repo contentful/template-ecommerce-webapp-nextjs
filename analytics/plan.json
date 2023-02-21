@@ -91,25 +91,6 @@
       "version": 1
     },
     {
-      "createdAt": "2023-02-21T14:24:39.000Z",
-      "deprecatedAt": "0001-01-01T00:00:00.000Z",
-      "jsonSchema": {
-        "$id": "test_event_without_props",
-        "$schema": "http://json-schema.org/draft-07/schema#",
-        "description": "THIS IS A TEST EVENT TO HELP DEBUG TYPEWRITER. IT WILL BE REMOVED LATER.",
-        "eventMetadata": {
-          "name": "test_event_without_props",
-          "type": "TRACK"
-        },
-        "properties": {},
-        "type": "object"
-      },
-      "key": "test_event_without_props",
-      "type": "TRACK",
-      "updatedAt": "2023-02-21T14:24:39.000Z",
-      "version": 1
-    },
-    {
       "createdAt": "2023-02-21T10:04:59.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z",
       "jsonSchema": {
