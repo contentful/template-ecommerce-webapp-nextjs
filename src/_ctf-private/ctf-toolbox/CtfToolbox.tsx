@@ -16,7 +16,7 @@ import {
   Input,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import React, { ChangeEvent, ReactNode } from 'react';
+import React, { ChangeEvent, ReactNode, useRef, useState, useEffect } from 'react';
 
 import ContentfulIcon from '@icons/contentful.svg';
 import {
@@ -25,6 +25,7 @@ import {
   guestSpaceRequiredParameters,
   useContentfulEditorialStore,
 } from '@src/_ctf-private';
+import typewriter from 'analytics';
 
 const ParamToggle = ({
   label,
@@ -69,9 +70,25 @@ export const CtfToolbox = () => {
   const router = useRouter();
   const { xray, preview, space_id, preview_token, delivery_token } = useContentfulEditorialStore();
 
+  const toolboxRef = useRef<HTMLDivElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const [toolboxOpen, setToolboxOpen] = useState(false);
+
   const activeGuestSpace = !!space_id && !!preview_token && !!delivery_token;
 
+  const handleToolboxInteraction = (isOpen?: boolean) => {
+    setToolboxOpen(currentState => {
+      typewriter.toolboxInteracted({ isOpen: isOpen || !currentState });
+
+      return isOpen || !currentState;
+    });
+  };
+
   const handlePreviewMode = (e: ChangeEvent<HTMLInputElement>) => {
+    typewriter.previewModeInteracted({
+      enabled: e.target.checked,
+    });
+
     router.replace({
       pathname: router.pathname,
       query: {
@@ -82,6 +99,10 @@ export const CtfToolbox = () => {
   };
 
   const handleXrayMode = (e: ChangeEvent<HTMLInputElement>) => {
+    typewriter.xrayModeInteracted({
+      enabled: e.target.checked,
+    });
+    
     router.replace({
       pathname: router.pathname,
       query: {
@@ -137,12 +158,39 @@ export const CtfToolbox = () => {
     router.reload();
   };
 
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (event.target === buttonRef.current || buttonRef.current?.contains(event.target)) return;
+
+      if (toolboxRef.current && !toolboxRef.current.contains(event.target)) {
+        handleToolboxInteraction(false);
+      }
+    };
+
+    const handleEscape = event => {
+      if (event.key === 'Escape') {
+        handleToolboxInteraction(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside, true);
+    document.addEventListener('keydown', handleEscape, true);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+      document.removeEventListener('keydown', handleEscape, true);
+    };
+  }, []);
+
   if (!activeGuestSpace && process.env.ENVIRONMENT_NAME === 'production') return null;
 
   return (
     <Menu gutter={30}>
       <MenuButton
         as={Button}
+        title="Toggle the Contentful toolbox"
+        ref={buttonRef}
+        onClick={() => handleToolboxInteraction()}
         variant="unstyled"
         position="fixed"
         zIndex={999}
@@ -162,7 +210,10 @@ export const CtfToolbox = () => {
           />
         </Flex>
       </MenuButton>
+
+      {toolboxOpen && (
       <MenuList
+        ref={toolboxRef}
         backgroundColor="white"
         borderRadius="0"
         p={0}
@@ -249,6 +300,7 @@ export const CtfToolbox = () => {
           )}
         </Box>
       </MenuList>
+      )}
     </Menu>
   );
 };
