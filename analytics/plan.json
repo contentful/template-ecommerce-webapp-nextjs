@@ -10,7 +10,6 @@
       "deprecatedAt": "0001-01-01T00:00:00.000Z",
       "jsonSchema": {
         "$id": "content_model_interacted",
-        "$schema": "http://json-schema.org/draft-07/schema#",
         "description": "Fired when a user clicks any of the links to the content models visible when the x-ray mode is active.",
         "eventMetadata": {
           "name": "content_model_interacted",
@@ -38,7 +37,7 @@
       },
       "key": "content_model_interacted",
       "type": "TRACK",
-      "updatedAt": "2023-02-16T15:29:59.000Z",
+      "updatedAt": "2023-02-21T10:25:37.000Z",
       "version": 1
     },
     {
@@ -46,7 +45,6 @@
       "deprecatedAt": "0001-01-01T00:00:00.000Z",
       "jsonSchema": {
         "$id": "guest_space_active",
-        "$schema": "http://json-schema.org/draft-07/schema#",
         "description": "Fired when a guest space is active. A guest space is active when at least a spaceId, CDA token and CPA token are provided as url parameters. Optionally a domain can be passed.\n\nGuest spaces are used for Contentful’s Entry preview links.",
         "eventMetadata": {
           "name": "guest_space_active",
@@ -64,7 +62,7 @@
       },
       "key": "guest_space_active",
       "type": "TRACK",
-      "updatedAt": "2023-02-16T15:29:59.000Z",
+      "updatedAt": "2023-02-21T10:25:37.000Z",
       "version": 1
     },
     {
@@ -72,7 +70,6 @@
       "deprecatedAt": "0001-01-01T00:00:00.000Z",
       "jsonSchema": {
         "$id": "preview_mode_interacted",
-        "$schema": "http://json-schema.org/draft-07/schema#",
         "description": "Fired when a user interacts with the preview mode checkbox in the editorial toolbox.",
         "eventMetadata": {
           "name": "preview_mode_interacted",
@@ -90,45 +87,51 @@
       },
       "key": "preview_mode_interacted",
       "type": "TRACK",
-      "updatedAt": "2023-02-16T15:29:59.000Z",
+      "updatedAt": "2023-02-21T10:25:37.000Z",
       "version": 1
     },
     {
-      "createdAt": "2023-02-16T15:29:59.000Z",
+      "createdAt": "2023-02-21T14:24:39.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z",
       "jsonSchema": {
-        "$id": "toolbox_close",
+        "$id": "test_event_without_props",
         "$schema": "http://json-schema.org/draft-07/schema#",
-        "description": "Fired when the editorial toolbox is closed.",
+        "description": "THIS IS A TEST EVENT TO HELP DEBUG TYPEWRITER. IT WILL BE REMOVED LATER.",
         "eventMetadata": {
-          "name": "toolbox_close",
+          "name": "test_event_without_props",
           "type": "TRACK"
         },
         "properties": {},
         "type": "object"
       },
-      "key": "toolbox_close",
+      "key": "test_event_without_props",
       "type": "TRACK",
-      "updatedAt": "2023-02-16T15:29:59.000Z",
+      "updatedAt": "2023-02-21T14:24:39.000Z",
       "version": 1
     },
     {
-      "createdAt": "2023-02-16T15:29:59.000Z",
+      "createdAt": "2023-02-21T10:04:59.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z",
       "jsonSchema": {
-        "$id": "toolbox_open",
-        "$schema": "http://json-schema.org/draft-07/schema#",
-        "description": "Fired when the editorial toolbox is opened.",
+        "$id": "toolbox_interacted",
+        "description": "Fired when the editorial opens or closes",
         "eventMetadata": {
-          "name": "toolbox_open",
+          "name": "toolbox_interacted",
           "type": "TRACK"
         },
-        "properties": {},
+        "properties": {
+          "isOpen": {
+            "$id": "/properties/isOpen",
+            "description": "",
+            "type": "boolean"
+          }
+        },
+        "required": ["isOpen"],
         "type": "object"
       },
-      "key": "toolbox_open",
+      "key": "toolbox_interacted",
       "type": "TRACK",
-      "updatedAt": "2023-02-16T15:29:59.000Z",
+      "updatedAt": "2023-02-21T10:25:37.000Z",
       "version": 1
     },
     {
@@ -136,7 +139,6 @@
       "deprecatedAt": "0001-01-01T00:00:00.000Z",
       "jsonSchema": {
         "$id": "xray_mode_interacted",
-        "$schema": "http://json-schema.org/draft-07/schema#",
         "description": "Fired when a user interacts with the X-ray mode checkbox in the editorial toolbox.",
         "eventMetadata": {
           "name": "xray_mode_interacted",
@@ -154,11 +156,11 @@
       },
       "key": "xray_mode_interacted",
       "type": "TRACK",
-      "updatedAt": "2023-02-16T15:29:59.000Z",
+      "updatedAt": "2023-02-21T10:25:37.000Z",
       "version": 1
     }
   ],
   "slug": "",
   "type": "LIVE",
-  "updatedAt": "2023-02-20T15:21:54.000Z"
+  "updatedAt": "2023-02-21T14:24:39.000Z"
 }

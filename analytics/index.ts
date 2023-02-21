@@ -46,6 +46,14 @@ export interface PreviewModeInteracted {
 }
 
 /**
+ * Fired when the editorial opens or closes
+ */
+export interface ToolboxInteracted {
+    isOpen: boolean;
+    [property: string]: any;
+}
+
+/**
  * Fired when a user interacts with the X-ray mode checkbox in the editorial toolbox.
  */
 export interface XrayModeInteracted {
@@ -78,6 +86,14 @@ export class Convert {
 
     public static previewModeInteractedToJson(value: PreviewModeInteracted): string {
         return JSON.stringify(uncast(value, r("PreviewModeInteracted")), null, 2);
+    }
+
+    public static toToolboxInteracted(json: string): ToolboxInteracted {
+        return cast(JSON.parse(json), r("ToolboxInteracted"));
+    }
+
+    public static toolboxInteractedToJson(value: ToolboxInteracted): string {
+        return JSON.stringify(uncast(value, r("ToolboxInteracted")), null, 2);
     }
 
     public static toXrayModeInteracted(json: string): XrayModeInteracted {
@@ -232,6 +248,9 @@ const typeMap: any = {
     ], "any"),
     "PreviewModeInteracted": o([
         { json: "enabled", js: "enabled", typ: true },
+    ], "any"),
+    "ToolboxInteracted": o([
+        { json: "isOpen", js: "isOpen", typ: true },
     ], "any"),
     "XrayModeInteracted": o([
         { json: "enabled", js: "enabled", typ: true },
@@ -458,7 +477,7 @@ function withTypewriterContext(message: Options = {}): Options {
  */
 export function contentModelInteracted(props: ContentModelInteracted, options?: Options, callback?: Callback): void {
 
-    const schema = {"$id":"content_model_interacted","$schema":"http://json-schema.org/draft-07/schema#","description":"Fired when a user clicks any of the links to the content models visible when the x-ray mode is active.","properties":{"entryInternalName":{"$id":"/properties/entryInternalName","description":"The internal name for a content model in Contentful. This is a custom field specific to templates.","type":"string"},"entryLink":{"$id":"/properties/entryLink","description":"Direct link to the entry in Contentful","type":"string"},"entryTypeName":{"$id":"/properties/entryTypeName","description":"The __typeName for an entry","type":"string"}},"required":["entryTypeName","entryLink"],"type":"object"};
+    const schema = {"$id":"content_model_interacted","description":"Fired when a user clicks any of the links to the content models visible when the x-ray mode is active.","properties":{"entryInternalName":{"$id":"/properties/entryInternalName","description":"The internal name for a content model in Contentful. This is a custom field specific to templates.","type":"string"},"entryLink":{"$id":"/properties/entryLink","description":"Direct link to the entry in Contentful","type":"string"},"entryTypeName":{"$id":"/properties/entryTypeName","description":"The __typeName for an entry","type":"string"}},"required":["entryTypeName","entryLink"],"type":"object"};
     validateAgainstSchema(props, schema);
 
     const a = analytics();
@@ -482,7 +501,7 @@ export function contentModelInteracted(props: ContentModelInteracted, options?: 
  */
 export function guestSpaceActive(props: GuestSpaceActive, options?: Options, callback?: Callback): void {
 
-    const schema = {"$id":"guest_space_active","$schema":"http://json-schema.org/draft-07/schema#","description":"Fired when a guest space is active. A guest space is active when at least a spaceId, CDA token and CPA token are provided as url parameters. Optionally a domain can be passed.\n\nGuest spaces are used for Contentful’s Entry preview links.","properties":{"spaceId":{"$id":"/properties/spaceId","description":"Unique id of a user's space","type":"string"}},"required":["spaceId"],"type":"object"};
+    const schema = {"$id":"guest_space_active","description":"Fired when a guest space is active. A guest space is active when at least a spaceId, CDA token and CPA token are provided as url parameters. Optionally a domain can be passed.\n\nGuest spaces are used for Contentful’s Entry preview links.","properties":{"spaceId":{"$id":"/properties/spaceId","description":"Unique id of a user's space","type":"string"}},"required":["spaceId"],"type":"object"};
     validateAgainstSchema(props, schema);
 
     const a = analytics();
@@ -506,12 +525,36 @@ export function guestSpaceActive(props: GuestSpaceActive, options?: Options, cal
  */
 export function previewModeInteracted(props: PreviewModeInteracted, options?: Options, callback?: Callback): void {
 
-    const schema = {"$id":"preview_mode_interacted","$schema":"http://json-schema.org/draft-07/schema#","description":"Fired when a user interacts with the preview mode checkbox in the editorial toolbox.","properties":{"enabled":{"$id":"/properties/enabled","description":"","type":"boolean"}},"required":["enabled"],"type":"object"};
+    const schema = {"$id":"preview_mode_interacted","description":"Fired when a user interacts with the preview mode checkbox in the editorial toolbox.","properties":{"enabled":{"$id":"/properties/enabled","description":"","type":"boolean"}},"required":["enabled"],"type":"object"};
     validateAgainstSchema(props, schema);
 
     const a = analytics();
     if (a) {
         a.track('preview_mode_interacted', props || {}, {...options,   context: {
+            ...(options?.context || {}),
+            typewriter: {
+                language: 'typescript',
+                version: '',
+            },
+        },}, callback);
+    }
+}
+/**
+ * Fires a 'ToolboxInteracted' track call.
+ *
+ * @param ToolboxInteracted props - The analytics properties that will be sent to Segment.
+ * @param {Object} [options] - A dictionary of options. For example, enable or disable specific destinations for the call.
+ * @param {Function} [callback] - An optional callback called after a short timeout after the analytics
+ * 	call is fired.
+ */
+export function toolboxInteracted(props: ToolboxInteracted, options?: Options, callback?: Callback): void {
+
+    const schema = {"$id":"toolbox_interacted","description":"Fired when the editorial opens or closes","properties":{"isOpen":{"$id":"/properties/isOpen","description":"","type":"boolean"}},"required":["isOpen"],"type":"object"};
+    validateAgainstSchema(props, schema);
+
+    const a = analytics();
+    if (a) {
+        a.track('toolbox_interacted', props || {}, {...options,   context: {
             ...(options?.context || {}),
             typewriter: {
                 language: 'typescript',
@@ -530,7 +573,7 @@ export function previewModeInteracted(props: PreviewModeInteracted, options?: Op
  */
 export function xrayModeInteracted(props: XrayModeInteracted, options?: Options, callback?: Callback): void {
 
-    const schema = {"$id":"xray_mode_interacted","$schema":"http://json-schema.org/draft-07/schema#","description":"Fired when a user interacts with the X-ray mode checkbox in the editorial toolbox.","properties":{"enabled":{"$id":"/properties/enabled","description":"","type":"boolean"}},"required":["enabled"],"type":"object"};
+    const schema = {"$id":"xray_mode_interacted","description":"Fired when a user interacts with the X-ray mode checkbox in the editorial toolbox.","properties":{"enabled":{"$id":"/properties/enabled","description":"","type":"boolean"}},"required":["enabled"],"type":"object"};
     validateAgainstSchema(props, schema);
 
     const a = analytics();
@@ -588,6 +631,15 @@ const clientAPI = {
      * 	call is fired.
      */
     previewModeInteracted,
+    /**
+     * Fires a 'ToolboxInteracted' track call.
+     *
+     * @param ToolboxInteracted props - The analytics properties that will be sent to Segment.
+     * @param {Object} [options] - A dictionary of options. For example, enable or disable specific destinations for the call.
+     * @param {Function} [callback] - An optional callback called after a short timeout after the analytics
+     * 	call is fired.
+     */
+    toolboxInteracted,
     /**
      * Fires a 'XrayModeInteracted' track call.
      *
