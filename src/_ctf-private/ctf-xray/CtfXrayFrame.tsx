@@ -1,5 +1,4 @@
 import { Box, Text } from '@chakra-ui/react';
-import Link from 'next/link';
 import { ReactNode } from 'react';
 
 import { useContentfulEditorialStore } from '@src/_ctf-private';
@@ -44,11 +43,8 @@ export const CtfXrayFrame = ({ entry }: CtfXrayFrameProps) => {
       borderTopWidth="1px"
       borderBottomWidth="1px">
       <Box
-        as={Link}
-        href={contentfulUrl}
-        target="_blank"
-        rel="noopener noreferrer"
         onClick={handleOnClick}
+        cursor="pointer"
         display="inline-block"
         position="absolute"
         top="0"
