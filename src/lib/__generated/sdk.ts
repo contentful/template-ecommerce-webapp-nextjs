@@ -230,7 +230,7 @@ export enum AssetOrder {
   WidthDesc = 'width_DESC'
 }
 
-/** To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/componentSeo) */
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
 export type ComponentSeo = Entry & {
   __typename?: 'ComponentSeo';
   canonicalUrl?: Maybe<Scalars['String']>;
@@ -246,49 +246,49 @@ export type ComponentSeo = Entry & {
 };
 
 
-/** To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/componentSeo) */
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
 export type ComponentSeoCanonicalUrlArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/componentSeo) */
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
 export type ComponentSeoInternalNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/componentSeo) */
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
 export type ComponentSeoLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-/** To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/componentSeo) */
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
 export type ComponentSeoNofollowArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/componentSeo) */
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
 export type ComponentSeoNoindexArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/componentSeo) */
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
 export type ComponentSeoPageDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/componentSeo) */
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
 export type ComponentSeoPageTitleArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/componentSeo) */
+/** These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo) */
 export type ComponentSeoShareImagesCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -550,7 +550,7 @@ export type ImageTransformOptions = {
   width?: InputMaybe<Scalars['Dimension']>;
 };
 
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageLanding) */
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
 export type PageLanding = Entry & {
   __typename?: 'PageLanding';
   contentfulMetadata: ContentfulMetadata;
@@ -565,38 +565,38 @@ export type PageLanding = Entry & {
 };
 
 
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageLanding) */
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
 export type PageLandingHeroBannerHeadlineArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageLanding) */
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
 export type PageLandingHeroBannerHeadlineColorArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageLanding) */
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
 export type PageLandingHeroBannerImageArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
 
 
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageLanding) */
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
 export type PageLandingInternalNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageLanding) */
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
 export type PageLandingLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageLanding) */
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
 export type PageLandingProductsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -605,7 +605,7 @@ export type PageLandingProductsCollectionArgs = {
 };
 
 
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageLanding) */
+/** This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
 export type PageLandingSeoFieldsArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -645,7 +645,6 @@ export type PageLandingFilter = {
   internalName_not?: InputMaybe<Scalars['String']>;
   internalName_not_contains?: InputMaybe<Scalars['String']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  products?: InputMaybe<CfPageProductNestedFilter>;
   productsCollection_exists?: InputMaybe<Scalars['Boolean']>;
   seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
   seoFields_exists?: InputMaybe<Scalars['Boolean']>;
@@ -690,7 +689,7 @@ export type PageLandingProductsCollection = {
   total: Scalars['Int'];
 };
 
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageProduct) */
+/** This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct) */
 export type PageProduct = Entry & {
   __typename?: 'PageProduct';
   contentfulMetadata: ContentfulMetadata;
@@ -708,44 +707,44 @@ export type PageProduct = Entry & {
 };
 
 
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageProduct) */
+/** This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct) */
 export type PageProductDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageProduct) */
+/** This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct) */
 export type PageProductFeaturedProductImageArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
 
 
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageProduct) */
+/** This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct) */
 export type PageProductInternalNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageProduct) */
+/** This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct) */
 export type PageProductLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageProduct) */
+/** This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct) */
 export type PageProductNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageProduct) */
+/** This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct) */
 export type PageProductPriceArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageProduct) */
+/** This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct) */
 export type PageProductProductImagesCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -754,7 +753,7 @@ export type PageProductProductImagesCollectionArgs = {
 };
 
 
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageProduct) */
+/** This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct) */
 export type PageProductRelatedProductsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -763,14 +762,14 @@ export type PageProductRelatedProductsCollectionArgs = {
 };
 
 
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageProduct) */
+/** This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct) */
 export type PageProductSeoFieldsArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
 
 
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageProduct) */
+/** This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct) */
 export type PageProductSlugArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
@@ -819,7 +818,6 @@ export type PageProductFilter = {
   price_not?: InputMaybe<Scalars['Float']>;
   price_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
   productImagesCollection_exists?: InputMaybe<Scalars['Boolean']>;
-  relatedProducts?: InputMaybe<CfPageProductNestedFilter>;
   relatedProductsCollection_exists?: InputMaybe<Scalars['Boolean']>;
   seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
   seoFields_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1068,54 +1066,6 @@ export type CfComponentSeoNestedFilter = {
   pageTitle_not_contains?: InputMaybe<Scalars['String']>;
   pageTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   shareImagesCollection_exists?: InputMaybe<Scalars['Boolean']>;
-  sys?: InputMaybe<SysFilter>;
-};
-
-export type CfPageProductNestedFilter = {
-  AND?: InputMaybe<Array<InputMaybe<CfPageProductNestedFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<CfPageProductNestedFilter>>>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  description?: InputMaybe<Scalars['String']>;
-  description_contains?: InputMaybe<Scalars['String']>;
-  description_exists?: InputMaybe<Scalars['Boolean']>;
-  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  description_not?: InputMaybe<Scalars['String']>;
-  description_not_contains?: InputMaybe<Scalars['String']>;
-  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  featuredProductImage_exists?: InputMaybe<Scalars['Boolean']>;
-  internalName?: InputMaybe<Scalars['String']>;
-  internalName_contains?: InputMaybe<Scalars['String']>;
-  internalName_exists?: InputMaybe<Scalars['Boolean']>;
-  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  internalName_not?: InputMaybe<Scalars['String']>;
-  internalName_not_contains?: InputMaybe<Scalars['String']>;
-  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  name?: InputMaybe<Scalars['String']>;
-  name_contains?: InputMaybe<Scalars['String']>;
-  name_exists?: InputMaybe<Scalars['Boolean']>;
-  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  name_not?: InputMaybe<Scalars['String']>;
-  name_not_contains?: InputMaybe<Scalars['String']>;
-  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  price?: InputMaybe<Scalars['Float']>;
-  price_exists?: InputMaybe<Scalars['Boolean']>;
-  price_gt?: InputMaybe<Scalars['Float']>;
-  price_gte?: InputMaybe<Scalars['Float']>;
-  price_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
-  price_lt?: InputMaybe<Scalars['Float']>;
-  price_lte?: InputMaybe<Scalars['Float']>;
-  price_not?: InputMaybe<Scalars['Float']>;
-  price_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
-  productImagesCollection_exists?: InputMaybe<Scalars['Boolean']>;
-  relatedProductsCollection_exists?: InputMaybe<Scalars['Boolean']>;
-  seoFields_exists?: InputMaybe<Scalars['Boolean']>;
-  slug?: InputMaybe<Scalars['String']>;
-  slug_contains?: InputMaybe<Scalars['String']>;
-  slug_exists?: InputMaybe<Scalars['Boolean']>;
-  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  slug_not?: InputMaybe<Scalars['String']>;
-  slug_not_contains?: InputMaybe<Scalars['String']>;
-  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   sys?: InputMaybe<SysFilter>;
 };
 
