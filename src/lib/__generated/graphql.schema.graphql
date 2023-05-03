@@ -120,7 +120,7 @@ enum AssetOrder {
 }
 
 """
-These fields are used to add SEO related properties to the various pages that we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo)
+To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/componentSeo)
 """
 type ComponentSeo implements Entry {
   canonicalUrl(locale: String): String
@@ -410,7 +410,7 @@ input ImageTransformOptions {
 }
 
 """
-This would serve as the entry point for the app (Homepage) [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding)
+To have an entry point for the app [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageLanding)
 """
 type PageLanding implements Entry {
   contentfulMetadata: ContentfulMetadata!
@@ -457,6 +457,7 @@ input PageLandingFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
+  products: cfPageProductNestedFilter
   productsCollection_exists: Boolean
   seoFields: cfComponentSeoNestedFilter
   seoFields_exists: Boolean
@@ -492,7 +493,7 @@ type PageLandingProductsCollection {
 }
 
 """
-This model is used to output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct)
+To output data for a single product [See type definition](https://app.contentful.com/spaces/sbppkoieho0s/content_types/pageProduct)
 """
 type PageProduct implements Entry {
   contentfulMetadata: ContentfulMetadata!
@@ -552,6 +553,7 @@ input PageProductFilter {
   price_not: Float
   price_not_in: [Float]
   productImagesCollection_exists: Boolean
+  relatedProducts: cfPageProductNestedFilter
   relatedProductsCollection_exists: Boolean
   seoFields: cfComponentSeoNestedFilter
   seoFields_exists: Boolean
@@ -699,5 +701,53 @@ input cfComponentSeoNestedFilter {
   pageTitle_not_contains: String
   pageTitle_not_in: [String]
   shareImagesCollection_exists: Boolean
+  sys: SysFilter
+}
+
+input cfPageProductNestedFilter {
+  AND: [cfPageProductNestedFilter]
+  OR: [cfPageProductNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  featuredProductImage_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  price: Float
+  price_exists: Boolean
+  price_gt: Float
+  price_gte: Float
+  price_in: [Float]
+  price_lt: Float
+  price_lte: Float
+  price_not: Float
+  price_not_in: [Float]
+  productImagesCollection_exists: Boolean
+  relatedProductsCollection_exists: Boolean
+  seoFields_exists: Boolean
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
   sys: SysFilter
 }
