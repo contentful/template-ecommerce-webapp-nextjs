@@ -94,7 +94,7 @@ export const HeroBanner = ({
             //   locale: router.locale,
             // })}
             imageProps={{
-              sizes: '20vw',
+              sizes: '100vw',
             }}
             {...heroBannerImage}
           />
