@@ -199,11 +199,14 @@ environment variables.
 
 ---
 
-### Content preview
+### Content preview & live preview
 
 Once you have the Starter Template deployed on your hosting provider, you can update the Content preview URL in your space settings.
 
 You can follow our guide to learn how to do so: [https://www.contentful.com/help/setup-content-preview](https://www.contentful.com/help/setup-content-preview/?utm_source=github.com-preview-guide&utm_medium=referral&utm_campaign=template-ecommerce-webapp-nextjs).
+
+For the live preview the basic field tagging for the inspector mode and live updates are already implemented.
+For custom components, you can find the instructions at our [guide](https://www.contentful.com/developers/docs/tutorials/general/live-preview/).
 
 $~$
 

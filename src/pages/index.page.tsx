@@ -1,6 +1,8 @@
 import { Box } from '@chakra-ui/react';
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
 import { HeroBanner } from '@src/components/features/hero-banner';
 import { ProductTileGrid } from '@src/components/features/product';
@@ -8,8 +10,10 @@ import { SeoFields } from '@src/components/features/seo';
 import { client } from '@src/lib/client';
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
 
-const Page = ({ page }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation();
+  const { locale } = useRouter();
+  const page = useContentfulLiveUpdates(props.page, locale || '');
 
   return (
     <>

@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { CtfImage } from '@src/components/features/contentful/ctf-image/CtfImage';
 import { HEADER_HEIGHT } from '@src/components/templates/header';
 import { PageLandingFieldsFragment } from '@src/lib/__generated/sdk';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 
 const StyledBox = styled(Box)`
   img {
@@ -24,6 +25,7 @@ export const HeroBanner = ({
   heroBannerHeadline,
   heroBannerHeadlineColor,
   heroBannerImage,
+  sys: { id: entryId },
 }: PageLandingFieldsFragment) => {
   const router = useRouter();
 
@@ -85,8 +87,14 @@ export const HeroBanner = ({
         maxHeight={{ base: '50vh', lg: '80vh' }}>
         {heroBannerImage?.url && (
           <CtfImage
+            //TODO: tagging isn't working here
+            // livePreviewProps={ContentfulLivePreview.getProps({
+            //   entryId,
+            //   fieldId: 'heroBannerImage',
+            //   locale: router.locale,
+            // })}
             imageProps={{
-              sizes: '100vw',
+              sizes: '20vw',
             }}
             {...heroBannerImage}
           />
@@ -107,6 +115,11 @@ export const HeroBanner = ({
               opacity: headingVisible ? 1 : 0,
             }}>
             <Heading
+              {...ContentfulLivePreview.getProps({
+                entryId,
+                fieldId: 'heroBannerHeadline',
+                locale: router.locale,
+              })}
               ref={headingRef}
               as="h1"
               letterSpacing="-0.11em"
