@@ -1,4 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import localFont from '@next/font/local';
 import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
@@ -7,6 +8,7 @@ import { CtfCustomQueryClientProvider } from '@src/_ctf-private';
 import { CtfSegmentAnalytics } from '@src/_ctf-private/ctf-analytics';
 import { Layout } from '@src/components/templates/layout';
 import { theme } from '@src/theme';
+import '@contentful/live-preview/style.css';
 
 const spaceGrotesk = localFont({
   src: [
@@ -62,6 +64,8 @@ const spaceGrotesk = localFont({
     },
   ],
 });
+
+ContentfulLivePreview.init();
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
