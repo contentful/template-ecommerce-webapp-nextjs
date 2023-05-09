@@ -5,7 +5,6 @@ import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 
 import { useProductPage } from '@src/_ctf-private';
-import { CtfXrayFrameDynamic } from '@src/_ctf-private/ctf-xray';
 import { ProductDetails, ProductTileGrid } from '@src/components/features/product';
 import { SeoFields } from '@src/components/features/seo';
 import { client } from '@src/lib/client';
@@ -24,7 +23,7 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   if (!product) return null;
 
   return (
-    <CtfXrayFrameDynamic entry={product}>
+    <>
       {product.seoFields && <SeoFields {...product.seoFields} />}
       <ProductDetails {...product} />
       {product.relatedProductsCollection?.items && (
@@ -40,7 +39,7 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
           />
         </Box>
       )}
-    </CtfXrayFrameDynamic>
+    </>
   );
 };
 
