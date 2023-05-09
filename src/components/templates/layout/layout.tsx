@@ -6,6 +6,7 @@ import { Footer } from '../footer';
 import { Header } from '../header';
 
 import { CtfToolboxDynamic } from '@src/_ctf-private';
+import { SignupBanner } from '@src/_ctf-private/ctf-sign-up-banner';
 
 interface LayoutPropsInterface {
   children: ReactNode;
@@ -19,6 +20,7 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
 
   return (
     <>
+      <SignupBanner />
       <Header
         borderBottom={isHomePage ? '' : '1px'}
         borderColor={isHomePage ? null : theme.f36.gray200}
