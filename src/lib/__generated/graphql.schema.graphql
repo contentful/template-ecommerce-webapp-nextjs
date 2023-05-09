@@ -120,7 +120,7 @@ enum AssetOrder {
 }
 
 """
-To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/k6wz64nn0wjv/content_types/componentSeo)
+To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo)
 """
 type ComponentSeo implements Entry {
   canonicalUrl(locale: String): String
@@ -410,7 +410,7 @@ input ImageTransformOptions {
 }
 
 """
-To have an entry point for the app [See type definition](https://app.contentful.com/spaces/k6wz64nn0wjv/content_types/pageLanding)
+To have an entry point for the app [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding)
 """
 type PageLanding implements Entry {
   contentfulMetadata: ContentfulMetadata!
@@ -493,7 +493,7 @@ type PageLandingProductsCollection {
 }
 
 """
-To output data for a single product [See type definition](https://app.contentful.com/spaces/k6wz64nn0wjv/content_types/pageProduct)
+To output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct)
 """
 type PageProduct implements Entry {
   contentfulMetadata: ContentfulMetadata!
