@@ -8,7 +8,6 @@ import CfLogo from '@icons/cf-logo.svg';
 export const SignupBanner = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
   const theme = useTheme();
-  // const MotionButton = motion(Button, { forwardMotionProps: true });
   const signupLink =
     'https://www.contentful.com/starter-templates/ecommerce-website/sign-up/?action=create_starter_template&template_name=ecommerce';
   const systemUIFontFamilies =
