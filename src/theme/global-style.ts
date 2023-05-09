@@ -8,7 +8,6 @@ export const globalStyle: SystemStyleObject = {
     flexDirection: 'column',
     minHeight: '100%',
     color: tokens.gray800,
-    overflowX: 'hidden',
   },
   '#__next': {
     display: 'flex',
