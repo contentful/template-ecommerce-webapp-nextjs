@@ -7,7 +7,7 @@ import { CtfXrayFrameDynamic } from '@src/_ctf-private/ctf-xray';
 import { HeroBanner } from '@src/components/features/hero-banner';
 import { ProductTileGrid } from '@src/components/features/product';
 import { SeoFields } from '@src/components/features/seo';
-import { client } from '@src/lib/client';
+import { client, previewClient } from '@src/lib/client';
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
 
 const Page = ({ page: ssrPage }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
@@ -41,9 +41,11 @@ const Page = ({ page: ssrPage }: InferGetServerSidePropsType<typeof getServerSid
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({ locale, preview }) => {
   try {
-    const data = await client.pageLanding({ locale });
+    const gqlClient = preview ? previewClient : client;
+
+    const data = await gqlClient.pageLanding({ locale, preview });
 
     const page = data.pageLandingCollection?.items[0];
 
