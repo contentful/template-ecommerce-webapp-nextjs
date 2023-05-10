@@ -2,6 +2,7 @@ import { Box, Button, Container, Flex, Text, useTheme } from '@chakra-ui/react';
 import Link from 'next/link';
 
 import CfLogo from '@icons/cf-logo.svg';
+import typewriter from 'analytics';
 
 export const SignupBanner = () => {
   const theme = useTheme();
@@ -9,6 +10,7 @@ export const SignupBanner = () => {
     'https://www.contentful.com/starter-templates/ecommerce-website/sign-up/?action=create_starter_template&template_name=ecommerce';
   const systemUIFontFamilies =
     '"Avenir Next W01", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+  const handleSignUpLinkClick = () => typewriter.signUpBannerInteracted({ ctaClicked: true });
 
   return (
     <Box position="sticky" top="0" bg="#0033A3" zIndex="200" height="54px">
@@ -32,7 +34,7 @@ export const SignupBanner = () => {
             The content on this template is managed via Contentful
           </Text>
 
-          <Link href={signupLink} target="_blank">
+          <Link href={signupLink} target="_blank" onClick={handleSignUpLinkClick}>
             <Button
               transition="all .4s ease"
               _hover={{
