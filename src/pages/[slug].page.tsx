@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 import { ProductDetails, ProductTileGrid } from '@src/components/features/product';
 import { SeoFields } from '@src/components/features/seo';
-import { client } from '@src/lib/client';
+import { client, previewClient } from '@src/lib/client';
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
 
 const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
@@ -35,15 +35,17 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params, locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params, locale, preview }) => {
   if (!params?.slug || !locale) {
     return {
       notFound: true,
     };
   }
 
+  const gqlClient = preview ? previewClient : client;
+
   try {
-    const data = await client.pageProduct({ slug: params.slug.toString(), locale });
+    const data = await gqlClient.pageProduct({ slug: params.slug.toString(), locale, preview });
     const product = data.pageProductCollection?.items[0];
 
     if (!product) {
