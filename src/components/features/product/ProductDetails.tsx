@@ -1,5 +1,5 @@
 import { Box, Container, Flex, Grid, GridItem, Heading, Text, useTheme } from '@chakra-ui/react';
-import { ContentfulLivePreview } from '@contentful/live-preview';
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import { useRouter } from 'next/router';
 
 import { CtfImage } from '@src/components/features/contentful/ctf-image';
@@ -17,6 +17,7 @@ export const ProductDetails = ({
 }: PageProductFieldsFragment) => {
   const theme = useTheme();
   const { locale } = useRouter();
+  const inspectorProps = useContentfulInspectorMode({ entryId, locale });
 
   return (
     <Container mt={{ base: 6, lg: 16 }}>
@@ -25,11 +26,7 @@ export const ProductDetails = ({
           <Flex flexDirection="column" gap={{ base: 3, lg: 5 }}>
             {featuredProductImage && (
               <CtfImage
-                livePreviewProps={ContentfulLivePreview.getProps({
-                  entryId,
-                  fieldId: 'featuredProductImage',
-                  locale,
-                })}
+                livePreviewProps={inspectorProps({ fieldId: 'featuredProductImage' })}
                 {...featuredProductImage}
               />
             )}
@@ -37,11 +34,7 @@ export const ProductDetails = ({
               productImagesCollection.items.map(image => {
                 return image ? (
                   <CtfImage
-                    livePreviewProps={ContentfulLivePreview.getProps({
-                      entryId,
-                      fieldId: 'productImages',
-                      locale,
-                    })}
+                    livePreviewProps={inspectorProps({ fieldId: 'productImages' })}
                     key={image.sys.id}
                     imageProps={{
                       sizes: '(max-width: 1200px) 70vw, 100vw',
@@ -62,36 +55,15 @@ export const ProductDetails = ({
             px={{ base: 4, lg: 6 }}
             pt={{ base: 6, lg: 6 }}
             pb={{ base: 8, lg: 14 }}>
-            <Heading
-              {...ContentfulLivePreview.getProps({
-                entryId,
-                fieldId: 'name',
-                locale,
-              })}
-              as="h1"
-              variant="h3">
+            <Heading {...inspectorProps({ fieldId: 'name' })} as="h1" variant="h3">
               {name}
             </Heading>
             {price && (
-              <Text
-                {...ContentfulLivePreview.getProps({
-                  entryId,
-                  fieldId: 'price',
-                  locale,
-                })}
-                mt={1}
-                fontWeight="500">
+              <Text {...inspectorProps({ fieldId: 'price' })} mt={1} fontWeight="500">
                 <FormatCurrency value={price} />
               </Text>
             )}
-            <Text
-              {...ContentfulLivePreview.getProps({
-                entryId,
-                fieldId: 'description',
-                locale,
-              })}
-              mt={5}
-              color={theme.f36.gray700}>
+            <Text {...inspectorProps({ fieldId: 'description' })} mt={5} color={theme.f36.gray700}>
               {description}
             </Text>
 
