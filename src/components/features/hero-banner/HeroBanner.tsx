@@ -80,7 +80,12 @@ export const HeroBanner = ({
   }, [headingVisible, router.events, router.query]);
 
   return (
-    <Grid position="relative" gridRow={2} gridColumn={1} mt={`-${HEADER_HEIGHT}px`}>
+    <Grid
+      position="relative"
+      gridRow={2}
+      gridColumn={1}
+      mt={`-${HEADER_HEIGHT}px`}
+      {...inspectorProps({ fieldId: 'heroBannerImage' })}>
       <StyledBox
         gridColumnStart={2}
         zIndex={0}
