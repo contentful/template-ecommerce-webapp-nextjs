@@ -16,17 +16,19 @@ export const ProductTile = ({
   const { locale } = useRouter();
   const inspectorProps = useContentfulInspectorMode({ entryId, locale });
   return slug ? (
-    <Box as={Link} href={slug}>
-      {featuredProductImage && (
-        <Box {...inspectorProps({ fieldId: 'internalName' })} borderRadius={4} overflow="hidden">
-          <CtfImage {...featuredProductImage} />
-        </Box>
-      )}
-      {price && (
-        <Text {...inspectorProps({ fieldId: 'price' })} mt={3} fontWeight="500">
-          <FormatCurrency value={price} />
-        </Text>
-      )}
-    </Box>
+    <div {...inspectorProps({ fieldId: 'featuredProductImage' })}>
+      <Box as={Link} href={slug}>
+        {featuredProductImage && (
+          <Box borderRadius={4} overflow="hidden">
+            <CtfImage {...featuredProductImage} />
+          </Box>
+        )}
+        {price && (
+          <Text {...inspectorProps({ fieldId: 'price' })} mt={3} fontWeight="500">
+            <FormatCurrency value={price} />
+          </Text>
+        )}
+      </Box>
+    </div>
   ) : null;
 };
