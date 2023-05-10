@@ -199,7 +199,7 @@ environment variables.
 
 ---
 
-### Content preview & live preview
+## Content preview & live preview
 
 Our Starter Templates are configured to make use of Next.js' [preview mode](https://nextjs.org/docs/advanced-features/preview-mode). To make use of Contentful's Content Preview we requires a few changes to be made in the code, and in Contentful.
 
