@@ -11,7 +11,7 @@ export const SignupBanner = () => {
     '"Avenir Next W01", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
   return (
-    <Box position="sticky" top="0" bg="#0033A3" zIndex="200">
+    <Box position="sticky" top="0" bg="#0033A3" zIndex="200" height="54px">
       <Container py="2" position="relative" centerContent>
         <Flex alignItems="center" gap="4" justifyContent="center">
           <Text
@@ -38,13 +38,14 @@ export const SignupBanner = () => {
               _hover={{
                 bg: '#EFC800',
               }}
+              color="#464E5B"
               fontSize="14px"
               fontFamily={systemUIFontFamilies}
               bg="#FFDA00"
-              borderRadius="25px"
+              borderRadius="50px"
               fontWeight="600"
-              pl="24px"
-              pr="24px">
+              px="24px"
+              height="38px">
               <Text
                 fontSize="14px"
                 fontWeight="600"
