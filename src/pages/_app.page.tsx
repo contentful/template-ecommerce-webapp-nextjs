@@ -1,5 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import { ContentfulLivePreview } from '@contentful/live-preview';
+import { ContentfulLivePreviewProvider } from '@contentful/live-preview/react';
 import localFont from '@next/font/local';
 import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
@@ -65,25 +65,27 @@ const spaceGrotesk = localFont({
   ],
 });
 
-ContentfulLivePreview.init();
-
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <CtfCustomQueryClientProvider>
-      <CtfSegmentAnalytics />
-      <ChakraProvider
-        theme={{
-          ...theme,
-          fonts: {
-            heading: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.heading}`,
-            body: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.body}`,
-          },
-        }}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ChakraProvider>
-    </CtfCustomQueryClientProvider>
+    <ContentfulLivePreviewProvider
+      enableInspectorMode={pageProps.previewActive}
+      enableLiveUpdates={pageProps.previewActive}>
+      <CtfCustomQueryClientProvider>
+        <CtfSegmentAnalytics />
+        <ChakraProvider
+          theme={{
+            ...theme,
+            fonts: {
+              heading: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.heading}`,
+              body: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.body}`,
+            },
+          }}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ChakraProvider>
+      </CtfCustomQueryClientProvider>
+    </ContentfulLivePreviewProvider>
   );
 };
 

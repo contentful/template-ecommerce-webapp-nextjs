@@ -1,5 +1,5 @@
 import { Box, Text } from '@chakra-ui/react';
-import { ContentfulLivePreview } from '@contentful/live-preview';
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -14,29 +14,16 @@ export const ProductTile = ({
   sys: { id: entryId },
 }: PageProductFieldsFragment) => {
   const { locale } = useRouter();
+  const inspectorProps = useContentfulInspectorMode({ entryId, locale });
   return slug ? (
     <Box as={Link} href={slug}>
       {featuredProductImage && (
-        <Box
-          {...ContentfulLivePreview.getProps({
-            entryId,
-            fieldId: 'internalName',
-            locale,
-          })}
-          borderRadius={4}
-          overflow="hidden">
+        <Box {...inspectorProps({ fieldId: 'internalName' })} borderRadius={4} overflow="hidden">
           <CtfImage {...featuredProductImage} />
         </Box>
       )}
       {price && (
-        <Text
-          {...ContentfulLivePreview.getProps({
-            entryId,
-            fieldId: 'price',
-            locale,
-          })}
-          mt={3}
-          fontWeight="500">
+        <Text {...inspectorProps({ fieldId: 'price' })} mt={3} fontWeight="500">
           <FormatCurrency value={price} />
         </Text>
       )}
