@@ -14,12 +14,13 @@ import { getServerSideTranslations } from '@src/pages/utils/get-serverside-trans
 const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation();
   const { locale } = useRouter();
-  const ssrPage = useContentfulLiveUpdates(props.page, locale || '');
 
   /**
    * TODO: this is a main-private feature, and should be removed from the main branch during the split
    */
-  const { data: page } = useLandingPage({ initialData: ssrPage });
+  const { data } = useLandingPage({ initialData: props.page });
+
+  const page = useContentfulLiveUpdates(data, locale || '');
 
   if (!page) return;
 
