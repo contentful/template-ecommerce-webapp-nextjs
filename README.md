@@ -199,7 +199,7 @@ environment variables.
 
 ---
 
-## Content preview
+## Content preview & live preview
 
 Our Starter Templates are configured to make use of Next.js' [preview mode](https://nextjs.org/docs/advanced-features/preview-mode). To make use of Contentful's Content Preview we requires a few changes to be made in the code, and in Contentful.
 
@@ -207,10 +207,10 @@ Our Starter Templates are configured to make use of Next.js' [preview mode](http
 
 1. Set a unique value for `process.env.CONTENTFUL_PREVIEW_SECRET` in your environment variables. This value should be kept secret and only known to the API route and the CMS.
 2. Configure the entry preview URLs in Contentful to match the preview API route's URL structure. This can be done in the Contentful web interface under "Settings" for each content type. For more information see: https://www.contentful.com/help/setup-content-preview/#preview-content-in-your-online-environment
-3. The preview API route is already written in the app and can be found in `pages/api/preview.js`. This route checks for a valid secret and slug before redirecting to the corresponding page*.
+3. The preview API route is already written in the app and can be found in `pages/api/preview.js`. This route checks for a valid secret and slug before redirecting to the corresponding page\*.
 4. To exit preview mode, use the `clearPreviewData` method and redirect the user back to the index page. This route is already written in the app and can be found in `pages/api/exit-preview.js`.
 
-_*The `slug` field is optional; When not passed we redirect the page to the root of the domain._
+_\*The `slug` field is optional; When not passed we redirect the page to the root of the domain._
 
 ### Adjustments in Contentful
 
@@ -220,7 +220,11 @@ _*The `slug` field is optional; When not passed we redirect the page to the root
 4. Now, when you view an unpublished entry in Contentful, you should see a "Preview" button that will take you to the preview URL for that entry. Clicking this button should show you a preview of the entry on your Next.js site, using the preview API route that we set up earlier.
 
 ### Exiting the Content Preview
+
 Once the preview is enabled, it persists for the [entire session](https://nextjs.org/docs/advanced-features/preview-mode#clear-the-preview-mode-cookies). To exit preview mode, use the `clearPreviewData` method and redirect the user back to the index page. This route is already written in the app and can be found in `pages/api/exit-preview.js`.
+
+For the live preview the basic field tagging for the inspector mode and live updates are already implemented.
+For custom components, you can find the instructions at our [guide](https://www.contentful.com/developers/docs/tutorials/general/live-preview/).
 
 $~$
 
