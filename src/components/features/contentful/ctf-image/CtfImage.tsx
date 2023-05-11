@@ -1,12 +1,21 @@
+import { TagAttributes } from '@contentful/live-preview/dist/types';
 import NextImage, { ImageProps as NextImageProps } from 'next/image';
 
 import { ImageFieldsFragment } from '@src/lib/__generated/sdk';
 
 interface ImageProps extends ImageFieldsFragment {
   imageProps?: Omit<NextImageProps, 'src' | 'alt'>;
+  livePreviewProps?: Record<TagAttributes, string | null | undefined> | null;
 }
 
-export const CtfImage = ({ url, width, height, title, imageProps }: ImageProps) => {
+export const CtfImage = ({
+  url,
+  width,
+  height,
+  title,
+  imageProps,
+  livePreviewProps,
+}: ImageProps) => {
   if (!url || !width || !height) return null;
 
   const blurURL = new URL(url);
@@ -22,6 +31,7 @@ export const CtfImage = ({ url, width, height, title, imageProps }: ImageProps) 
       placeholder="blur"
       blurDataURL={blurURL.toString()}
       {...imageProps}
+      {...livePreviewProps}
     />
   );
 };
