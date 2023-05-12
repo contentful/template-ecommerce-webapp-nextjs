@@ -203,7 +203,7 @@ environment variables.
 
 ---
 
-## Content preview
+## Content preview & live preview
 
 Our Starter Templates are configured to make use of Next.js' [draft mode](https://nextjs.org/docs/pages/building-your-application/configuring/draft-mode). To make use of Contentful's Content Preview we requires a few changes to be made in the code, and in Contentful.
 
