@@ -1,8 +1,8 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import { ContentfulLivePreviewProvider } from '@contentful/live-preview/react';
-import localFont from '@next/font/local';
 import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
+import localFont from 'next/font/local';
 
 import { CtfCustomQueryClientProvider } from '@src/_ctf-private';
 import { CtfSegmentAnalytics } from '@src/_ctf-private/ctf-analytics';
