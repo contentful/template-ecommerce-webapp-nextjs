@@ -24,7 +24,7 @@ export default async (req, res) => {
         throw Error();
       }
 
-      // Enable Preview Mode by setting the cookies
+      // Enable Draft Mode by setting the cookies
       res.setDraftMode({ enable: true });
 
       // Redirect to the path from the fetched product
@@ -43,7 +43,7 @@ export default async (req, res) => {
         throw Error();
       }
 
-      // Enable Preview Mode by setting the cookies
+      // Enable Draft Mode by setting the cookies
       res.setDraftMode({ enable: true });
 
       // Redirect to the root
