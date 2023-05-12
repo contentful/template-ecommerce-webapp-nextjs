@@ -1,27 +1,31 @@
 import { Box } from '@chakra-ui/react';
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
 import { useLandingPage } from '@src/_ctf-private';
-import { CtfXrayFrameDynamic } from '@src/_ctf-private/ctf-xray';
 import { HeroBanner } from '@src/components/features/hero-banner';
 import { ProductTileGrid } from '@src/components/features/product';
 import { SeoFields } from '@src/components/features/seo';
 import { client, previewClient } from '@src/lib/client';
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
 
-const Page = ({ page: ssrPage }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation();
+  const { locale } = useRouter();
 
   /**
    * TODO: this is a main-private feature, and should be removed from the main branch during the split
    */
-  const { data: page } = useLandingPage({ initialData: ssrPage });
+  const { data } = useLandingPage({ initialData: props.page });
+
+  const page = useContentfulLiveUpdates(data, locale || '');
 
   if (!page) return;
 
   return (
-    <CtfXrayFrameDynamic entry={page}>
+    <>
       {page.seoFields && <SeoFields {...page.seoFields} />}
       <HeroBanner {...page} />
       {page.productsCollection?.items && (
@@ -37,7 +41,7 @@ const Page = ({ page: ssrPage }: InferGetServerSidePropsType<typeof getServerSid
           />
         </Box>
       )}
-    </CtfXrayFrameDynamic>
+    </>
   );
 };
 
