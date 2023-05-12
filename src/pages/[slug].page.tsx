@@ -13,12 +13,16 @@ import { getServerSideTranslations } from '@src/pages/utils/get-serverside-trans
 const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation();
   const { locale } = useRouter();
-  const ssrProduct = useContentfulLiveUpdates(props.product, locale || '');
 
   /**
    * TODO: this is a main-private feature, and should be removed from the main branch during the split
    */
-  const { data: product } = useProductPage({ slug: ssrProduct.slug, initialData: ssrProduct });
+  const { data } = useProductPage({
+    slug: props.product.slug,
+    initialData: props.product,
+  });
+
+  const product = useContentfulLiveUpdates(data, locale || '');
 
   if (!product) return null;
 
