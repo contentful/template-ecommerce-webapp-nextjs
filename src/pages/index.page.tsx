@@ -45,7 +45,11 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ locale, preview }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  locale,
+  // @ts-expect-error GetServerSideProps are not up-to-date yet
+  draftMode: preview,
+}) => {
   try {
     const gqlClient = preview ? previewClient : client;
 
