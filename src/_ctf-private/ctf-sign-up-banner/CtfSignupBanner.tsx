@@ -4,7 +4,7 @@ import Link from 'next/link';
 import CfLogo from '@icons/cf-logo.svg';
 import typewriter from 'analytics';
 
-export const SignupBanner = () => {
+const CtfSignupBanner = () => {
   const theme = useTheme();
   const signupLink =
     'https://www.contentful.com/starter-templates/ecommerce-website/sign-up/?action=create_starter_template&template_name=ecommerce';
@@ -69,3 +69,5 @@ export const SignupBanner = () => {
     </Box>
   );
 };
+
+export default CtfSignupBanner;
