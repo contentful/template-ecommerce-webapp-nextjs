@@ -1,9 +1,9 @@
+import { Button } from '@chakra-ui/react';
 import {
   ConsentDrawerAction,
   injectOsanoGlobalStyles,
 } from '@contentful/experience-consent-manager';
 import { useTranslation } from 'next-i18next';
-import { Button } from '@chakra-ui/react';
 
 import { useCtfConsent } from './useCtfConsent';
 
@@ -18,7 +18,13 @@ export const CtfConsentManager = () => {
     <ConsentDrawerAction
       consentManager={consentManager}
       renderAction={({ openDrawer, disabled }) => (
-          <Button onClick={openDrawer} disabled={disabled} variant="unstyled" size="xs">
+          <Button
+            onClick={openDrawer}
+            disabled={disabled}
+            variant="unstyled"
+            size="xs"
+            whiteSpace="normal"
+            textAlign={{ base: 'left', md: 'center' }}>
             {t('common.manageConsent')}
           </Button>
       )}
