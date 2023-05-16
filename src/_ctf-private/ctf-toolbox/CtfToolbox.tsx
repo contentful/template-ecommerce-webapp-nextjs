@@ -68,7 +68,7 @@ const ParamInput = ({
 export const CtfToolbox = () => {
   const { f36 } = useTheme();
   const router = useRouter();
-  const { xray, preview, space_id, preview_token, delivery_token } = useContentfulEditorialStore();
+  const { preview, space_id, preview_token, delivery_token } = useContentfulEditorialStore();
 
   const toolboxRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -94,20 +94,6 @@ export const CtfToolbox = () => {
       query: {
         ...router.query,
         [ContentfulParams.preview]: e.target.checked,
-      },
-    });
-  };
-
-  const handleXrayMode = (e: ChangeEvent<HTMLInputElement>) => {
-    typewriter.xrayModeInteracted({
-      enabled: e.target.checked,
-    });
-    
-    router.replace({
-      pathname: router.pathname,
-      query: {
-        ...router.query,
-        [ContentfulParams.xray]: e.target.checked,
       },
     });
   };
@@ -212,94 +198,89 @@ export const CtfToolbox = () => {
       </MenuButton>
 
       {toolboxOpen && (
-      <MenuList
-        ref={toolboxRef}
-        backgroundColor="white"
-        borderRadius="0"
-        p={0}
-        outline="0px"
-        border="none"
-        boxShadow="0 2px 30px rgba(0,0,0,0.29)"
-        maxWidth="500px"
-        maxHeight="70vh"
-        overflow="auto">
-        <Flex backgroundColor={f36.gray800} py={{ base: 6, lg: 8 }} px={{ base: 4, lg: 6 }}>
-          <Box
-            as={ContentfulIcon}
-            width={f36.spacingXl}
-            height={f36.spacingXl}
-            transform="translateX(-1px)"
-          />
-          <Heading as="h2" variant="h3" color="white" ml={3}>
-            Editorial Toolbox
-          </Heading>
-        </Flex>
-        <Box py={{ base: 4 }} px={{ base: 4, lg: 6 }}>
-          <Heading as="h3" variant="h3">
-            General settings
-          </Heading>
-          <Box as="hr" my={4} />
-          <ParamToggle
-            id="preview-mode"
-            label="Preview mode"
-            helpText="View draft entries, assets and unpublished content changes."
-            isChecked={preview}
-            onChange={handlePreviewMode}
-          />
-          <ParamToggle
-            id="xray-mode"
-            label="X-ray mode"
-            helpText="Highlight components making up a page and provide a deep link to the entry editor."
-            isChecked={xray}
-            onChange={handleXrayMode}
-          />
-          {process.env.ENVIRONMENT_NAME !== 'production' && (
-            <>
-              <Box mb={6}>
-                <Heading as="h3" variant="h3">
-                  Guest space parameters
-                </Heading>
-                <Box as="hr" my={4} />
+        <MenuList
+          ref={toolboxRef}
+          backgroundColor="white"
+          borderRadius="0"
+          p={0}
+          outline="0px"
+          border="none"
+          boxShadow="0 2px 30px rgba(0,0,0,0.29)"
+          maxWidth="500px"
+          maxHeight="70vh"
+          overflow="auto">
+          <Flex backgroundColor={f36.gray800} py={{ base: 6, lg: 8 }} px={{ base: 4, lg: 6 }}>
+            <Box
+              as={ContentfulIcon}
+              width={f36.spacingXl}
+              height={f36.spacingXl}
+              transform="translateX(-1px)"
+            />
+            <Heading as="h2" variant="h3" color="white" ml={3}>
+              Editorial Toolbox
+            </Heading>
+          </Flex>
+          <Box py={{ base: 4 }} px={{ base: 4, lg: 6 }}>
+            <Heading as="h3" variant="h3">
+              General settings
+            </Heading>
+            <Box as="hr" my={4} />
+            <ParamToggle
+              id="preview-mode"
+              label="Preview mode"
+              helpText="View draft entries, assets and unpublished content changes."
+              isChecked={preview}
+              onChange={handlePreviewMode}
+            />
+            {process.env.ENVIRONMENT_NAME !== 'production' && (
+              <>
+                <Box mb={6}>
+                  <Heading as="h3" variant="h3">
+                    Guest space parameters
+                  </Heading>
+                  <Box as="hr" my={4} />
 
-                <form onSubmit={handleSubmit}>
-                  {[...guestSpaceRequiredParameters, ...guestSpaceOptionalParameters].map(param => {
-                    const queryParam = useContentfulEditorialStore.getState()[param];
+                  <form onSubmit={handleSubmit}>
+                    {[...guestSpaceRequiredParameters, ...guestSpaceOptionalParameters].map(
+                      param => {
+                        const queryParam = useContentfulEditorialStore.getState()[param];
 
-                    return (
-                      <ParamInput
-                        isRequired
-                        label={param}
-                        name={param}
-                        defaultValue={queryParam}
-                        key={param}
-                      />
-                    );
-                  })}
-                  <Button type="submit">Submit</Button>
-                </form>
-              </Box>
-              <Box>
-                <Heading as="h3" variant="h3">
-                  Reset
-                </Heading>
-                <Box as="hr" my={4} />
+                        return (
+                          <ParamInput
+                            isRequired
+                            label={param}
+                            name={param}
+                            defaultValue={queryParam}
+                            key={param}
+                          />
+                        );
+                      },
+                    )}
+                    <Button type="submit">Submit</Button>
+                  </form>
+                </Box>
+                <Box>
+                  <Heading as="h3" variant="h3">
+                    Reset
+                  </Heading>
+                  <Box as="hr" my={4} />
 
-                <FormControl width="100%" mb={6} as={Flex}>
-                  <Box pr={6} flex="1">
-                    <FormLabel htmlFor="reset" mb="0" mr="auto">
-                      Reset editorial settings
-                    </FormLabel>
-                    <FormHelperText>
-                      Reset the guest space functionality, x-ray and preview-mode
-                    </FormHelperText>
-                  </Box>
-                  <Button onClick={handleReset}>Reset</Button>
-                </FormControl>
-              </Box>
-            </>
-          )}
-        </Box>
-      </MenuList>
+                  <FormControl width="100%" mb={6} as={Flex}>
+                    <Box pr={6} flex="1">
+                      <FormLabel htmlFor="reset" mb="0" mr="auto">
+                        Reset editorial settings
+                      </FormLabel>
+                      <FormHelperText>
+                        Reset the guest space functionality and preview-mode
+                      </FormHelperText>
+                    </Box>
+                    <Button onClick={handleReset}>Reset</Button>
+                  </FormControl>
+                </Box>
+              </>
+            )}
+          </Box>
+        </MenuList>
       )}
     </Menu>
   );

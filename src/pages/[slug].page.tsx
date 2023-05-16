@@ -1,26 +1,33 @@
 import { Box } from '@chakra-ui/react';
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
 import { useProductPage } from '@src/_ctf-private';
-import { CtfXrayFrameDynamic } from '@src/_ctf-private/ctf-xray';
 import { ProductDetails, ProductTileGrid } from '@src/components/features/product';
 import { SeoFields } from '@src/components/features/seo';
-import { client } from '@src/lib/client';
+import { client, previewClient } from '@src/lib/client';
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
 
-const Page = ({ product: ssrProduct }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation();
+  const { locale } = useRouter();
 
   /**
    * TODO: this is a main-private feature, and should be removed from the main branch during the split
    */
-  const { data: product } = useProductPage({ slug: ssrProduct.slug, initialData: ssrProduct });
+  const { data } = useProductPage({
+    slug: props.product.slug,
+    initialData: props.product,
+  });
+
+  const product = useContentfulLiveUpdates(data, locale || '');
 
   if (!product) return null;
 
   return (
-    <CtfXrayFrameDynamic entry={product}>
+    <>
       {product.seoFields && <SeoFields {...product.seoFields} />}
       <ProductDetails {...product} />
       {product.relatedProductsCollection?.items && (
@@ -36,19 +43,26 @@ const Page = ({ product: ssrProduct }: InferGetServerSidePropsType<typeof getSer
           />
         </Box>
       )}
-    </CtfXrayFrameDynamic>
+    </>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params, locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  params,
+  locale,
+  // @ts-expect-error GetServerSideProps are not up-to-date yet
+  draftMode: preview,
+}) => {
   if (!params?.slug || !locale) {
     return {
       notFound: true,
     };
   }
 
+  const gqlClient = preview ? previewClient : client;
+
   try {
-    const data = await client.pageProduct({ slug: params.slug.toString(), locale });
+    const data = await gqlClient.pageProduct({ slug: params.slug.toString(), locale, preview });
     const product = data.pageProductCollection?.items[0];
 
     if (!product) {

@@ -1,12 +1,14 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import localFont from '@next/font/local';
+import { ContentfulLivePreviewProvider } from '@contentful/live-preview/react';
 import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
+import localFont from 'next/font/local';
 
 import { CtfCustomQueryClientProvider } from '@src/_ctf-private';
 import { CtfSegmentAnalytics } from '@src/_ctf-private/ctf-analytics';
 import { Layout } from '@src/components/templates/layout';
 import { theme } from '@src/theme';
+import '@contentful/live-preview/style.css';
 
 const spaceGrotesk = localFont({
   src: [
@@ -65,21 +67,25 @@ const spaceGrotesk = localFont({
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <CtfCustomQueryClientProvider>
-      <CtfSegmentAnalytics />
-      <ChakraProvider
-        theme={{
-          ...theme,
-          fonts: {
-            heading: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.heading}`,
-            body: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.body}`,
-          },
-        }}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ChakraProvider>
-    </CtfCustomQueryClientProvider>
+    <ContentfulLivePreviewProvider
+      enableInspectorMode={pageProps.previewActive}
+      enableLiveUpdates={pageProps.previewActive}>
+      <CtfCustomQueryClientProvider>
+        <CtfSegmentAnalytics />
+        <ChakraProvider
+          theme={{
+            ...theme,
+            fonts: {
+              heading: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.heading}`,
+              body: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.body}`,
+            },
+          }}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ChakraProvider>
+      </CtfCustomQueryClientProvider>
+    </ContentfulLivePreviewProvider>
   );
 };
 

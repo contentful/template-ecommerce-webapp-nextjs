@@ -1,4 +1,5 @@
 import { Flex, Heading, Box, Grid, Container } from '@chakra-ui/react';
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
@@ -24,8 +25,10 @@ export const HeroBanner = ({
   heroBannerHeadline,
   heroBannerHeadlineColor,
   heroBannerImage,
+  sys: { id: entryId },
 }: PageLandingFieldsFragment) => {
   const router = useRouter();
+  const inspectorProps = useContentfulInspectorMode({ entryId, locale: router.locale });
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
@@ -77,7 +80,12 @@ export const HeroBanner = ({
   }, [headingVisible, router.events, router.query]);
 
   return (
-    <Grid position="relative" gridRow={2} gridColumn={1} mt={`-${HEADER_HEIGHT}px`}>
+    <Grid
+      position="relative"
+      gridRow={2}
+      gridColumn={1}
+      mt={`-${HEADER_HEIGHT}px`}
+      {...inspectorProps({ fieldId: 'heroBannerImage' })}>
       <StyledBox
         gridColumnStart={2}
         zIndex={0}
@@ -107,6 +115,7 @@ export const HeroBanner = ({
               opacity: headingVisible ? 1 : 0,
             }}>
             <Heading
+              {...inspectorProps({ fieldId: 'heroBannerHeadline' })}
               ref={headingRef}
               as="h1"
               letterSpacing="-0.11em"
