@@ -1,7 +1,7 @@
 import { Box, Button, Container, Flex, Text, useTheme } from '@chakra-ui/react';
-import Link from 'next/link';
 
 import CfLogo from '@icons/cf-logo.svg';
+import { LinkWithPersistedQuery } from '@src/components/shared/link-with-persisted-query';
 import typewriter from 'analytics';
 
 export const SignupBanner = () => {
@@ -34,7 +34,7 @@ export const SignupBanner = () => {
             The content on this template is managed via Contentful
           </Text>
 
-          <Link href={signupLink} target="_blank" onClick={handleSignUpLinkClick}>
+          <LinkWithPersistedQuery href={signupLink} target="_blank" onClick={handleSignUpLinkClick}>
             <Button
               transition="all .4s ease"
               _hover={{
@@ -63,7 +63,7 @@ export const SignupBanner = () => {
                 Use template
               </Text>
             </Button>
-          </Link>
+          </LinkWithPersistedQuery>
         </Flex>
       </Container>
     </Box>
