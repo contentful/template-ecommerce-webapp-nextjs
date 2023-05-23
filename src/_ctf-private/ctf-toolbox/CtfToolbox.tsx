@@ -72,6 +72,7 @@ export const CtfToolbox = () => {
 
   const toolboxRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const [enabled, setEnabled] = useState(false);
   const [toolboxOpen, setToolboxOpen] = useState(false);
 
   const activeGuestSpace = !!space_id && !!preview_token && !!delivery_token;
@@ -145,6 +146,22 @@ export const CtfToolbox = () => {
   };
 
   useEffect(() => {
+    try {
+      if (window.top?.location.href === window.location.href) {
+        // Dont show the settings panel when embedded into an iframe (e.g. live preview)
+        setEnabled(true);
+      }
+    } catch (err) {
+      // window.top.location.href is not accessable for non same origin iframes
+      setEnabled(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
     const handleClickOutside = event => {
       if (event.target === buttonRef.current || buttonRef.current?.contains(event.target)) return;
 
@@ -166,9 +183,9 @@ export const CtfToolbox = () => {
       document.removeEventListener('click', handleClickOutside, true);
       document.removeEventListener('keydown', handleEscape, true);
     };
-  }, []);
+  }, [enabled]);
 
-  if (!activeGuestSpace && process.env.ENVIRONMENT_NAME === 'production') return null;
+  if ((!activeGuestSpace && process.env.ENVIRONMENT_NAME === 'production') || !enabled) return null;
 
   return (
     <Menu gutter={30}>
