@@ -28,7 +28,7 @@ export const HeroBanner = ({
   sys: { id: entryId },
 }: PageLandingFieldsFragment) => {
   const router = useRouter();
-  const inspectorProps = useContentfulInspectorMode({ entryId, locale: router.locale });
+  const inspectorProps = useContentfulInspectorMode({ entryId });
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
