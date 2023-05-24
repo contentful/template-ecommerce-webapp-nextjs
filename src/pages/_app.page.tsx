@@ -3,6 +3,7 @@ import { ContentfulLivePreviewProvider } from '@contentful/live-preview/react';
 import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
 import localFont from 'next/font/local';
+import { useRouter } from "next/router"
 
 import { CtfCustomQueryClientProvider } from '@src/_ctf-private';
 import { CtfSegmentAnalytics } from '@src/_ctf-private/ctf-analytics';
@@ -66,8 +67,11 @@ const spaceGrotesk = localFont({
 });
 
 const App = ({ Component, pageProps }: AppProps) => {
+  const router = useRouter()
+
   return (
     <ContentfulLivePreviewProvider
+      locale={router.locale || 'en-US'}
       enableInspectorMode={pageProps.previewActive}
       enableLiveUpdates={pageProps.previewActive}>
       <CtfCustomQueryClientProvider>
