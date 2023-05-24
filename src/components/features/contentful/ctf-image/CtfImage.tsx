@@ -1,11 +1,11 @@
-import { TagAttributes } from '@contentful/live-preview/dist/types';
+import type { InspectorModeTags } from '@contentful/live-preview/dist/types';
 import NextImage, { ImageProps as NextImageProps } from 'next/image';
 
 import { ImageFieldsFragment } from '@src/lib/__generated/sdk';
 
 interface ImageProps extends ImageFieldsFragment {
   imageProps?: Omit<NextImageProps, 'src' | 'alt'>;
-  livePreviewProps?: Record<TagAttributes, string | null | undefined> | null;
+  livePreviewProps?: InspectorModeTags;
 }
 
 export const CtfImage = ({

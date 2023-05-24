@@ -2,7 +2,6 @@ import { Box } from '@chakra-ui/react';
 import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
 
 import { HeroBanner } from '@src/components/features/hero-banner';
 import { ProductTileGrid } from '@src/components/features/product';
@@ -12,8 +11,7 @@ import { getServerSideTranslations } from '@src/pages/utils/get-serverside-trans
 
 const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation();
-  const { locale } = useRouter();
-  const page = useContentfulLiveUpdates(props.page, locale || '');
+  const page = useContentfulLiveUpdates(props.page);
 
   return (
     <>
