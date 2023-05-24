@@ -2,7 +2,6 @@ import { Box } from '@chakra-ui/react';
 import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
 
 import { useLandingPage } from '@src/_ctf-private';
 import { HeroBanner } from '@src/components/features/hero-banner';
@@ -13,14 +12,13 @@ import { getServerSideTranslations } from '@src/pages/utils/get-serverside-trans
 
 const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation();
-  const { locale } = useRouter();
 
   /**
    * TODO: this is a main-private feature, and should be removed from the main branch during the split
    */
   const { data } = useLandingPage({ initialData: props.page });
 
-  const page = useContentfulLiveUpdates(data, locale || '');
+  const page = useContentfulLiveUpdates(data);
 
   if (!page) return;
 

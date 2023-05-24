@@ -1,6 +1,5 @@
 import { Box, Text } from '@chakra-ui/react';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
-import { useRouter } from 'next/router';
 
 import { CtfImage } from '@src/components/features/contentful/ctf-image';
 import { FormatCurrency } from '@src/components/shared/format-currency';
@@ -13,8 +12,7 @@ export const ProductTile = ({
   slug,
   sys: { id: entryId },
 }: PageProductFieldsFragment) => {
-  const { locale } = useRouter();
-  const inspectorProps = useContentfulInspectorMode({ entryId, locale });
+  const inspectorProps = useContentfulInspectorMode({ entryId });
   return slug ? (
     <div {...inspectorProps({ fieldId: 'featuredProductImage' })}>
       <Box as={LinkWithPersistedQuery} href={slug}>
