@@ -71,6 +71,7 @@
     "@types/segment-analytics": "^0.0.34",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.32.0",
+    "enforce-branch-name": "^1.1.2",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.1",
     "eslint-config-prettier": "^8.3.0",
