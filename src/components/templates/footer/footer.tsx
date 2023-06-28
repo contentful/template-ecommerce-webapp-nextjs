@@ -1,6 +1,7 @@
 import { Container, Box, Text, Link, useTheme } from '@chakra-ui/react';
-import { CtfConsentManager } from '@src/_ctf-private';
 import { useTranslation } from 'next-i18next';
+
+import { CtfConsentManager } from '@src/_ctf-private';
 
 export const Footer = () => {
   const { t } = useTranslation();
