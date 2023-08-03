@@ -2,7 +2,11 @@
 
 The Starter Templates experience is currently only available to new users.
 
-To benefit from this experience, please follow this link to create a new account: [https://www.contentful.com/sign-up/?action=create_starter_template](https://www.contentful.com/sign-up/?action=create_starter_template).
+To benefit from this experience, please follow this link to create a new
+account and select the template to install: [https://www.contentful.com/starter-templates/ecommerce-website/sign-up/?action=create_starter_template](https://www.contentful.com/starter-templates/ecommerce-website/sign-up/?action=create_starter_template&utm_source=github.com&utm_medium=referral&utm_campaign=template-ecommerce-webapp-nextjs).
+
+Alternatively, to immediately start the auto installation of this template after creating a new account, please follow this link:
+[https://www.contentful.com/starter-templates/ecommerce-website/sign-up/?action=create_starter_template&template_name=ecommerce](https://www.contentful.com/starter-templates/ecommerce-website/sign-up/?action=create_starter_template&template_name=ecommerce&utm_source=github.com&utm_medium=referral&utm_campaign=template-ecommerce-webapp-nextjs).
 
 $~$
 
