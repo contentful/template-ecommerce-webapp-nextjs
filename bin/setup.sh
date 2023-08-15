@@ -2,7 +2,7 @@
 
 # Check if .env file already exists
 if [ -f .env ]; then
-  echo ".env.example file does not exist. Aborting."
+  echo ".env already exists. Aborting."
   exit 1
 fi
 
