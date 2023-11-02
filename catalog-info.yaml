@@ -17,6 +17,9 @@ metadata:
     - graphql
     - typescript
     - chakra-ui
+    - graphql
+    - typescript
+    - chakra-ui
     #need to add sast.yaml to .github/workflows and enable it in polaris dashboard
     #once that is done this can be changed to sast-enabled
     - sast-disabled
