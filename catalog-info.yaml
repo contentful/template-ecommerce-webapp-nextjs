@@ -5,7 +5,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Template
 metadata:
   name: template-ecommerce-webapp-nextjs 
-  description: unknown
+  description: Next.js ecommerce website starter template
   annotations:
     github.com/project-slug: contentful/template-ecommerce-webapp-nextjs 
     contentful.com/service-tier: "4"
