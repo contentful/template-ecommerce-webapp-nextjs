@@ -1,0 +1,27 @@
+# Backstage documentation
+# https://backstage.io/docs/features/software-catalog/descriptor-format/
+
+apiVersion: backstage.io/v1alpha1
+kind: Template
+metadata:
+  name: template-ecommerce-webapp-nextjs 
+  description: Next.js ecommerce website starter template
+  annotations:
+    github.com/project-slug: contentful/template-ecommerce-webapp-nextjs 
+    contentful.com/service-tier: "4"
+
+  tags:
+    - starter-templates
+    - ecommerce
+    - nextjs
+    - graphql
+    - typescript
+    - chakra-ui
+    #need to add sast.yaml to .github/workflows and enable it in polaris dashboard
+    #once that is done this can be changed to sast-enabled
+    - sast-disabled
+    - tier-4
+spec:
+  type: template 
+  lifecycle: production  
+  owner: group:team-plato 
