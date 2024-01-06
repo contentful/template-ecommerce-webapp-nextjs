@@ -120,7 +120,7 @@ enum AssetOrder {
 }
 
 """
-To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/componentSeo)
+To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/z30eeowtrbqp/content_types/componentSeo)
 """
 type ComponentSeo implements Entry {
   canonicalUrl(locale: String): String
@@ -186,8 +186,54 @@ input ComponentSeoFilter {
 
 type ComponentSeoLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageLandingCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageLandingCollection
-  pageProductCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProductCollection
+  pageLandingCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageLandingCollectionOrder], preview: Boolean, skip: Int = 0): PageLandingCollection
+  pageProductCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageProductCollectionOrder], preview: Boolean, skip: Int = 0): PageProductCollection
+}
+
+enum ComponentSeoLinkingCollectionsPageLandingCollectionOrder {
+  heroBannerHeadlineColor_ASC
+  heroBannerHeadlineColor_DESC
+  heroBannerHeadline_ASC
+  heroBannerHeadline_DESC
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentSeoLinkingCollectionsPageProductCollectionOrder {
+  creality_ASC
+  creality_DESC
+  cults_ASC
+  cults_DESC
+  internalName_ASC
+  internalName_DESC
+  makerworld_ASC
+  makerworld_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  printables_ASC
+  printables_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  thangs_ASC
+  thangs_DESC
 }
 
 enum ComponentSeoOrder {
@@ -410,17 +456,18 @@ input ImageTransformOptions {
 }
 
 """
-To have an entry point for the app [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding)
+To have an entry point for the app [See type definition](https://app.contentful.com/spaces/z30eeowtrbqp/content_types/pageLanding)
 """
 type PageLanding implements Entry {
   contentfulMetadata: ContentfulMetadata!
+  footer(locale: String, preview: Boolean): Asset
   heroBannerHeadline(locale: String): String
   heroBannerHeadlineColor(locale: String): String
   heroBannerImage(locale: String, preview: Boolean): Asset
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): PageLandingLinkingCollections
-  productsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageLandingProductsCollection
-  seoFields(locale: String, preview: Boolean): ComponentSeo
+  productsCollection(limit: Int = 100, locale: String, order: [PageLandingProductsCollectionOrder], preview: Boolean, skip: Int = 0, where: PageProductFilter): PageLandingProductsCollection
+  seoFields(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
   sys: Sys!
 }
 
@@ -435,6 +482,7 @@ input PageLandingFilter {
   AND: [PageLandingFilter]
   OR: [PageLandingFilter]
   contentfulMetadata: ContentfulMetadataFilter
+  footer_exists: Boolean
   heroBannerHeadline: String
   heroBannerHeadlineColor: String
   heroBannerHeadlineColor_contains: String
@@ -492,22 +540,56 @@ type PageLandingProductsCollection {
   total: Int!
 }
 
+enum PageLandingProductsCollectionOrder {
+  creality_ASC
+  creality_DESC
+  cults_ASC
+  cults_DESC
+  internalName_ASC
+  internalName_DESC
+  makerworld_ASC
+  makerworld_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  printables_ASC
+  printables_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  thangs_ASC
+  thangs_DESC
+}
+
 """
-To output data for a single product [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageProduct)
+To output data for a single product [See type definition](https://app.contentful.com/spaces/z30eeowtrbqp/content_types/pageProduct)
 """
 type PageProduct implements Entry {
   contentfulMetadata: ContentfulMetadata!
+  creality(locale: String): String
+  cults(locale: String): String
   description(locale: String): String
   featuredProductImage(locale: String, preview: Boolean): Asset
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): PageProductLinkingCollections
+  makerworld(locale: String): String
   name(locale: String): String
   price(locale: String): Float
+  printables(locale: String): String
   productImagesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
-  relatedProductsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProductRelatedProductsCollection
-  seoFields(locale: String, preview: Boolean): ComponentSeo
+  relatedProductsCollection(limit: Int = 100, locale: String, order: [PageProductRelatedProductsCollectionOrder], preview: Boolean, skip: Int = 0, where: PageProductFilter): PageProductRelatedProductsCollection
+  seoFields(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
   slug(locale: String): String
   sys: Sys!
+  thangs(locale: String): String
 }
 
 type PageProductCollection {
@@ -521,6 +603,20 @@ input PageProductFilter {
   AND: [PageProductFilter]
   OR: [PageProductFilter]
   contentfulMetadata: ContentfulMetadataFilter
+  creality: String
+  creality_contains: String
+  creality_exists: Boolean
+  creality_in: [String]
+  creality_not: String
+  creality_not_contains: String
+  creality_not_in: [String]
+  cults: String
+  cults_contains: String
+  cults_exists: Boolean
+  cults_in: [String]
+  cults_not: String
+  cults_not_contains: String
+  cults_not_in: [String]
   description: String
   description_contains: String
   description_exists: Boolean
@@ -536,6 +632,13 @@ input PageProductFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
+  makerworld: String
+  makerworld_contains: String
+  makerworld_exists: Boolean
+  makerworld_in: [String]
+  makerworld_not: String
+  makerworld_not_contains: String
+  makerworld_not_in: [String]
   name: String
   name_contains: String
   name_exists: Boolean
@@ -552,6 +655,13 @@ input PageProductFilter {
   price_lte: Float
   price_not: Float
   price_not_in: [Float]
+  printables: String
+  printables_contains: String
+  printables_exists: Boolean
+  printables_in: [String]
+  printables_not: String
+  printables_not_contains: String
+  printables_not_in: [String]
   productImagesCollection_exists: Boolean
   relatedProducts: cfPageProductNestedFilter
   relatedProductsCollection_exists: Boolean
@@ -565,23 +675,28 @@ input PageProductFilter {
   slug_not_contains: String
   slug_not_in: [String]
   sys: SysFilter
+  thangs: String
+  thangs_contains: String
+  thangs_exists: Boolean
+  thangs_in: [String]
+  thangs_not: String
+  thangs_not_contains: String
+  thangs_not_in: [String]
 }
 
 type PageProductLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageLandingCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageLandingCollection
-  pageProductCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProductCollection
+  pageLandingCollection(limit: Int = 100, locale: String, order: [PageProductLinkingCollectionsPageLandingCollectionOrder], preview: Boolean, skip: Int = 0): PageLandingCollection
+  pageProductCollection(limit: Int = 100, locale: String, order: [PageProductLinkingCollectionsPageProductCollectionOrder], preview: Boolean, skip: Int = 0): PageProductCollection
 }
 
-enum PageProductOrder {
+enum PageProductLinkingCollectionsPageLandingCollectionOrder {
+  heroBannerHeadlineColor_ASC
+  heroBannerHeadlineColor_DESC
+  heroBannerHeadline_ASC
+  heroBannerHeadline_DESC
   internalName_ASC
   internalName_DESC
-  name_ASC
-  name_DESC
-  price_ASC
-  price_DESC
-  slug_ASC
-  slug_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -592,11 +707,98 @@ enum PageProductOrder {
   sys_publishedVersion_DESC
 }
 
+enum PageProductLinkingCollectionsPageProductCollectionOrder {
+  creality_ASC
+  creality_DESC
+  cults_ASC
+  cults_DESC
+  internalName_ASC
+  internalName_DESC
+  makerworld_ASC
+  makerworld_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  printables_ASC
+  printables_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  thangs_ASC
+  thangs_DESC
+}
+
+enum PageProductOrder {
+  creality_ASC
+  creality_DESC
+  cults_ASC
+  cults_DESC
+  internalName_ASC
+  internalName_DESC
+  makerworld_ASC
+  makerworld_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  printables_ASC
+  printables_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  thangs_ASC
+  thangs_DESC
+}
+
 type PageProductRelatedProductsCollection {
   items: [PageProduct]!
   limit: Int!
   skip: Int!
   total: Int!
+}
+
+enum PageProductRelatedProductsCollectionOrder {
+  creality_ASC
+  creality_DESC
+  cults_ASC
+  cults_DESC
+  internalName_ASC
+  internalName_DESC
+  makerworld_ASC
+  makerworld_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  printables_ASC
+  printables_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  thangs_ASC
+  thangs_DESC
 }
 
 """
@@ -708,6 +910,20 @@ input cfPageProductNestedFilter {
   AND: [cfPageProductNestedFilter]
   OR: [cfPageProductNestedFilter]
   contentfulMetadata: ContentfulMetadataFilter
+  creality: String
+  creality_contains: String
+  creality_exists: Boolean
+  creality_in: [String]
+  creality_not: String
+  creality_not_contains: String
+  creality_not_in: [String]
+  cults: String
+  cults_contains: String
+  cults_exists: Boolean
+  cults_in: [String]
+  cults_not: String
+  cults_not_contains: String
+  cults_not_in: [String]
   description: String
   description_contains: String
   description_exists: Boolean
@@ -723,6 +939,13 @@ input cfPageProductNestedFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
+  makerworld: String
+  makerworld_contains: String
+  makerworld_exists: Boolean
+  makerworld_in: [String]
+  makerworld_not: String
+  makerworld_not_contains: String
+  makerworld_not_in: [String]
   name: String
   name_contains: String
   name_exists: Boolean
@@ -739,6 +962,13 @@ input cfPageProductNestedFilter {
   price_lte: Float
   price_not: Float
   price_not_in: [Float]
+  printables: String
+  printables_contains: String
+  printables_exists: Boolean
+  printables_in: [String]
+  printables_not: String
+  printables_not_contains: String
+  printables_not_in: [String]
   productImagesCollection_exists: Boolean
   relatedProductsCollection_exists: Boolean
   seoFields_exists: Boolean
@@ -750,4 +980,11 @@ input cfPageProductNestedFilter {
   slug_not_contains: String
   slug_not_in: [String]
   sys: SysFilter
+  thangs: String
+  thangs_contains: String
+  thangs_exists: Boolean
+  thangs_in: [String]
+  thangs_not: String
+  thangs_not_contains: String
+  thangs_not_in: [String]
 }
