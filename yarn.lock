@@ -1929,18 +1929,18 @@
   resolved "https://registry.yarnpkg.com/@chakra-ui/visually-hidden/-/visually-hidden-2.0.13.tgz#6553467d93f206d17716bcbe6e895a84eef87472"
   integrity sha512-sDEeeEjLfID333EC46NdCbhK2HyMXlpl5HzcJjuwWIpyVz4E1gKQ9hlwpq6grijvmzeSywQ5D3tTwUrvZck4KQ==
 
-"@contentful/experience-consent-manager@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@contentful/experience-consent-manager/-/experience-consent-manager-2.3.1.tgz#7c4522fac98c8720ebeac4a40d7c7a8d9efedd4d"
-  integrity sha512-IcvzPhryCX8EPDUEMbz9JTkE7GVV1dXT0ReLfVK0otES5OPIfX1jUfNtVbC9S+/0Ce/b5RoGXBm7z/8QMUa7ng==
+"@contentful/experience-consent-manager@^2.3.26":
+  version "2.3.26"
+  resolved "https://npm.pkg.github.com/download/@contentful/experience-consent-manager/2.3.26/74919b3e697bf510814bc46bf1ee531d0e405cb5#74919b3e697bf510814bc46bf1ee531d0e405cb5"
+  integrity sha512-CL7/vGHDwHXSt503HtaSalS/dSy/57XOhF/bcMrx7qXsIUlIB98+EGFE2FjdTRg2yjEi4zkS3oUF5EbOdGsqmw==
   dependencies:
     "@contentful/f36-components" "^4.15.0"
     "@contentful/f36-tokens" "^4.0.1"
     emotion "^10.0.17"
     js-cookie "^3.0.1"
     lodash "^4.17.21"
-    lodash-es "^4.17.21"
     mitt "^2.1.0"
+    type-fest "^4.0.0"
 
 "@contentful/f36-accordion@^4.26.0":
   version "4.26.0"
@@ -7891,11 +7891,6 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-lodash-es@^4.17.21:
-  version "4.17.21"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
-  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
-
 lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
@@ -10210,6 +10205,11 @@ type-fest@^0.21.3:
   version "0.21.3"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.21.3.tgz#d260a24b0198436e133fa26a524a6d65fa3b2e37"
   integrity sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==
+
+type-fest@^4.0.0:
+  version "4.15.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.15.0.tgz#21da206b89c15774cc718c4f2d693e13a1a14a43"
+  integrity sha512-tB9lu0pQpX5KJq54g+oHOLumOx+pMep4RaM6liXh2PKmVRFF+/vAtUP0ZaJ0kOySfVNjF6doBWPHhBhISKdlIA==
 
 typedarray-to-buffer@^3.1.5:
   version "3.1.5"
