@@ -9,7 +9,6 @@ import { CtfCustomQueryClientProvider } from '@src/_ctf-private';
 import { CtfSegmentAnalytics } from '@src/_ctf-private/ctf-analytics';
 import { Layout } from '@src/components/templates/layout';
 import { theme } from '@src/theme';
-import '@contentful/live-preview/style.css';
 
 const spaceGrotesk = localFont({
   src: [
