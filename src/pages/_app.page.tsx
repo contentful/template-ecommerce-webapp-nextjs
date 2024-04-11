@@ -7,7 +7,6 @@ import { useRouter } from "next/router"
 
 import { Layout } from '@src/components/templates/layout';
 import { theme } from '@src/theme';
-import '@contentful/live-preview/style.css';
 
 const spaceGrotesk = localFont({
   src: [

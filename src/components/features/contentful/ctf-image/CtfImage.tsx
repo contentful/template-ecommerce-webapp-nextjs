@@ -1,4 +1,4 @@
-import type { InspectorModeTags } from '@contentful/live-preview/dist/types';
+import type { InspectorModeTags } from '@contentful/live-preview/dist/inspectorMode/types';
 import NextImage, { ImageProps as NextImageProps } from 'next/image';
 
 import { ImageFieldsFragment } from '@src/lib/__generated/sdk';
