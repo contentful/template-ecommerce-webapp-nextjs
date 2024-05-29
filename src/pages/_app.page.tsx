@@ -10,6 +10,16 @@ import { CtfSegmentAnalytics } from '@src/_ctf-private/ctf-analytics';
 import { Layout } from '@src/components/templates/layout';
 import { theme } from '@src/theme';
 
+const allowedOriginList = [
+  'https://app.contentful.com',
+  'https://app.eu.contentful.com',
+  'https://app.flinkly.com',
+  'https://app.eu.flinkly.com',
+  'https://app.quirely.com',
+  'https://app.eu.quirely.com',
+  'http://localhost:3001'
+];
+
 const spaceGrotesk = localFont({
   src: [
     {
@@ -71,6 +81,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <ContentfulLivePreviewProvider
       locale={router.locale || 'en-US'}
+      targetOrigin={allowedOriginList}
       enableInspectorMode={pageProps.previewActive}
       enableLiveUpdates={pageProps.previewActive}>
       <CtfCustomQueryClientProvider>
