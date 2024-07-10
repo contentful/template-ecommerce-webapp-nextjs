@@ -83,7 +83,8 @@ const App = ({ Component, pageProps }: AppProps) => {
       locale={router.locale || 'en-US'}
       targetOrigin={allowedOriginList}
       enableInspectorMode={pageProps.previewActive}
-      enableLiveUpdates={pageProps.previewActive}>
+      enableLiveUpdates={pageProps.previewActive}
+      debugMode>
       <CtfCustomQueryClientProvider>
         <CtfSegmentAnalytics />
         <ChakraProvider
