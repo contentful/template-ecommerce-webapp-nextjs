@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/tabindex-no-positive */
 import { Box, Text } from '@chakra-ui/react';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 
@@ -15,18 +16,18 @@ export const ProductTile = ({
   const inspectorProps = useContentfulInspectorMode({ entryId });
   return slug ? (
     <div {...inspectorProps({ fieldId: 'featuredProductImage' })}>
-      <Box as={LinkWithPersistedQuery} href={slug}>
+      <Box as={LinkWithPersistedQuery} tabIndex={3} href={slug}>
         {featuredProductImage && (
           <Box borderRadius={4} overflow="hidden">
             <CtfImage {...featuredProductImage} />
           </Box>
         )}
-        {price && (
-          <Text {...inspectorProps({ fieldId: 'price' })} mt={3} fontWeight="500">
-            <FormatCurrency value={price} />
-          </Text>
-        )}
       </Box>
+      {price && (
+        <Text tabIndex={1} {...inspectorProps({ fieldId: 'price' })} mt={3} fontWeight="500">
+          <FormatCurrency value={price} />
+        </Text>
+      )}
     </div>
   ) : null;
 };
