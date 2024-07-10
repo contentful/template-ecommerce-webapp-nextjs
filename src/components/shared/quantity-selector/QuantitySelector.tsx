@@ -24,9 +24,8 @@ export const QuantitySelector = () => {
           variant="primary"
           rightIcon={
             <Box as={ShoppingCartIcon} width="18px" height="18px" fill="white" variant="white" />
-          }>
-          {t('product.addToCart')}
-        </Button>
+          }
+        />
       </Flex>
     </FormControl>
   );
