@@ -47,7 +47,7 @@ export const ProductDetails = ({
         <GridItem colSpan={{ base: 12, lg: 5, xl: 4 }}>
           <Box
             width="100%"
-            bg={theme.f36.gray100}
+            bg={theme.f36.gray700}
             mb="auto"
             borderRadius={4}
             px={{ base: 4, lg: 6 }}
