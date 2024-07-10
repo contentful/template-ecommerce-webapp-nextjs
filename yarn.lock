@@ -1929,10 +1929,10 @@
   resolved "https://registry.yarnpkg.com/@chakra-ui/visually-hidden/-/visually-hidden-2.0.13.tgz#6553467d93f206d17716bcbe6e895a84eef87472"
   integrity sha512-sDEeeEjLfID333EC46NdCbhK2HyMXlpl5HzcJjuwWIpyVz4E1gKQ9hlwpq6grijvmzeSywQ5D3tTwUrvZck4KQ==
 
-"@contentful/content-source-maps@^0.5.0":
-  version "0.5.0"
-  resolved "https://npm.pkg.github.com/download/@contentful/content-source-maps/0.5.0/3561c705f49ec3411aa90ff8a3606ceb5da1fc5b#3561c705f49ec3411aa90ff8a3606ceb5da1fc5b"
-  integrity sha512-Ui14m5QvgFWteAXsv5pmFtbm2deGUJrn1WPHoBa79SK3Z3nV47wQb3/aDZhnXushgpJlk2HmH32Fda/0XZqq1w==
+"@contentful/content-source-maps@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@contentful/content-source-maps/-/content-source-maps-0.7.0.tgz#598a9bef62079b431853ab5fcd4cd4352c8b7db7"
+  integrity sha512-ovsLmfPASrmQUYJEem4i+ApKhI47TTxr4bKt+aKupNnf4bT6HOolSdF/mSiT1YresnJB8Kr/dnlso77QWXw45A==
   dependencies:
     "@vercel/stega" "^0.1.2"
     json-pointer "^0.6.2"
@@ -2389,12 +2389,12 @@
   dependencies:
     emotion "^10.0.17"
 
-"@contentful/live-preview@^4.2.1":
-  version "4.2.1"
-  resolved "https://npm.pkg.github.com/download/@contentful/live-preview/4.2.1/984179e3db14e874a5c8f9d93d624ec97eadfa76#984179e3db14e874a5c8f9d93d624ec97eadfa76"
-  integrity sha512-1TRwtwyI+gyqaqJAtZpxBnq3Nnvs2D7b565fzAlBwmOeji/a0y6eLMrxIAnesOWt0Ta1KAmnPvg22K/OQWZhUQ==
+"@contentful/live-preview@^4.3.0-alpha.1":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-4.3.0.tgz#8309bac9ee4e62adef952ab1449b2beb26780838"
+  integrity sha512-MKD9Bf2ubzdpm9T7pygwy4YcyBxoBl9cc9XP28sPLXCk49/HhfWZwgJuA8dbPIOIhosIJFl7p01vk8ZyEcgWlw==
   dependencies:
-    "@contentful/content-source-maps" "^0.5.0"
+    "@contentful/content-source-maps" "^0.7.0"
     "@contentful/rich-text-types" "^16.2.0"
     flatted "^3.2.9"
     graphql-tag "^2.12.6"
