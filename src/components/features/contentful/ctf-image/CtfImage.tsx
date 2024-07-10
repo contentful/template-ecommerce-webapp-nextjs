@@ -8,14 +8,7 @@ interface ImageProps extends ImageFieldsFragment {
   livePreviewProps?: InspectorModeTags;
 }
 
-export const CtfImage = ({
-  url,
-  width,
-  height,
-  title,
-  imageProps,
-  livePreviewProps,
-}: ImageProps) => {
+export const CtfImage = ({ url, width, height, imageProps, livePreviewProps }: ImageProps) => {
   if (!url || !width || !height) return null;
 
   const blurURL = new URL(url);
@@ -26,7 +19,6 @@ export const CtfImage = ({
       src={url}
       width={width}
       height={height}
-      alt={title || ''}
       sizes="(max-width: 1200px) 100vw, 50vw"
       placeholder="blur"
       blurDataURL={blurURL.toString()}
