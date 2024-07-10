@@ -1929,10 +1929,10 @@
   resolved "https://registry.yarnpkg.com/@chakra-ui/visually-hidden/-/visually-hidden-2.0.13.tgz#6553467d93f206d17716bcbe6e895a84eef87472"
   integrity sha512-sDEeeEjLfID333EC46NdCbhK2HyMXlpl5HzcJjuwWIpyVz4E1gKQ9hlwpq6grijvmzeSywQ5D3tTwUrvZck4KQ==
 
-"@contentful/content-source-maps@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@contentful/content-source-maps/-/content-source-maps-0.7.0.tgz#598a9bef62079b431853ab5fcd4cd4352c8b7db7"
-  integrity sha512-ovsLmfPASrmQUYJEem4i+ApKhI47TTxr4bKt+aKupNnf4bT6HOolSdF/mSiT1YresnJB8Kr/dnlso77QWXw45A==
+"@contentful/content-source-maps@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@contentful/content-source-maps/-/content-source-maps-0.6.1.tgz#a12828d287bdcd9f31c132f2a230bd1ac3005b77"
+  integrity sha512-IjsyhakG17OC5xtIa5agVRsnjjxiJf9HZjpDIV6Ix036Pd5YHJrbyyiF4KNEmLlIqe3hQ0kHGWEs9S/HfECmRQ==
   dependencies:
     "@vercel/stega" "^0.1.2"
     json-pointer "^0.6.2"
@@ -2389,13 +2389,14 @@
   dependencies:
     emotion "^10.0.17"
 
-"@contentful/live-preview@^4.3.0-alpha.1":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-4.3.0.tgz#8309bac9ee4e62adef952ab1449b2beb26780838"
-  integrity sha512-MKD9Bf2ubzdpm9T7pygwy4YcyBxoBl9cc9XP28sPLXCk49/HhfWZwgJuA8dbPIOIhosIJFl7p01vk8ZyEcgWlw==
+"@contentful/live-preview@4.3.0-alpha.1":
+  version "4.3.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-4.3.0-alpha.1.tgz#004192db1dd243eb83a13641aad1a604e15e7f26"
+  integrity sha512-8iowI5Kho8DWC/chF6Tw0Uu/6pa9Qkn9TO+TE7c43Hv73nLsGTU4ugI12vjuY3zALwJZXqCx22nmiI/bWTCdZg==
   dependencies:
-    "@contentful/content-source-maps" "^0.7.0"
+    "@contentful/content-source-maps" "^0.6.1"
     "@contentful/rich-text-types" "^16.2.0"
+    axe-core "4.9.1"
     flatted "^3.2.9"
     graphql-tag "^2.12.6"
     json-pointer "^0.6.2"
@@ -4716,6 +4717,11 @@ auto-bind@~4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/auto-bind/-/auto-bind-4.0.0.tgz#e3589fc6c2da8f7ca43ba9f84fa52a744fc997fb"
   integrity sha512-Hdw8qdNiqdJ8LqT0iK0sVzkFbzg6fhnQqqfWhBDxcHZvU75+B+ayzTy8x+k5Ix0Y92XOhOUlx74ps+bA6BeYMQ==
+
+axe-core@4.9.1:
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.9.1.tgz#fcd0f4496dad09e0c899b44f6c4bb7848da912ae"
+  integrity sha512-QbUdXJVTpvUTHU7871ppZkdOLBeGUKBQWHkHrvN2V9IQWGMt61zf3B45BtzjxEJzYuj0JBjBZP/hmYS/R9pmAw==
 
 axe-core@^4.4.3:
   version "4.5.2"
