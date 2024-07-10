@@ -1,4 +1,5 @@
-import { Container, Grid, GridItem, Heading } from '@chakra-ui/react';
+import { Container, Grid, GridItem } from '@chakra-ui/react';
+import styled from '@emotion/styled';
 
 import { ProductTile } from '@src/components/features/product/ProductTile';
 import { PageProductFieldsFragment } from '@src/lib/__generated/sdk';
@@ -8,14 +9,16 @@ interface ProductTileGridProps {
   products: Array<PageProductFieldsFragment | undefined | null>;
 }
 
+const StyledHeading = styled('h4')`
+  font-size: 28px;
+  line-height: 0.8em;
+  margin-bottom: 15px;
+`;
+
 export const ProductTileGrid = ({ title, products }: ProductTileGridProps) => {
   return (
     <Container>
-      {title && (
-        <Heading as="h2" mb={3}>
-          {title}
-        </Heading>
-      )}
+      {title && <StyledHeading>{title}</StyledHeading>}
       <Grid
         templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }}
         rowGap={{ base: 6, lg: 6 }}
