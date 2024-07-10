@@ -2389,10 +2389,10 @@
   dependencies:
     emotion "^10.0.17"
 
-"@contentful/live-preview@4.3.0-alpha.1":
-  version "4.3.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-4.3.0-alpha.1.tgz#004192db1dd243eb83a13641aad1a604e15e7f26"
-  integrity sha512-8iowI5Kho8DWC/chF6Tw0Uu/6pa9Qkn9TO+TE7c43Hv73nLsGTU4ugI12vjuY3zALwJZXqCx22nmiI/bWTCdZg==
+"@contentful/live-preview@4.3.0-alpha.3":
+  version "4.3.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-4.3.0-alpha.3.tgz#3f2481ca0ea9b676e42b24a9f59f9d1a4858ca29"
+  integrity sha512-dsUQvXo8dN8bLO1UnxLQtKbFY13nl6YMWKfTYgsuNexWLt68TfTF6RcaGy9vp6ncVMqZInIHbUmDSj2Gn3EFYg==
   dependencies:
     "@contentful/content-source-maps" "^0.6.1"
     "@contentful/rich-text-types" "^16.2.0"
