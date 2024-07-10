@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/aria-props */
 import { Box, BoxProps, Flex } from '@chakra-ui/react';
 import { useTranslation } from 'next-i18next';
 
@@ -13,7 +14,7 @@ export const Header = (props: BoxProps) => {
 
   return (
     <Flex
-      as="nav"
+      aria-role="nav"
       justifyContent="space-between"
       align="center"
       pl={{ base: 4, md: 12, lg: 12 }}
@@ -21,7 +22,7 @@ export const Header = (props: BoxProps) => {
       height={`${HEADER_HEIGHT}px`}
       zIndex="2"
       {...props}>
-      <LinkWithPersistedQuery href="/" title={t('common.homepage')}>
+      <LinkWithPersistedQuery href="/">
         <Box
           display={{ base: 'none', md: 'block', lg: 'block' }}
           as={DesktopLogo}
