@@ -5,7 +5,7 @@ import { ImageFieldsFragment } from '@src/lib/__generated/sdk';
 
 interface ImageProps extends ImageFieldsFragment {
   imageProps?: Omit<NextImageProps, 'src' | 'alt'>;
-  livePreviewProps?: typeof ContentfulLivePreview.getProps;
+  livePreviewProps?: ReturnType<typeof ContentfulLivePreview.getProps>;
 }
 
 export const CtfImage = ({
