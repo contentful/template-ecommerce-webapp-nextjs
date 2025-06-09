@@ -1922,10 +1922,10 @@
   resolved "https://registry.yarnpkg.com/@chakra-ui/visually-hidden/-/visually-hidden-2.0.13.tgz#6553467d93f206d17716bcbe6e895a84eef87472"
   integrity sha512-sDEeeEjLfID333EC46NdCbhK2HyMXlpl5HzcJjuwWIpyVz4E1gKQ9hlwpq6grijvmzeSywQ5D3tTwUrvZck4KQ==
 
-"@contentful/content-source-maps@^0.11.18":
-  version "0.11.18"
-  resolved "https://registry.yarnpkg.com/@contentful/content-source-maps/-/content-source-maps-0.11.18.tgz#898e19f957fe96209ae177a51de5ce7a1125245e"
-  integrity sha512-pr1Y/MRNXgiriUt2PDOMOQP+ONubAJof6vzORbygmI/XVUUFnk/foB9sYjIebrc3KToUvUO79GmtyJMh2rYC3g==
+"@contentful/content-source-maps@^0.11.19":
+  version "0.11.19"
+  resolved "https://registry.yarnpkg.com/@contentful/content-source-maps/-/content-source-maps-0.11.19.tgz#f18caf7c61fb220aca9cd51666d8177dacc757cd"
+  integrity sha512-hSkGrktJWqJYHnMjXSdFNNp5eaICJidAJmBHN5kaUvqa7o5femSbFRoEi3Zh+sxmDbEhv+kWOOpsz8Dz3D/NSg==
   dependencies:
     "@vercel/stega" "^0.1.2"
     json-pointer "^0.6.2"
@@ -1965,12 +1965,12 @@
   resolved "https://registry.yarnpkg.com/@contentful/f36-tokens/-/f36-tokens-4.0.1.tgz#1b6a2e3fce11a61b84a855dbeed660989259ba54"
   integrity sha512-NTyMAQcfvhPP8kJgOK5mtjKpErg799iglEb9B45ii4N7aMdph2GNqgv7KBgpogfbTEGBrlKIoH8MUDSV9YNREg==
 
-"@contentful/live-preview@^4.6.20":
-  version "4.6.20"
-  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-4.6.20.tgz#6b0f4d1f39aab61f36eef7d7a51f3100ab1f4714"
-  integrity sha512-D7dovZV46PhW+UoNxtOMS6KeA8llzffPYgmq2AOgjxA7s+QkAIVNSreXVGTwZRMVCEmQxZnfHXjjr7LCXcZtoA==
+"@contentful/live-preview@^4.6.21":
+  version "4.6.21"
+  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-4.6.21.tgz#ef5fe77754f340557f8bc2fbb71ae1b766e94545"
+  integrity sha512-OMQJZ8KezS/2JXVh/DQ3k7wTXJ6rAAT3iBPJUip9YzRB0b+vEIF9KcwrP+P87m9IBdnEPefPV/l1SQ6y86J1Lw==
   dependencies:
-    "@contentful/content-source-maps" "^0.11.18"
+    "@contentful/content-source-maps" "^0.11.19"
     "@contentful/rich-text-types" "^17.0.0"
     flatted "^3.2.9"
     graphql-tag "^2.12.6"
