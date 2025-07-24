@@ -43,7 +43,7 @@
     "framer-motion": "^7.6.11",
     "graphql": "^16.6.0",
     "locale-currency": "^0.0.2",
-    "next": "14.2.26",
+    "next": "14.2.30",
     "next-absolute-url": "^1.2.2",
     "next-compose-plugins": "^2.2.1",
     "next-i18next": "^12.1.0",
