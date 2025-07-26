@@ -55,7 +55,7 @@
     "urijs": "1.19.11"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.19.1",
+    "@babel/eslint-parser": "7.28.0",
     "@chakra-ui/cli": "2.1.8",
     "@graphql-codegen/cli": "2.13.12",
     "@graphql-codegen/client-preset": "1.1.4",
