@@ -41,7 +41,7 @@
     "@svgr/webpack": "6.5.1",
     "dotenv": "16.6.1",
     "framer-motion": "7.10.3",
-    "graphql": "16.8.1",
+    "graphql": "16.11.0",
     "locale-currency": "0.0.2",
     "next": "14.2.30",
     "next-absolute-url": "1.2.2",
