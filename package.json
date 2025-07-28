@@ -39,7 +39,7 @@
     "@next/bundle-analyzer": "13.0.5",
     "@next/font": "13.0.5",
     "@svgr/webpack": "6.5.1",
-    "dotenv": "16.0.3",
+    "dotenv": "16.6.1",
     "framer-motion": "7.6.14",
     "graphql": "16.8.1",
     "locale-currency": "0.0.2",
