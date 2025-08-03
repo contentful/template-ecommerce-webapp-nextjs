@@ -38,7 +38,7 @@
     "@emotion/styled": "11.14.1",
     "@next/bundle-analyzer": "13.5.11",
     "@next/font": "13.5.11",
-    "@svgr/webpack": "6.5.1",
+    "@svgr/webpack": "8.1.0",
     "dotenv": "17.2.1",
     "framer-motion": "12.23.12",
     "graphql": "16.11.0",
