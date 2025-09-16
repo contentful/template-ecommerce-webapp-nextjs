@@ -1,4 +1,4 @@
-import { Flex, useTheme } from '@chakra-ui/react';
+import { Flex, useTheme, Heading } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 
@@ -7,9 +7,10 @@ import { Header } from '../header';
 
 interface LayoutPropsInterface {
   children: ReactNode;
+  bannerHeading?: string; // ✅ new field
 }
 
-export const Layout = ({ children }: LayoutPropsInterface) => {
+export const Layout = ({ children, bannerHeading }: LayoutPropsInterface) => {
   const router = useRouter();
   const theme = useTheme();
 
@@ -21,9 +22,27 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
         borderBottom={isHomePage ? '' : '1px'}
         borderColor={isHomePage ? null : theme.f36.gray200}
       />
+
+      {/* ✅ Banner Heading */}
+      {bannerHeading && (
+        <Flex
+          as="section"
+          width="100%"
+          py={{ base: 6, lg: 10 }}
+          justify="center"
+          align="center"
+          bg={theme.f36.gray50} // optional background
+        >
+          <Heading as="h1" size="xl" textAlign="center">
+            {bannerHeading}
+          </Heading>
+        </Flex>
+      )}
+
       <Flex flexGrow="1" flexDirection="column" width="100%" as="main" pb={{ base: 8, lg: 12 }}>
         {children}
       </Flex>
+
       <Footer />
     </>
   );
