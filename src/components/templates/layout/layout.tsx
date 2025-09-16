@@ -21,9 +21,6 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
         borderBottom={isHomePage ? '' : '1px'}
         borderColor={isHomePage ? null : theme.f36.gray200}
       />
-      <Flex flexGrow="1" flexDirection="column" width="100%" as="main" pb={{ base: 8, lg: 12 }}>
-        {children}
-      </Flex>
       <Footer />
     </>
   );
