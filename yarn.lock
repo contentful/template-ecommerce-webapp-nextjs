@@ -6792,10 +6792,10 @@ formdata-node@^4.3.1:
     node-domexception "1.0.0"
     web-streams-polyfill "4.0.0-beta.3"
 
-framer-motion@12.23.13:
-  version "12.23.13"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.23.13.tgz#146ffad7710172359b9274c46f75c677068f1092"
-  integrity sha512-OMF57Xh0fuTXfJQPtCieYGeU9Fam4SxqPLVz78YI7ATRFrfz8SARtqr1+qv56cX45kPFcIEfkUorVfxlOsjcUg==
+framer-motion@12.23.14:
+  version "12.23.14"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.23.14.tgz#43933a4f275c4c917ab1a75c1959d81fff30a326"
+  integrity sha512-8BQ6dvqOht2w8P1CwIEvAA0gypDR3fNG/M6/f5lT0QgNIKnJf7J43Bpv++NnCWU8YfmL47UEm2hbI0GRvdVhsQ==
   dependencies:
     motion-dom "^12.23.12"
     motion-utils "^12.23.6"
