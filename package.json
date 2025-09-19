@@ -40,7 +40,7 @@
     "@next/font": "13.5.11",
     "@svgr/webpack": "8.1.0",
     "dotenv": "17.2.2",
-    "framer-motion": "12.23.15",
+    "framer-motion": "12.23.16",
     "graphql": "16.11.0",
     "locale-currency": "0.0.2",
     "next": "14.2.32",
