@@ -33,7 +33,7 @@
     "@chakra-ui/react": "2.4.1",
     "@contentful/f36-icons": "4.29.1",
     "@contentful/f36-tokens": "4.2.0",
-    "@contentful/live-preview": "4.6.47",
+    "@contentful/live-preview": "4.6.48",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
     "@next/bundle-analyzer": "13.5.11",
