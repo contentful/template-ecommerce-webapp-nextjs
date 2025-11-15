@@ -65,7 +65,7 @@
     "@types/react-dom": "18.0.9",
     "@typescript-eslint/eslint-plugin": "8.46.1",
     "@typescript-eslint/parser": "8.46.1",
-    "eslint": "8.57.1",
+    "eslint": "9.39.1",
     "eslint-config-next": "13.5.11",
     "eslint-config-prettier": "10.1.8",
     "eslint-import-resolver-typescript": "4.4.4",
