@@ -30,7 +30,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@chakra-ui/react": "2.4.1",
+    "@chakra-ui/react": "3.30.0",
     "@contentful/f36-icons": "4.29.1",
     "@contentful/f36-tokens": "4.2.0",
     "@contentful/live-preview": "4.6.49",
@@ -56,7 +56,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.28.4",
-    "@chakra-ui/cli": "2.1.8",
+    "@chakra-ui/cli": "3.30.0",
     "@graphql-codegen/cli": "2.13.12",
     "@graphql-codegen/client-preset": "1.1.4",
     "@graphql-codegen/introspection": "2.2.1",
