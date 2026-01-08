@@ -6808,13 +6808,13 @@ formdata-node@^4.3.1:
     node-domexception "1.0.0"
     web-streams-polyfill "4.0.0-beta.3"
 
-framer-motion@12.23.26:
-  version "12.23.26"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.23.26.tgz#2a684e9b156118e1c4989d7fc9327def83480391"
-  integrity sha512-cPcIhgR42xBn1Uj+PzOyheMtZ73H927+uWPDVhUMqxy8UHt6Okavb6xIz9J/phFUHUj0OncR6UvMfJTXoc/LKA==
+framer-motion@12.24.12:
+  version "12.24.12"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.24.12.tgz#27186c3d503bd6ff6e52c62a913c25cde5aecb7b"
+  integrity sha512-W+tBOI1SDGNMH4D4mADY95qYd16Drke2Tj9zlGlwTGSCi6yy8wbMmPY1mvirfcTK8HBeuuCd2PflHdN/zbL4ew==
   dependencies:
-    motion-dom "^12.23.23"
-    motion-utils "^12.23.6"
+    motion-dom "^12.24.11"
+    motion-utils "^12.24.10"
     tslib "^2.4.0"
 
 framesync@5.3.0:
@@ -8504,17 +8504,17 @@ module-alias@^2.2.2:
   resolved "https://registry.yarnpkg.com/module-alias/-/module-alias-2.2.2.tgz#151cdcecc24e25739ff0aa6e51e1c5716974c0e0"
   integrity sha512-A/78XjoX2EmNvppVWEhM2oGk3x4lLxnkEA4jTbaK97QKSDjkIoOsKQlfylt/d3kKKi596Qy3NP5XrXJ6fZIC9Q==
 
-motion-dom@^12.23.23:
-  version "12.23.23"
-  resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.23.23.tgz#8f874333ea1a04ee3a89eb928f518b463d589e0e"
-  integrity sha512-n5yolOs0TQQBRUFImrRfs/+6X4p3Q4n1dUEqt/H58Vx7OW6RF+foWEgmTVDhIWJIMXOuNNL0apKH2S16en9eiA==
+motion-dom@^12.24.11:
+  version "12.24.11"
+  resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.24.11.tgz#05d0032cacca4cd854242e687072234b38562558"
+  integrity sha512-DlWOmsXMJrV8lzZyd+LKjG2CXULUs++bkq8GZ2Sr0R0RRhs30K2wtY+LKiTjhmJU3W61HK+rB0GLz6XmPvTA1A==
   dependencies:
-    motion-utils "^12.23.6"
+    motion-utils "^12.24.10"
 
-motion-utils@^12.23.6:
-  version "12.23.6"
-  resolved "https://registry.yarnpkg.com/motion-utils/-/motion-utils-12.23.6.tgz#fafef80b4ea85122dd0d6c599a0c63d72881f312"
-  integrity sha512-eAWoPgr4eFEOFfg2WjIsMoqJTW6Z8MTUCgn/GZ3VRpClWBdnbjryiA3ZSNLyxCTmCQx4RmYX6jX1iWHbenUPNQ==
+motion-utils@^12.24.10:
+  version "12.24.10"
+  resolved "https://registry.yarnpkg.com/motion-utils/-/motion-utils-12.24.10.tgz#73d0bead3c08c4ba2965a5f7ee39dd53f661ae7e"
+  integrity sha512-x5TFgkCIP4pPsRLpKoI86jv/q8t8FQOiM/0E8QKBzfMozWHfkKap2gA1hOki+B5g3IsBNpxbUnfOum1+dgvYww==
 
 mrmime@^1.0.0:
   version "1.0.1"
