@@ -6,8 +6,7 @@ import typewriter from 'analytics';
 
 const CtfSignUpBanner = () => {
   const theme = useTheme();
-  const signupLink =
-    'https://www.contentful.com/starter-templates/ecommerce-website/sign-up/?action=create_starter_template&template_name=ecommerce';
+  const signupLink = 'https://www.contentful.com/sign-up/?action=create_starter_template&template_name=ecommerce';
   const systemUIFontFamilies =
     '"Avenir Next W01", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
   const handleSignUpLinkClick = () => typewriter.signUpBannerInteracted({ ctaClicked: true });
