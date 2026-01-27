@@ -31,7 +31,7 @@
   "license": "MIT",
   "dependencies": {
     "@chakra-ui/react": "2.4.1",
-    "@contentful/f36-icons": "4.29.1",
+    "@contentful/f36-icons": "5.9.0",
     "@contentful/f36-tokens": "5.1.0",
     "@contentful/live-preview": "4.9.0",
     "@emotion/react": "11.14.0",
