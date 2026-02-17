@@ -7919,10 +7919,10 @@ loader-utils@^2.0.0:
     emojis-list "^3.0.0"
     json5 "^2.1.2"
 
-locale-currency@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/locale-currency/-/locale-currency-0.0.2.tgz#e2c90607563ce47a59f9559e45a70e24e4db4b6d"
-  integrity sha512-5uUCVWBhixSV9x48yONxyGaW7YNGwFqM3f0ue1V+GbcHXGfOLKP+2HrwSFxkQ59V7cgcxahkRLD2Lw/CRfBJAQ==
+locale-currency@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/locale-currency/-/locale-currency-0.0.4.tgz#f432aa7283c596f6fbd3354376ad92348228e507"
+  integrity sha512-S3pRVxU7xZDFlN4DkvLChQf8e1xm39XD6gkiWk1GI7nP3P7VMXHTWD/ZLLr13rAKNRpAeNCgTTMMNxEG8GZYRQ==
 
 localforage@^1.8.1:
   version "1.10.0"
