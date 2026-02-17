@@ -8591,10 +8591,10 @@ next-pwa@5.6.0:
     workbox-webpack-plugin "^6.5.4"
     workbox-window "^6.5.4"
 
-next-seo@6.8.0:
-  version "6.8.0"
-  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-6.8.0.tgz#0265ec75ad5ddca3d2a11dd86534a15065043651"
-  integrity sha512-zcxaV67PFXCSf8e6SXxbxPaOTgc8St/esxfsYXfQXMM24UESUVSXFm7f2A9HMkAwa0Gqn4s64HxYZAGfdF4Vhg==
+next-seo@7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-7.2.0.tgz#2fda1ed2a88af37f1067e9383e57649922b256e8"
+  integrity sha512-ST7/YB8g0SXGuEKNucBz9wiP6nCYVZ4v8qJB7rAz9Vr1X98mw5orWL9COr8td/dzqtCYd4xaIg0YVCq5Yy3PQA==
 
 next-sitemap@3.1.55:
   version "3.1.55"
