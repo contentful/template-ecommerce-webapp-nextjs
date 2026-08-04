@@ -13,7 +13,11 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
   const router = useRouter();
   const theme = useTheme();
 
-  const isHomePage = router.pathname === '/';
+  // Route-path allow-list for the borderless homepage header chrome. `/preview` is included so
+  // the editor iframe render matches the delivery route rather than showing a stray header
+  // border (see reference/05-preview.md §2.5).
+  const LANDING_ROUTES = ['/', '/preview'];
+  const isHomePage = LANDING_ROUTES.includes(router.pathname);
 
   return (
     <>

@@ -1,63 +1,58 @@
-import { Box } from '@chakra-ui/react';
-import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
+import {
+  createClient,
+  resolveExperience,
+  ServerExperienceRenderer,
+} from '@contentful/experiences-react';
+import type {
+  ExperiencePayload,
+  PortableRenderPlan,
+  ServerExperienceRendererProps,
+} from '@contentful/experiences-react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { useTranslation } from 'next-i18next';
+import type { ComponentType } from 'react';
 
-import { HeroBanner } from '@src/components/features/hero-banner';
-import { ProductTileGrid } from '@src/components/features/product';
-import { SeoFields } from '@src/components/features/seo';
-import { client, previewClient } from '@src/lib/client';
+import { experienceConfig } from '@src/lib/exo/experience-config';
+import { normalizeExperiencePayload } from '@src/lib/exo/normalize-payload';
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
 
-const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { t } = useTranslation();
-  const page = useContentfulLiveUpdates(props.page);
+// React-types cast (pre-alpha SDK). The SDK is built against React 19 types; the app pins
+// @types/react@18 which expects JSX children to be `ReactElement | null`. Cast once at import.
+// REMOVE when the app and SDK agree on React types.
+const Renderer =
+  ServerExperienceRenderer as unknown as ComponentType<ServerExperienceRendererProps>;
 
-  return (
-    <>
-      {page.seoFields && <SeoFields {...page.seoFields} />}
-      <HeroBanner {...page} />
-      {page.productsCollection?.items && (
-        <Box
-          mt={{
-            base: 5,
-            md: 9,
-            lg: 16,
-          }}>
-          <ProductTileGrid
-            title={t('product.trendingProducts')}
-            products={page.productsCollection.items}
-          />
-        </Box>
-      )}
-    </>
-  );
+const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  return <Renderer experience={props.plan} config={experienceConfig} />;
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ locale, preview }) => {
+export const getServerSideProps: GetServerSideProps<{ plan: PortableRenderPlan }> = async ({
+  locale,
+}) => {
+  const { EXO_SPACE_ID, EXO_ENVIRONMENT_ID, EXO_EXPERIENCE_ID, EXO_DELIVERY_TOKEN } = process.env;
+  const host = process.env.EXO_DELIVERY_HOST ?? 'https://xdn.contentful.com';
+
+  if (!EXO_SPACE_ID || !EXO_ENVIRONMENT_ID || !EXO_EXPERIENCE_ID || !EXO_DELIVERY_TOKEN) {
+    return { notFound: true };
+  }
+
   try {
-    const gqlClient = preview ? previewClient : client;
-
-    const data = await gqlClient.pageLanding({ locale, preview });
-
-    const page = data.pageLandingCollection?.items[0];
-
-    if (!page) {
-      return {
-        notFound: true,
-      };
-    }
-
+    const client = createClient({ accessToken: EXO_DELIVERY_TOKEN, host });
+    const raw = (await client.view.getExperience(
+      EXO_SPACE_ID,
+      EXO_ENVIRONMENT_ID,
+      EXO_EXPERIENCE_ID,
+      { locale: locale ?? 'en-US' },
+    )) as unknown as ExperiencePayload;
+    const normalized = normalizeExperiencePayload(raw);
+    const plan = await resolveExperience(normalized, experienceConfig);
     return {
       props: {
         ...(await getServerSideTranslations(locale)),
-        page,
+        plan,
       },
     };
   } catch {
-    return {
-      notFound: true,
-    };
+    return { notFound: true };
   }
 };
 

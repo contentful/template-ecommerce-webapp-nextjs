@@ -3,7 +3,7 @@ import { ContentfulLivePreviewProvider } from '@contentful/live-preview/react';
 import localFont from '@next/font/local';
 import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
-import { useRouter } from "next/router"
+import { useRouter } from 'next/router';
 
 import { Layout } from '@src/components/templates/layout';
 import { theme } from '@src/theme';
@@ -63,14 +63,27 @@ const spaceGrotesk = localFont({
   ],
 });
 
+// Contentful Live Preview SDK — targetOrigin allow-list. Must be a NEXT_PUBLIC_ var (read
+// client-side). Include the ExO editor origins so /preview does not crash with
+// "current origin is not supported" → React #423. See reference/05-preview.md guard 2c.
+const PREVIEW_TARGET_ORIGINS = (
+  process.env.NEXT_PUBLIC_CTF_PREVIEW_TARGET_ORIGINS ??
+  'https://app.contentful.com,https://app.eu.contentful.com'
+)
+  .split(',')
+  .map(origin => origin.trim())
+  .filter(Boolean);
+
 const App = ({ Component, pageProps }: AppProps) => {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <ContentfulLivePreviewProvider
       locale={router.locale || 'en-US'}
       enableInspectorMode={pageProps.previewActive}
-      enableLiveUpdates={pageProps.previewActive}>
+      enableLiveUpdates={pageProps.previewActive}
+      targetOrigin={PREVIEW_TARGET_ORIGINS}
+    >
       <ChakraProvider
         theme={{
           ...theme,
@@ -78,7 +91,8 @@ const App = ({ Component, pageProps }: AppProps) => {
             heading: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.heading}`,
             body: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.body}`,
           },
-        }}>
+        }}
+      >
         <Layout>
           <Component {...pageProps} />
         </Layout>

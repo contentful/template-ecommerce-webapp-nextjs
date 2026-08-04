@@ -46,6 +46,20 @@ module.exports = withPlugins(plugins, {
   compress: true,
 
   /**
+   * ExO SDK (pre-alpha): the five `@contentful/experiences-*` packages ship an ESM build with
+   * extensionless relative imports. Node's native ESM resolver rejects those at Next's
+   * page-data-collect step; forcing Next to bundle+transpile them through webpack fixes it.
+   * REMOVE when the SDK ships a spec-compliant ESM build.
+   */
+  transpilePackages: [
+    '@contentful/experiences-react',
+    '@contentful/experiences-client',
+    '@contentful/experiences-sdk-core',
+    '@contentful/experiences-design',
+    '@contentful/experience-delivery',
+  ],
+
+  /**
    * add the headers you would like your next server to use
    * documentation: https://nextjs.org/docs/api-reference/next.config.js/headers
    *                https://nextjs.org/docs/advanced-features/security-headers
@@ -57,7 +71,9 @@ module.exports = withPlugins(plugins, {
    * Settings are the defaults
    */
   images: {
-    domains: ['images.ctfassets.net', 'images.eu.ctfassets.net'],
+    // Add the ExO delivery image host so next/image will optimize ETL-served assets.
+    // `images.flinkly.com` is staging; `images.ctfassets.net` is the prod host.
+    domains: ['images.ctfassets.net', 'images.eu.ctfassets.net', 'images.flinkly.com'],
   },
 
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
