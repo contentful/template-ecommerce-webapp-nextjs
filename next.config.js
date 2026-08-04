@@ -16,6 +16,23 @@ const { withPlugins } = nextComposePlugins.extend(() => ({}));
  */
 module.exports = withPlugins(plugins, {
   i18n,
+
+  /**
+   * ExO code-rewrite POC: the @contentful/experiences-* packages ship an ESM
+   * build that uses extensionless relative imports (e.g. `./client-renderer`),
+   * which Node's native ESM resolver rejects. Next externalizes node_modules for
+   * the server build and would import them through Node ESM at page-data-collect
+   * time, failing the build. transpilePackages forces Next to bundle+transpile
+   * them through webpack (whose resolver tolerates the imports) instead.
+   * Remove once the SDK ships a spec-compliant build.
+   */
+  transpilePackages: [
+    '@contentful/experiences-react',
+    '@contentful/experiences-client',
+    '@contentful/experiences-sdk-core',
+    '@contentful/experiences-design',
+    '@contentful/experience-delivery',
+  ],
   /**
    * add the environment variables you would like exposed to the client here
    * documentation: https://nextjs.org/docs/api-reference/next.config.js/environment-variables
@@ -57,7 +74,13 @@ module.exports = withPlugins(plugins, {
    * Settings are the defaults
    */
   images: {
-    domains: ['images.ctfassets.net', 'images.eu.ctfassets.net'],
+    domains: [
+      'images.ctfassets.net',
+      'images.eu.ctfassets.net',
+      // ExO code-rewrite POC: the ETL-seeded Experience Delivery payload serves
+      // asset URLs from the flinkly (staging) image host.
+      'images.flinkly.com',
+    ],
   },
 
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
