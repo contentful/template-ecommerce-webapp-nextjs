@@ -2857,6 +2857,40 @@
     "@vercel/stega" "^0.1.2"
     json-pointer "^0.6.2"
 
+"@contentful/experience-delivery@1.0.0-dev.3":
+  version "1.0.0-dev.3"
+  resolved "https://npm.pkg.github.com/download/@contentful/experience-delivery/1.0.0-dev.3/0a0234e7760bb5aece7111374afb10bb4a3368c1#0a0234e7760bb5aece7111374afb10bb4a3368c1"
+  integrity sha512-EXnMOhq4a79xEGKcW2E8Osnc1eIGIm7KqMZwh8eHvyTReZIBfHBPzjb7xXFCqZEaFkjoufkcokV4qWoouLn9PQ==
+
+"@contentful/experiences-client@0.1.6":
+  version "0.1.6"
+  resolved "https://npm.pkg.github.com/download/@contentful/experiences-client/0.1.6/e642f3430db79d0eccf60598615eadfdfdc60d19#e642f3430db79d0eccf60598615eadfdfdc60d19"
+  integrity sha512-P/1IoV8T50iHBSKsRNL45ppjQ87GhyrmlSEpzXeFILRkoVkYpVy/Z1t8a+MntWpg/wFRxSLMcqM6b97weC9www==
+  dependencies:
+    "@contentful/experience-delivery" "1.0.0-dev.3"
+    "@contentful/experiences-sdk-core" "0.5.4"
+
+"@contentful/experiences-design@0.5.4":
+  version "0.5.4"
+  resolved "https://npm.pkg.github.com/download/@contentful/experiences-design/0.5.4/7c35e2d943f49eb947bdd7e6654d59a6e66f0120#7c35e2d943f49eb947bdd7e6654d59a6e66f0120"
+  integrity sha512-TZGwl7TbRo4aHT0yQgBoNx6eaH3509VoVnTNJ8UEE6+YuJFh0rO+4HQoj/PqjNTJTYzXSwrRWMKc2e8I/k2L3g==
+  dependencies:
+    "@contentful/experiences-sdk-core" "0.5.4"
+
+"@contentful/experiences-react@0.5.6":
+  version "0.5.6"
+  resolved "https://npm.pkg.github.com/download/@contentful/experiences-react/0.5.6/939254906fb0d0f716a7174bd0e231e9e8c1bbfa#939254906fb0d0f716a7174bd0e231e9e8c1bbfa"
+  integrity sha512-bSxGjgC6ewq/9AqEmvf3lPet/G/4uHKJ547/DZu2hCAkCxt/VOh/vB/NSbH8ktdAuvF+pZmPs05e+V2mTgI/ng==
+  dependencies:
+    "@contentful/experiences-client" "0.1.6"
+    "@contentful/experiences-design" "0.5.4"
+    "@contentful/experiences-sdk-core" "0.5.4"
+
+"@contentful/experiences-sdk-core@0.5.4":
+  version "0.5.4"
+  resolved "https://npm.pkg.github.com/download/@contentful/experiences-sdk-core/0.5.4/7ca2f9632a33417c4d801b0029dcbfe92416cfe2#7ca2f9632a33417c4d801b0029dcbfe92416cfe2"
+  integrity sha512-+kzxpl/Iju5nWUISDLKNcrmfSQsijSJTpH0OCR5m+9SAYIU34w2XXwCv3Rh0wNDhvMWOL6XxxeHHkFiUW/nxwQ==
+
 "@contentful/f36-core@^4.80.4", "@contentful/f36-core@^4.81.0":
   version "4.81.0"
   resolved "https://registry.yarnpkg.com/@contentful/f36-core/-/f36-core-4.81.0.tgz#7424657abea727b2d9e1b1ba38b102c7453bb3c8"
