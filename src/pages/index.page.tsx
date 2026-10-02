@@ -45,7 +45,6 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
 
 export const getServerSideProps: GetServerSideProps = async ({
   locale,
-  // @ts-expect-error GetServerSideProps are not up-to-date yet
   draftMode: preview,
 }) => {
   try {
