@@ -5735,7 +5735,7 @@ create-require@^1.1.0:
   resolved "https://registry.yarnpkg.com/create-require/-/create-require-1.1.1.tgz#c1d7e8f1e5f6cfc9ff65f9cd352d37348756c333"
   integrity sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==
 
-cross-fetch@3.1.5, cross-fetch@^3.1.5:
+cross-fetch@^3.1.5:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.5.tgz#e1389f44d9e7ba767907f7af8454787952ab534f"
   integrity sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==
@@ -7267,12 +7267,10 @@ i18next-fs-backend@^1.1.5:
   resolved "https://registry.yarnpkg.com/i18next-fs-backend/-/i18next-fs-backend-1.2.0.tgz#c498c68c8e6a8ae5ed59bea5e5392a11991de696"
   integrity sha512-pUx3AcgXCbur0jpFA7U67Z2RJflAcIi698Y8VL+phdOqUchahxriV3Cs+M6UkPNQSS/zPEzWLfdJ8EgjB7HVxg==
 
-i18next-http-backend@^1.4.4:
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/i18next-http-backend/-/i18next-http-backend-1.4.5.tgz#4803eb071eb6ffb147c36bdd42ba6f64b3198ac2"
-  integrity sha512-tLuHWuLWl6CmS07o+UB6EcQCaUjrZ1yhdseIN7sfq0u7phsMePJ8pqlGhIAdRDPF/q7ooyo5MID5DRFBCH+x5w==
-  dependencies:
-    cross-fetch "3.1.5"
+i18next-http-backend@^4.0.0:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/i18next-http-backend/-/i18next-http-backend-4.0.2.tgz#22ff8ddb13a7d416754996ea25890c5d9dd18702"
+  integrity sha512-oay62dIB2kL7+WHzoUXBjWfL3+mwijD3pQkQkIEaRLhy6kjXxUhrRenV0gInwlCASAaJaDy94+XvYizK+cAGdA==
 
 i18next@^21.9.1, i18next@^21.9.2:
   version "21.10.0"
