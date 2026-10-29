@@ -8497,10 +8497,10 @@ loader-utils@^2.0.0:
     emojis-list "^3.0.0"
     json5 "^2.1.2"
 
-locale-currency@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/locale-currency/-/locale-currency-0.0.2.tgz#e2c90607563ce47a59f9559e45a70e24e4db4b6d"
-  integrity sha512-5uUCVWBhixSV9x48yONxyGaW7YNGwFqM3f0ue1V+GbcHXGfOLKP+2HrwSFxkQ59V7cgcxahkRLD2Lw/CRfBJAQ==
+locale-currency@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/locale-currency/-/locale-currency-1.1.0.tgz#d00e4051f4d818b5a5eadb7fba1caa5b7c007407"
+  integrity sha512-iUGW0j2UiNnf5r4jeBaZgnGkY0Dp8cSnbXni1UsdDpsHEi3Us6kX4GIs8Z7SxI37EgyulbTDO9TQEJU3M6vofQ==
 
 locate-path@^5.0.0:
   version "5.0.0"
