@@ -10,7 +10,7 @@
     "generate-theme-typings": "yarn chakra-cli tokens ./src/theme/theme.ts",
     "predev": "yarn generate-theme-typings",
     "prebuild": "yarn generate-theme-typings",
-    "prepare": "husky install",
+    "postinstall": "husky install",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -79,5 +79,6 @@
     "prettier": "3.9.6",
     "typescript": "4.9.5",
     "typescript-graphql-request": "4.4.6"
-  }
+  },
+  "packageManager": "yarn@4.18.1+sha512.b2e1e7524f654f2749d32b4ebcb4622473cb5bcbc485df2007e12a154e50162a4d795526768bc5f5b8f81717bfd79deb2472813d86fb5ae2eb551fa9c872b08f"
 }
